@@ -1,0 +1,37 @@
+$bgColor: #f5f5f5;
+
+:host.flat .form-field-wrapper {
+    background: $bgColor;
+    border: none;
+}
+
+:host.outline .form-field-wrapper {
+    border: 1px solid #ececec;
+}
+
+:host .form-field-wrapper {
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 12px;
+    height: 48px;
+
+    ::ng-deep input {
+        border: none;
+        background: transparent;
+        &::placeholder {
+            color: darken($bgColor, 20);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        width: 100%;
+    }
+    ::ng-deep mat-icon {
+        color: darken($bgColor, 20);
+        margin-right: 8px;
+    }
+}

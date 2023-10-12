@@ -1,0 +1,28 @@
+<div *ngIf="{value : selection$ | async} as selection"
+     dndDropzone
+     [dndHorizontal]="false"
+     dndDragoverClass="dragover"
+     (dndDrop)="onDropElement($event)">
+    <ce-form-tree-node
+                       type="id"
+                       [label]="form.id"
+                       [form]="form"
+                       [level]="0"
+                       [active]="selection.value | isForm:form"
+                       [expandable]="true"
+                       (select)="selectForm(form)"
+                       (onLabelEdit)="onFormIdEdit(form,$event)">
+
+        <ce-form-tree-node *ngFor="let block of (form | formInstanceBlocks)"
+                           icon="title"
+                           type="block"
+                           [level]="1"
+                           [label]="block.field"
+                           [block]="block"
+                           [form]="form"
+                           [active]="selection.value | isBlock:form:block"
+                           (select)="selectBlock(form, block)"
+                           (onLabelEdit)="onBlockFieldEdit(form, block, $event)">
+        </ce-form-tree-node>
+    </ce-form-tree-node>
+</div>

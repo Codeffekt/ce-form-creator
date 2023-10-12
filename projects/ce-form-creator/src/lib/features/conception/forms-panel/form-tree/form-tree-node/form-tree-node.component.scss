@@ -1,0 +1,17 @@
+:host {
+    display: block;
+
+    &.active > .tree-node-label {
+        background: #2196f31a !important;
+    }
+
+    .tree-node-label {
+        padding: 12px 0px;
+        &:hover {
+            background: #f8f8f8;
+            cursor: default;
+        }
+    }
+    
+    user-select: none;
+}

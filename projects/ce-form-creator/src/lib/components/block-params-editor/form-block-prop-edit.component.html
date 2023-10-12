@@ -1,0 +1,14 @@
+<ce-panel-section>
+    <ce-panel-section-label>Paramètres du bloc</ce-panel-section-label>
+    <ce-panel-section-content>
+        <ng-container *ngIf="(context$ | async) as context">
+
+            <ce-form-block-prop-factory *ngIf="context.block; else noBlock"
+                                        [context]="context"
+                                        (blockChangedEvent)="onBlockChanged($event)"></ce-form-block-prop-factory>
+        </ng-container>
+        <ng-template #noBlock>
+            <span>Aucun bloc sélectionné</span>
+        </ng-template>
+    </ce-panel-section-content>
+</ce-panel-section>

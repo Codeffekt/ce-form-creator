@@ -1,0 +1,13 @@
+:host {
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    ce-container.active {
+        background:rgb(232, 232, 232);
+    }
+    a {
+        text-decoration: none;
+    }
+}

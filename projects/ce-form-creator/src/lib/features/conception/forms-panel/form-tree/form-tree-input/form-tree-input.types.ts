@@ -1,0 +1,1 @@
+export type FormTreeInputType = 'id' | 'block';

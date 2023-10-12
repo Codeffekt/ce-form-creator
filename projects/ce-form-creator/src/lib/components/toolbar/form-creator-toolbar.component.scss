@@ -1,0 +1,15 @@
+:host {
+    position: relative;
+    display: grid;
+    justify-content: stretch;
+    align-items: center;
+    padding: 12px 0px;
+    border-bottom: 1px solid #e7e7e7;
+
+    ce-creator-mode-switcher {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

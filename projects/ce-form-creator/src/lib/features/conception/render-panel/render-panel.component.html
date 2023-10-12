@@ -1,0 +1,7 @@
+<ce-form-creator-canvas *ngIf="forms.length; else noBlock"
+                        [forms]="forms"
+                        (formChangedEvent)="onFormChangedEvent($event)">
+</ce-form-creator-canvas>
+<ng-template #noBlock>
+    <span>Aucun formulaire sélectionné</span>
+</ng-template>

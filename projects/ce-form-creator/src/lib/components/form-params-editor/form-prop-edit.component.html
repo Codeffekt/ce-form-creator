@@ -1,0 +1,23 @@
+<ce-panel-section>
+    <ce-panel-section-label>Paramètres du formulaire</ce-panel-section-label>
+    <ce-panel-section-content>
+        <form [formGroup]="formGroup">
+            <ce-column gap="12px">
+                <mat-form-field>
+                    <mat-label>Identifiant</mat-label>
+                    <input matInput formControlName="id">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Titre</mat-label>
+                    <input matInput formControlName="title">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Version</mat-label>
+                    <input matInput formControlName="version">
+                </mat-form-field>
+            </ce-column>
+        </form>
+    </ce-panel-section-content>
+</ce-panel-section>

@@ -1,0 +1,63 @@
+<ce-column cePadding="24px" >
+
+    <ce-container-header ceMarginBottom="18px">
+        <ce-form-field>
+            <mat-icon>search</mat-icon>
+            <input placeholder="Rechercher un élément">
+        </ce-form-field>
+    </ce-container-header>
+
+    <ce-column gap="24px">
+        <ce-components-section>
+            <ce-components-section-title>Composants</ce-components-section-title>
+            <ce-component-item *ngFor="let component of components" [dndDraggable]="component.block">
+                <mat-icon>{{component.icon}}</mat-icon>
+                <ce-component-item-label>{{component.label}}</ce-component-item-label>
+            </ce-component-item>
+        </ce-components-section>
+        
+        <ce-components-section>
+            <ce-components-section-title>Date</ce-components-section-title>
+            <ce-component-item>
+                <mat-icon>calendar_month</mat-icon>
+                <ce-component-item-label>Jour/heure</ce-component-item-label>
+            </ce-component-item>
+            <ce-component-item>
+                <mat-icon>schedule</mat-icon>
+                <ce-component-item-label>Heure</ce-component-item-label>
+            </ce-component-item>
+        </ce-components-section>
+
+        <ce-components-section>
+            <ce-components-section-title>Éléments à choix</ce-components-section-title>
+            <ce-component-item>
+                <mat-icon>toggle_off</mat-icon>
+                <ce-component-item-label>Oui/Non</ce-component-item-label>
+            </ce-component-item>
+            <ce-component-item>
+                <mat-icon>format_list_bulleted</mat-icon>
+                <ce-component-item-label>Liste</ce-component-item-label>
+            </ce-component-item>
+            <ce-component-item>
+                <mat-icon>check_box</mat-icon>
+                <ce-component-item-label>Checkbox</ce-component-item-label>
+            </ce-component-item>
+        </ce-components-section>
+
+        <ce-components-section>
+            <ce-components-section-title>Média</ce-components-section-title>
+            <ce-component-item>
+                <mat-icon>qr_code</mat-icon>
+                <ce-component-item-label>Code-barres</ce-component-item-label>
+            </ce-component-item>
+            <ce-component-item>
+                <mat-icon>attachment</mat-icon>
+                <ce-component-item-label>Fichier</ce-component-item-label>
+            </ce-component-item>
+            <ce-component-item>
+                <mat-icon>image</mat-icon>
+                <ce-component-item-label>Photo</ce-component-item-label>
+            </ce-component-item>
+        </ce-components-section>
+    </ce-column>
+</ce-column>

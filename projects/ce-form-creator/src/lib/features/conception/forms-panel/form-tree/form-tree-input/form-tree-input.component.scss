@@ -1,0 +1,19 @@
+:host {
+    $error-color: #f66d63;
+    input {
+        background: white;
+        padding: 0px 8px;
+        width: auto;
+        border: 1px solid #4089ef;
+        border-radius: 4px;
+        &.invalid {
+            border-color: lighten($error-color, 10);
+        }
+    }
+
+    mat-error {
+        color: $error-color;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+}

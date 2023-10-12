@@ -1,0 +1,10 @@
+:host {
+    // height: 0;
+    width: 100%;
+    display: none;
+    overflow: auto;
+    &.active {
+        // height: inherit;
+        display: block;
+    }
+}

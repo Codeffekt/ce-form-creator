@@ -1,0 +1,26 @@
+<ce-row class="tree-node-label"
+        cePaddingX="{{level*24}}px"
+        (click)="onSelect()"
+        (dblclick)="onEditLabel()">
+
+    <mat-icon
+              *ngIf="expandable"
+              (click)="toggleExpand($event)">
+        {{expanded ? 'arrow_drop_down' : 'arrow_right'}}
+    </mat-icon>
+    <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+    <span *ngIf="mode ==='view'">{{label}}</span>
+    <ce-form-tree-input
+                        *ngIf="mode ==='edit'"
+                        [value]="label"
+                        [block]="block"
+                        [form]="form"
+                        [type]="type"
+                        (valueChanges)="updateLabel($event)"
+                        (discardChanges)="onViewLabel()">
+    </ce-form-tree-input>
+</ce-row>
+
+<div *ngIf="expandable ? expanded: true">
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,17 @@
+<ce-grid templateRows="auto 1fr">
+    <ce-container color="primary" padding="24px">
+        <h3 class="text-white">Layout</h3>
+    </ce-container>
+    <ce-sidenav-container>
+        <ce-sidenav width="320px">
+            <ce-container verticalPadding="24px">
+                <ce-column gap="12px">
+                    <app-layout-sidenav-entry [entry]="entry" *ngFor="let entry of entries"></app-layout-sidenav-entry>
+                </ce-column>
+            </ce-container>
+        </ce-sidenav>
+        <ce-sidenav-content cePadding="24px">
+            <router-outlet></router-outlet>
+        </ce-sidenav-content>
+    </ce-sidenav-container>
+</ce-grid>

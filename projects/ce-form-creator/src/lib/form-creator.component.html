@@ -1,0 +1,16 @@
+<ce-grid overflow-auto templateRows="auto 1fr auto">
+    <ng-container *ngIf="mode$ | async as mode">
+        <ce-form-creator-toolbar
+                                 (save)="onSave($event)"
+                                 (cancel)="onCancel()">
+        </ce-form-creator-toolbar>
+        <ce-container overflow-auto>
+            <ng-container *ngIf="(forms$ |async) as forms">
+                <ce-form-creator-conception *ngIf="mode === 'conception'" [forms]="forms"></ce-form-creator-conception>
+                <ce-form-creator-render *ngIf="mode === 'rendering'"></ce-form-creator-render>
+                <ce-form-creator-mask [forms]="forms" *ngIf="mode === 'mask'"></ce-form-creator-mask>
+            </ng-container>
+        </ce-container>
+        <ce-form-creator-status-bar></ce-form-creator-status-bar>
+    </ng-container>
+</ce-grid>

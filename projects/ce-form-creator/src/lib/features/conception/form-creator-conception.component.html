@@ -1,0 +1,32 @@
+<ce-grid templateColumns="450px 1fr 350px" cdkDropListGroup overflow-auto>
+    <ce-tab-group>
+        <ce-tab label="Formulaires">
+            <as-split direction="vertical">
+                <as-split-area>
+                    <ce-forms-panel [forms]="forms"></ce-forms-panel>
+                </as-split-area>
+                <as-split-area>
+                    <ce-components-panel overflow-auto></ce-components-panel>
+                </as-split-area>
+            </as-split>
+        </ce-tab>
+        <ce-tab label="Historique">
+            <div cePadding="12px">
+                <ce-form-creator-history-item date="Aujourd'hui à 11:54"
+                                              form="forms-tech"
+                                              block="name">
+                </ce-form-creator-history-item>
+                <ce-form-creator-history-item date="Hier à 10:30"
+                                              form="forms-tech"
+                                              block="name">
+                </ce-form-creator-history-item>
+                <ce-form-creator-history-item date="01 janvier à 11:54"
+                                              form="forms-tech"
+                                              block="name">
+                </ce-form-creator-history-item>
+            </div>
+        </ce-tab>
+    </ce-tab-group>
+    <ce-render-panel [forms]="forms"></ce-render-panel>
+    <ce-params-panel></ce-params-panel>
+</ce-grid> 

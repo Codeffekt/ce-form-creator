@@ -1,0 +1,7 @@
+<ce-grid class="tab-labels" cePadding="8px 12px" justifyContent="start" gap="12px" autoFlow="column">
+    <ce-container class="tab-label" *ngFor="let tab of tabs" [class.active]="tab.active" (click)="selectTab(tab)">
+        <span class="text-">{{tab.label}}</span>
+    </ce-container>
+</ce-grid>
+
+<ng-content select="ce-tab"></ng-content>

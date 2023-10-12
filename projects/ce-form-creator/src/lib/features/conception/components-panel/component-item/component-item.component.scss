@@ -1,0 +1,17 @@
+:host {
+    background: #fafafa;
+    padding: 12px;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    color: #616161;
+    user-select: none;
+    -webkit-user-select: none;
+    
+    &:hover {
+        border-color: #dbdbdb;
+    }
+}

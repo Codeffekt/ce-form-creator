@@ -1,0 +1,14 @@
+:host {
+    ce-container {
+        border: 1px solid lightgray;
+        border-radius: 4px;
+    }
+
+    ce-code-editor {
+        ::ng-deep .code-editor-header {
+            display: none !important;
+        }
+
+        
+    }
+}

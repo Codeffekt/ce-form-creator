@@ -1,0 +1,10 @@
+<ng-container *ngIf="mode$ | async as mode">
+    <div class="button-toggle-group" gridColumnEnd="span 3">
+        <button type="button" class="btn btn-light" [class.active]="mode === 'conception'"
+            (click)="switchModeToConception()">Conception</button>
+        <button type="button" class="btn btn-light" [class.active]="mode === 'rendering'"
+            (click)="switchModeToRendering()">Rendu</button>
+        <button type="button" class="btn btn-light" [class.active]="mode === 'mask'" (click)="switchModeToMask()">
+            Mask</button>
+    </div>
+</ng-container>

@@ -1,0 +1,1 @@
+export type FormCreatorMode = 'conception' | 'mask' | 'rendering';

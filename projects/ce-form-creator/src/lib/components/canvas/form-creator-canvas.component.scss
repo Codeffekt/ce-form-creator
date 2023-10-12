@@ -1,0 +1,32 @@
+:host {
+    margin: 32px 32px 0px 32px;
+    background: #f1f2f5;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+    }
+
+    .form {
+        border: 2px solid transparent;
+        border-radius: 4px;
+        margin: auto;
+        width: 800px;
+        height: 900px;
+        background: white;
+        &.dragover {
+            border: 2px solid #2196f3 !important;
+        }
+        &.active {
+            border: 1px solid #2196f3;
+        }
+        border:1px solid transparent;
+    }
+
+    .container {
+        width: 800px;
+        height: 800px;
+        border: 1px solid lightygray;
+    }
+}

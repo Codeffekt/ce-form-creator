@@ -1,0 +1,9 @@
+<input matInput
+       type="text"
+       (blur)="onSubmit()"
+       (keydown.enter)="onSubmit()"
+       [formControl]="formControl"
+       [class.invalid]="!formControl.valid">
+<mat-error *ngIf="formControl.hasError('existingId')">Id non disponible</mat-error>
+<mat-error *ngIf="formControl.hasError('existingField')">Champ non disponible</mat-error>
+<mat-error *ngIf="formControl.hasError('empty')">Valeur requise</mat-error>

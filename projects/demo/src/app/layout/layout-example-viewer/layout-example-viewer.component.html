@@ -1,0 +1,24 @@
+<ce-container cePadding="12px">
+    <ce-row>
+        <span class="text-muted">{{title}}</span>
+        <button mat-icon-button class="ms-auto" (click)="viewSource = !viewSource">
+            <mat-icon>code</mat-icon>
+        </button>
+    </ce-row>
+
+    <ce-column gap="32px">
+        <mat-tab-group animationDuration="0" *ngIf="viewSource">
+            <mat-tab label="HTML" *ngIf="showHtml">
+                <ce-code-editor [code]="htmlCode" [config]="config"></ce-code-editor>
+            </mat-tab>
+            <mat-tab label="SCSS" *ngIf="showCss">
+                <ce-code-editor [code]="scssCode" [config]="config"></ce-code-editor>
+            </mat-tab>
+            <mat-tab label="TS" *ngIf="showTs">
+                <ce-code-editor [code]="tsCode" [config]="config"></ce-code-editor>
+            </mat-tab>
+        </mat-tab-group>
+        
+        <ng-content></ng-content>
+    </ce-column>
+</ce-container>
