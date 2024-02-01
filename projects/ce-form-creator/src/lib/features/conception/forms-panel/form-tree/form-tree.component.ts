@@ -45,7 +45,25 @@ export class FormBlocksTreeComponent implements OnInit {
   }
 
   onBlockFieldEdit(form: FormRoot, block: FormBlock, field: string) {
+    // quand on change le field du block il faut aussi mettre à jour
+    // le content du FormRoot et mettre à jour la clef qui pointe vers ce block
+    // TODO: create an utility function in ce-core-data
+    const formContentBlockKeys = Object.keys(form.content);
+    let newFormContent = {};
+    for(const key of formContentBlockKeys) {
+      if(key !== block.field) {
+        newFormContent = {
+          ...newFormContent,
+          [key]: form.content[key]
+        }
+      }
+    }
     block.field = field;
+    newFormContent = {
+      ...newFormContent,
+      [field]: block
+    };
+    form.content = newFormContent;
     this.formUpdateService.update(form);
   }
 
