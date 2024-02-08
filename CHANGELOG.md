@@ -9,3 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix: correctly update FormRoot content when the block field change
 
+## [13.9.2]
+
+- Fix: correctly update FormRoot content when the block field change
+- Update: change dist directory location
+

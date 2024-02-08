@@ -64,7 +64,7 @@ export class FormBlockCorePropEditComponent implements OnInit, OnChanges, OnDest
 
   private onFormupdate() {
     // TODO: should call an updater service
-    this.block!.field = this.formGroup.value.field;
+    // this.block!.field = this.formGroup.value.field;
     this.block!.label = this.formGroup.value.label;
     this.block!.value = this.formGroup.value.value;
     this.block!.readonly = this.formGroup.value.readonly;
