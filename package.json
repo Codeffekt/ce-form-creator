@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build --configuration production ce-form-creator",
-    "publish:lib": "npm publish dist/ce-form-creator/",
+    "publish:lib": "npm publish projects/ce-form-creator/dist/ce-form-creator/",
     "unpublish:lib": "npm unpublish @codeffekt/ce-form-creator",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
