@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
-import { MatLegacyInput as MatInput } from '@angular/material/legacy-input';
+import { MatInput } from '@angular/material/input';
 import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { FormTreeInputType } from '../form-tree-input/form-tree-input.types';
 

@@ -4,7 +4,7 @@ import { CeFormCreatorToolbarComponent } from './form-creator-toolbar.component'
 import { CreatorModeSwitcherComponent } from './creator-mode-switcher/creator-mode-switcher.component';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-form-creator",
-  "version": "13.9.3",
+  "version": "16.0.0",
   "description": "Angular library components to create/edit CeForms",
   "author": {
     "name": "Codeffekt",
@@ -13,23 +13,23 @@
   },
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@angular/common": "^13.3.1",
-    "@angular/core": "^13.3.1",
-    "@angular/material": "^13.3.2",
-    "@codeffekt/ce-core": "^13.9.0",
-    "@codeffekt/ce-core-data": "^1.1.0",
-    "@codeffekt/ce-barcode": "^13.9.0",
-    "@codeffekt/ce-code-editor": "^13.9.0",
+    "@angular/common": "^16.2.12",
+    "@angular/core": "^16.2.12",
+    "@angular/material": "^16.2.14",
+    "@codeffekt/ce-core": "^16.0.0",
+    "@codeffekt/ce-core-data": "^1.1.2",
+    "@codeffekt/ce-barcode": "^16.0.0",
+    "@codeffekt/ce-code-editor": "^16.0.0",
     "@ngneat/until-destroy": "^8.0.0",
     "@ngxs/devtools-plugin": "^3.8.0",
     "@ngxs/logger-plugin": "^3.8.0",
     "@ngxs/store": "^3.8.0"
   },
   "dependencies": {
-    "angular-split": "^13.2.0",
+    "angular-split": "^16.2.1",
     "tslib": "^2.3.0",
     "@ngxs/store": "^3.8.0",
-    "ngx-drag-drop": "^13.0.0"
+    "ngx-drag-drop": "^16.1.0"
   },
   "main": "./dist/lib/codeffekt-ce-form-creator.d.ts"
 }

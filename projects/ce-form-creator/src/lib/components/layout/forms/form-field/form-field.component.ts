@@ -1,5 +1,5 @@
 import { Component, ContentChild, HostBinding, Input, OnInit } from '@angular/core';
-import { MatLegacyInput as MatInput } from '@angular/material/legacy-input';
+import { MatInput } from '@angular/material/input';
 
 export type InputFormFieldAppearance = 'flat' | 'outline';
 
