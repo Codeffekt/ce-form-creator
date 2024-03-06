@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FormCreatorContext } from '../../../core/models';
 import { FormRootUpdateService } from '../../../core/services/form-root-update.service';
@@ -15,12 +15,12 @@ export class FormBlockCorePropEditComponent implements OnInit, OnChanges, OnDest
 
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
 
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
   private subscription?: Subscription;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private formUpdateService: FormRootUpdateService
   ) { }
 

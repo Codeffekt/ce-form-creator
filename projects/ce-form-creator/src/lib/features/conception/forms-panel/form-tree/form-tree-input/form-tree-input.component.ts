@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { CeFormTreeInputSanitizer } from './form-tree-input.sanitizer';
 import { FormTreeInputType } from './form-tree-input.types';
@@ -22,7 +22,7 @@ export class FormTreeInputComponent implements OnChanges {
   @Output() valueChanges = new EventEmitter<string>();
   @Output() discardChanges = new EventEmitter();
 
-  formControl!: FormControl;
+  formControl!: UntypedFormControl;
 
   constructor(private injector: Injector) { }
 
@@ -45,7 +45,7 @@ export class FormTreeInputComponent implements OnChanges {
 
   private initFormControl() {
     const validator = new FormTreeValidatorBuilder().withContext({ injector: this.injector, block: this.block, form: this.form, type: this.type }).build();
-    this.formControl = new FormControl(this.value, { asyncValidators: validator });
+    this.formControl = new UntypedFormControl(this.value, { asyncValidators: validator });
   }
 
   private updateFormControl() {

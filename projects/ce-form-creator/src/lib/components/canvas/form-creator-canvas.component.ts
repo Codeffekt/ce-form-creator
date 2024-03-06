@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormControlsBuilder } from '@codeffekt/ce-core';
 import { FormBlock, FormInstance, FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -19,11 +19,11 @@ export class CeFormCreatorCanvasComponent implements OnInit {
   @Output() formChangedEvent: EventEmitter<FormRoot> = new EventEmitter();
 
   form!: FormRoot;
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
   selection$: Observable<FormCreatorContext | undefined> = this.selectionService.selectionChanges();
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private formControlsBuilder: FormControlsBuilder,
     private selectionService: CreatorSelectionService,
     private formRootUpdateService: FormRootUpdateService,

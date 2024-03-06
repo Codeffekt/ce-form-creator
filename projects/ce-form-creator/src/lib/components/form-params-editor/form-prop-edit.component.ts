@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -14,9 +14,9 @@ export class FormPropEditComponent implements OnInit, OnChanges {
   @Input() form!: FormRoot;
   @Output() formChanges: EventEmitter<FormRoot> = new EventEmitter();
 
-  formGroup!: FormGroup;
+  formGroup!: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
   }
 
   ngOnInit(): void {
