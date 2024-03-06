@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { CeCodeEditorModule } from '@codeffekt/ce-code-editor';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { CeContainerModule, CeSidenavModule } from 'projects/ce-form-creator/src/lib/components/layout';
