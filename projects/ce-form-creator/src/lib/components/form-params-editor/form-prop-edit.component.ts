@@ -34,6 +34,7 @@ export class FormPropEditComponent implements OnInit, OnChanges {
   private createForm() {
     this.formGroup = this.formBuilder.group({
       id: [{ value: this.form.id, disabled: true }],
+      type: [this.form.type],
       title: [this.form.title],
       version: [this.form.version],
     });
@@ -46,6 +47,7 @@ export class FormPropEditComponent implements OnInit, OnChanges {
   private rebuildForm() {
     this.formGroup.patchValue({
       id: this.form.id,
+      type: this.form.type,
       title: this.form.title,
       version: this.form.version
     }, { emitEvent: false });
@@ -54,6 +56,7 @@ export class FormPropEditComponent implements OnInit, OnChanges {
   private onFormupdate() {
     // TODO: should call an updater service
     //this.form.id = this.formGroup.value.id;
+    this.form.type = this.formGroup.value.type;
     this.form.title = this.formGroup.value.title;
     this.form.version = this.formGroup.value.version;
     this.formChanges.emit(this.form);
