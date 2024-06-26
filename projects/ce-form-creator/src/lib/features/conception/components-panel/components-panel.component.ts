@@ -58,6 +58,38 @@ export class CeComponentsPanel implements OnInit {
         type: 'timestamp',
         label: 'Date'
       }
+    },
+    {
+      label: 'Sous-formulaire',
+      icon: 'title',
+      block: {
+        field: 'index',
+        type: 'index',
+        root: undefined,
+        label: 'Sous-formulaire'
+      }
+    },
+    {
+      label: 'Tableaux',
+      icon: 'title',
+      block: {
+        field: 'array',
+        type: 'formArray',
+        root: undefined,
+        index: undefined,
+        label: 'Tableaux'
+      }
+    },
+    {
+      label: 'Associations',
+      icon: 'title',
+      block: {
+        field: 'assoc',
+        type: 'formAssoc',
+        root: undefined,
+        index: undefined,
+        label: 'Associations'
+      }
     }
   ]
 

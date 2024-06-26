@@ -15,7 +15,7 @@ import { CeFormCreatorComponent } from './form-creator.component';
 
 @NgModule({
   declarations: [
-    CeFormCreatorComponent,
+    CeFormCreatorComponent,    
   ],
   imports: [
     CommonModule,

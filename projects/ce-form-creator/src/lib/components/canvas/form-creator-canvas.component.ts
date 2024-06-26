@@ -4,7 +4,7 @@ import { FormControlsBuilder } from '@codeffekt/ce-core';
 import { FormBlock, FormInstance, FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DndDropEvent } from 'ngx-drag-drop';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 import { CreatorSelectionService, FormCreatorContext, FormRootUpdateService } from '../../core';
 
 @UntilDestroy()
@@ -60,8 +60,9 @@ export class CeFormCreatorCanvasComponent implements OnInit {
 
   private listenFormChanges() {
     this.formRootUpdateService.listenUpdates(this.form.id)
-      .pipe(
+      .pipe(        
         untilDestroyed(this),
+        tap(form => console.log(form)),
         filter(form => !!form))
       .subscribe(form => this.setCurrentForm(form!));
   }

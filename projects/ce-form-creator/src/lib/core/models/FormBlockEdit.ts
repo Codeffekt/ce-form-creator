@@ -1,7 +1,7 @@
-import { EventEmitter, Type } from "@angular/core";
+import { EventEmitter, OnChanges, Type } from "@angular/core";
 import { FormCreatorContext } from "./Context";
 
-export interface FormBlockEditComponentType {
+export interface FormBlockEditComponentType extends OnChanges {
     context: FormCreatorContext;
     blockChanges?: EventEmitter<FormCreatorContext>;
 }

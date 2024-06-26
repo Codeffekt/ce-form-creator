@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormCreatorContext } from '../../../core/models';
 import { FormBlockEditComponentType } from '../../../core/models/FormBlockEdit';
 
@@ -13,7 +13,9 @@ export class FormBlockPropTextComponent implements FormBlockEditComponentType {
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
 
   constructor() { }
-
+  
+  ngOnChanges(changes: SimpleChanges): void {    
+  }
 
   ngOnInit(): void {
   }

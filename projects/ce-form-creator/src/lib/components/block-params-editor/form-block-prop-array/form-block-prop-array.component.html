@@ -1,0 +1,20 @@
+<ce-form-block-core-prop-edit [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+
+<form [formGroup]="formGroup">
+
+    <ce-column gap="12px">
+
+        <mat-form-field>
+            <mat-label>Root</mat-label>
+            <input matInput formControlName="root">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Index</mat-label>
+            <input matInput formControlName="index">
+        </mat-form-field>
+
+    </ce-column>
+
+</form>

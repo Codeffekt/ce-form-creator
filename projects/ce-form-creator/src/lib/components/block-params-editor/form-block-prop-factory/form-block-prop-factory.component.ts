@@ -56,13 +56,13 @@ export class FormBlockPropFactoryComponent implements OnChanges, AfterViewInit {
 
     const componentType = this.storeService.getComponentType(this.context.block?.type ?? FORM_BLOCK_TYPE_TEXT);
     this.blockComponent = this.vcr.createComponent(componentType);
-    this.connectInput(this.blockComponent.instance);
+    this.connectInput();
     this.connectOutput(this.blockComponent.instance);
     this.blockComponent.changeDetectorRef.detectChanges();
   }
 
-  private connectInput(component: FormBlockEditComponentType) {
-    component.context = this.context;
+  private connectInput() {
+    this.blockComponent.setInput("context", this.context);
   }
 
   private connectOutput(component: FormBlockEditComponentType) {

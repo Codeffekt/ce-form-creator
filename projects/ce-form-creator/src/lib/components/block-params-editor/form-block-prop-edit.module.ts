@@ -11,6 +11,9 @@ import { CePanelModule } from '../layout/panel/panel.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormBlockPropIndexComponent } from './form-block-prop-index/form-block-prop-index.component';
+import { FormBlockPropArrayComponent } from './form-block-prop-array/form-block-prop-array.component';
+import { FormBlockPropAssocComponent } from './form-block-prop-assoc/form-block-prop-assoc.component';
 
 @NgModule({
     imports: [
@@ -29,7 +32,10 @@ import { MatInputModule } from '@angular/material/input';
         FormBlockPropEditComponent,
         FormBlockCorePropEditComponent,
         FormBlockPropFactoryComponent,
-        FormBlockPropTextComponent
+        FormBlockPropTextComponent,
+        FormBlockPropIndexComponent,
+        FormBlockPropArrayComponent,
+        FormBlockPropAssocComponent,
     ],
     providers: [],
 })
@@ -37,7 +43,10 @@ export class CeFormBlockPropEditModule {
 
     constructor(private store: FormBlockEditStoreService) {
         this.store.setComponents({
-            "text": FormBlockPropTextComponent
+            "text": FormBlockPropTextComponent,
+            "index": FormBlockPropIndexComponent,
+            "formArray": FormBlockPropArrayComponent,
+            "formAssoc": FormBlockPropAssocComponent,
         });
     }
 
