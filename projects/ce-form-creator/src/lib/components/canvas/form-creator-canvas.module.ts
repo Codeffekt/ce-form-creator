@@ -1,20 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CeFormCreatorCanvasComponent } from './form-creator-canvas.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { DndModule } from 'ngx-drag-drop';
-import { CeFormsModule, CeFormsPipesModule, CeLayoutModule, FormControlsBuilder, FormStyleBuilder } from '@codeffekt/ce-core';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { FormBlockEditComponent } from './canvas-block/canvas-block.component';
 import { CeCodeEditorModule } from '@codeffekt/ce-code-editor';
-import { CeFormCreatorPipesModule } from '../../core/pipes/pipes.module';
+import { CeFormModule, CeFormsModule, CeFormsPipesModule, CeLayoutModule, FormControlsBuilder, FormStyleBuilder } from '@codeffekt/ce-core';
+import { DndModule } from 'ngx-drag-drop';
 import { CoreDirectivesModule } from '../../core';
+import { CeFormCreatorPipesModule } from '../../core/pipes/pipes.module';
+import { FormViewComponent } from '../form-view/form-view.component';
+import { FormBlockEditComponent } from './canvas-block/canvas-block.component';
+import { CeFormCreatorCanvasComponent } from './form-creator-canvas.component';
+import { ZoomPanContainerComponent } from './zoom-pan-container/zoom-pan-container.component';
+import { CeFormCreatorCanvasFormComponent } from './form-creator-canvas-form/form-creator-canvas-form.component';
 
 @NgModule({
   declarations: [
     CeFormCreatorCanvasComponent,
-    FormBlockEditComponent
+    FormBlockEditComponent,
+    CeFormCreatorCanvasFormComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,11 @@ import { CoreDirectivesModule } from '../../core';
     DndModule,
     CeCodeEditorModule,
     CeFormCreatorPipesModule,
-    CoreDirectivesModule
+    CoreDirectivesModule,
+    CeFormModule,
+    FormViewComponent,
+    ZoomPanContainerComponent,
+    DragDropModule
   ], exports: [
     CeFormCreatorCanvasComponent
   ], providers: [
