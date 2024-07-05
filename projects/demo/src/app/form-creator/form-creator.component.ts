@@ -29,6 +29,12 @@ const FORM_TECH: FormRoot = {
       "type": "text",
       "field": "options",
       "label": "Options"
+    },
+    hardware: {
+      type: "index",
+      field: "hardware",
+      label: "Matériel",
+      root: "form-hardware"
     }
   }
 };
@@ -54,6 +60,12 @@ const FORM_PHOTO: FormRoot = {
         "format": "HH:mm",
         "timeFormat": "HH:mm"
       }
+    },
+    hardware: {
+      field: "hardware",
+      type: "index",
+      root: "form-hardware",
+      label: "Matériel"
     }
   }
 };
@@ -78,6 +90,13 @@ const FORM_HARDWARE: FormRoot = {
       type: "text",
       field: "comment",
       label: "Commentaire"
+    },
+    photos: {
+      type: "formArray",
+      root: "forms-photo",
+      field: "photos",
+      label: "Photos",
+      index: "hardware"
     }
   }
 };

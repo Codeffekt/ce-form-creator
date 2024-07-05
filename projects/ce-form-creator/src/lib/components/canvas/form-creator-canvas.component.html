@@ -1,3 +1,4 @@
 <ce-row ceAlignItems="start">
-  <ce-form-creator-canvas-form *ngFor="let form of forms" [form]="form" cdkDrag></ce-form-creator-canvas-form>
+    <ce-canvas-connectors [forms]="forms"></ce-canvas-connectors>
+    <ce-form-creator-canvas-form *ngFor="let form of forms" [form]="form" cdkDrag (cdkDragMoved)="onDragMoved($event)"></ce-form-creator-canvas-form>
 </ce-row>

@@ -4,6 +4,7 @@ import { CreatorSelectionService, FormRootUpdateService } from './core';
 import { CreatorActionsHistoryService } from './core/services/actions-history.service';
 import { FormCreatorModeService } from './core/services/form-creator-mode.service';
 import { CreatorFormsService } from './core/services/forms.service';
+import { FormDragService } from './core/services/form-drag.service';
 
 @Component({
   selector: 'ce-form-creator',
@@ -12,6 +13,7 @@ import { CreatorFormsService } from './core/services/forms.service';
   providers: [
     CreatorSelectionService,
     CreatorFormsService,
+    FormDragService,
     FormCreatorModeService,
     FormRootUpdateService,
     CreatorActionsHistoryService
