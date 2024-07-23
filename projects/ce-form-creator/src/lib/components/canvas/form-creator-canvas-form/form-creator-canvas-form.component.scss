@@ -5,23 +5,30 @@
     border: 1px solid red;
   }
 
-  .left-connector {
-    display: block;
-    position: relative;
-    background-color: red;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 5px;
-  }
+  .canvas-block-elt {   
+    flex: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-  .right-connector {
-    display: block;
-    position: relative;
-    background-color: red;
-    top: 0;
-    right: 0;
-    width: 5px;
-    height: 5px;
+    .left-connector {
+      display: block;
+      position: relative;
+      background-color: red;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 5px;
+    }
+
+    .right-connector {
+      display: block;
+      position: relative;
+      background-color: red;
+      top: 0;
+      right: 0;
+      width: 5px;
+      height: 5px;
+    }
   }
 }
