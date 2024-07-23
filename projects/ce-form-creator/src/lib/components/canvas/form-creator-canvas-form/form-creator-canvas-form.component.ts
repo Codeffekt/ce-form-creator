@@ -44,15 +44,18 @@ export class CeFormCreatorCanvasFormComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.listenSelectionChanges();
-        this.listenFormChanges();
-        this.formsCanvasService.addElement({
+        this.listenFormChanges();        
+        /* this.formsCanvasService.addElement({
             ref: this.elementRef,
             form: this.form
-        });
+        }); */
     }
 
     ngOnDestroy(): void {
-        this.formsCanvasService.removeElement(this.elementRef);
+        /* this.formsCanvasService.removeElement(this.elementRef); */
+    }
+
+    ngAfterViewInit() {        
     }
 
     onDropElement(event: DndDropEvent) {

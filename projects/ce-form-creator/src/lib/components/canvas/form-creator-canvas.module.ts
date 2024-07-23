@@ -16,6 +16,11 @@ import { CanvasBlockArrayComponent } from './canvas-block/canvas-block-array/can
 import { CanvasBlockAssocComponent } from './canvas-block/canvas-block-assoc/canvas-block-assoc.component';
 import { CeFormCreatorCanvasFormComponent } from './form-creator-canvas-form/form-creator-canvas-form.component';
 import { CanvasConnectorsComponent } from './canvas-connectors/canvas-connectors.component';
+import { CanvasBlockTextComponent } from './canvas-block/canvas-block-text/canvas-block-text.component';
+import { CanvasBlockIndexComponent } from './canvas-block/canvas-block-index/canvas-block-index.component';
+import { CanvasBlockBarcodeComponent } from './canvas-block/canvas-block-barcode/canvas-block-barcode.component';
+import { CanvasBlockAssetComponent } from './canvas-block/canvas-block-asset/canvas-block-asset.component';
+import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-timestamp/canvas-block-timestamp.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,10 @@ import { CanvasConnectorsComponent } from './canvas-connectors/canvas-connectors
     CanvasBlockArrayComponent,
     CanvasBlockAssocComponent,
     CanvasConnectorsComponent,
+    CanvasBlockTextComponent,
+    CanvasBlockIndexComponent,
+    CanvasBlockAssetComponent,
+    CanvasBlockTimestampComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +50,8 @@ import { CanvasConnectorsComponent } from './canvas-connectors/canvas-connectors
     CeFormModule,
     FormViewComponent,
     ZoomPanContainerComponent,
-    DragDropModule
+    DragDropModule,
+    CeFormCreatorPipesModule,
   ], exports: [
     CeFormCreatorCanvasComponent
   ], providers: [
@@ -53,7 +63,12 @@ import { CanvasConnectorsComponent } from './canvas-connectors/canvas-connectors
 export class CeFormCreatorCanvasModule { 
   constructor(private readonly formBlockStore: FormBlockStoreService) {
     this.formBlockStore.setComponents({
-      'formArray': CanvasBlockArrayComponent,      
+      'formArray': CanvasBlockArrayComponent,
+      'text': CanvasBlockTextComponent,  
+      'index': CanvasBlockIndexComponent,
+      'barcode': CanvasBlockBarcodeComponent,
+      'asset': CanvasBlockAssetComponent,   
+      'timestamp': CanvasBlockTimestampComponent, 
     });
   }
 }

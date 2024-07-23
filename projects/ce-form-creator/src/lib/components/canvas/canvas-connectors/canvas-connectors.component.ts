@@ -11,10 +11,7 @@ import { FormDragEvent } from '../../../core/models/FormDragEvent';
 @Component({
   selector: 'ce-canvas-connectors',
   templateUrl: './canvas-connectors.component.html',
-  styleUrls: ['./canvas-connectors.component.scss'],
-  providers: [
-    FormsConnectorsService
-  ]
+  styleUrls: ['./canvas-connectors.component.scss'],  
 })
 export class CanvasConnectorsComponent implements AfterViewInit {
   
@@ -26,22 +23,15 @@ export class CanvasConnectorsComponent implements AfterViewInit {
   formsConnectors = inject(FormsConnectorsService);
 
   ngAfterViewInit(): void {
-    console.log(this.connectors);
+    /* console.log(this.connectors);
     this.formsConnectors.setRootElement(this.connectors);
-    this.formsConnectors.updateConnectors(this.formsCanvasService.getElts());
+    
     this.formDragService.dragChanges().pipe(
       untilDestroyed(this)
     ).subscribe(evt => this.onFormDragged(evt));
     this.formsCanvasService.formsCanvasChanges().pipe(
       untilDestroyed(this)
-    ).subscribe(elts => this.updateConnectors(elts));
+    ).subscribe(elts => this.updateConnectors(elts)); */
   }
-
-  private updateConnectors(elts: FormCanvasElt[]) {
-    this.formsConnectors.updateConnectors(elts);
-  }
-
-  private onFormDragged(evt: FormDragEvent) {
-    this.formsConnectors.onFormDragged(evt);
-  }
+  
 }

@@ -25,7 +25,7 @@ import { CeFormFieldModule } from '../../../components/layout';
     CeLayoutModule,
     DragDropModule,
     DndModule,
-    CeBarcodeModule
+    // CeBarcodeModule
   ],
   exports: [
     CeComponentsPanel

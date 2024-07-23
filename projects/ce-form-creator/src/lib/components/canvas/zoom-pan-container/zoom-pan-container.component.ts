@@ -36,7 +36,7 @@ export class ZoomPanContainerComponent {
 
     constructor(private elementRef: ElementRef) { }
 
-    @HostListener('panstart', ['$event'])
+    /* @HostListener('panstart', ['$event'])
     onPanStart(e: Event) {
 
         const element = e.target as Element;
@@ -72,7 +72,7 @@ export class ZoomPanContainerComponent {
         }
 
         e.preventDefault();
-    }
+    } */
 
     private calculateTranslationToZoomPoint(currentScale: number, newScale: number, currentTranslation: [number, number], e: { clientX: number, clientY: number },): [number, number] {
         // kudos to this awesome answer on stackoverflow:

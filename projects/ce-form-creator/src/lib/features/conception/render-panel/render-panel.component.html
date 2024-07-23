@@ -1,9 +1,5 @@
-<zoom-pan-container>
-  <ce-form-creator-canvas
-                          [forms]="forms"
-                          (formChangedEvent)="onFormChangedEvent($event)">
-  </ce-form-creator-canvas>
-  <ng-template #noBlock>
-    <span>Aucun formulaire sélectionné</span>
-  </ng-template>
-</zoom-pan-container>
+<ce-form-creator-canvas [forms]="forms" (formChangedEvent)="onFormChangedEvent($event)">
+</ce-form-creator-canvas>
+<ng-template #noBlock>
+  <span>Aucun formulaire sélectionné</span>
+</ng-template>

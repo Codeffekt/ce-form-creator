@@ -1,28 +1,20 @@
-<ce-column *ngIf="form"
-           gap="18px"
-           cePadding="24px"
-           class="form"
-           [class.active]="isActive"
-           (click)="selectForm(form)"
-           dndDropzone
-           [dndHorizontal]="false"
-           dndDragoverClass="dragover"
-           (dndDrop)="onDropElement($event)">
+<ce-column *ngIf="form" gap="18px" cePadding="24px" class="form" [class.active]="isActive" (click)="selectForm(form)"
+  dndDropzone [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
 
   <h3>{{form.title}}</h3>
   <form [formGroup]="formGroup">
-
+    <div class="canvas-block-elt" id="{{form | formIdAttribute}}">
+      <div class="canvas-left-anchor left-connector" id="{{form | leftAnchorIdAttribute}}"></div>
+      <div class="canvas-right-anchor right-connector" id="{{form | rightAnchorIdAttribute}}"></div>
+      Header
+    </div>
     <ng-container *ngFor="let formBlock of (form | formInstanceBlocks)">
-      <ce-canvas-block
-                       [form]="form"
-                       [formBlock]="formBlock"
-                       ceMarginX="-24px"
-                       (clickStopPropagation)="selectBlock(form, formBlock)">
-
-        <ce-form-block-factory [formControlName]="formBlock.field"
-                               [formBlock]="formBlock"
-                               [formInstance]="$any(form)"
-                               [dndDraggable]="formBlock">
+      <ce-canvas-block id="{{form | formBlockIdAttribute: formBlock}}" [form]="form" [formBlock]="formBlock"
+        ceMarginX="-24px" (clickStopPropagation)="selectBlock(form, formBlock)" class="canvas-block-elt">
+        <div class="canvas-left-anchor left-connector" id="{{form | leftAnchorIdAttribute}}"></div>
+        <div class="canvas-right-anchor right-connector" id="{{form | rightAnchorIdAttribute}}"></div>
+        <ce-form-block-factory [formControlName]="formBlock.field" [formBlock]="formBlock" [formInstance]="$any(form)"
+          [dndDraggable]="formBlock">
         </ce-form-block-factory>
       </ce-canvas-block>
     </ng-container>
