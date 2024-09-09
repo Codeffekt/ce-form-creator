@@ -5,7 +5,6 @@ import { FormDragService } from '../../core/services/form-drag.service';
 import { FormsCanvasService } from '../../core/services/forms-canvas.service';
 import { FormsConnectorsService } from '../../core/services/forms-connectors.service';
 
-
 @UntilDestroy()
 @Component({
   selector: 'ce-form-creator-canvas',
@@ -25,9 +24,8 @@ export class CeFormCreatorCanvasComponent {
   formsConnectors = inject(FormsConnectorsService);
   elementRef = inject(ElementRef);
 
-  ngAfterViewInit() {
-    //this.formsConnectors.updateConnectors(this.formsCanvasService.getElts());
+  ngAfterViewInit() {    
     this.formsCanvasService.setCanvasRootElement(this.elementRef, this.forms);
-    this.formsConnectors.updateConnectors();
+    this.formsConnectors.updateConnectors();    
   }
 }

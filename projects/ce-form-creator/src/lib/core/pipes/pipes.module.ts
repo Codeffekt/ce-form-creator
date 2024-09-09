@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SelectionHasFormWithIdPipe, SelectionIsBlockWithFieldPipe, SelectionIsFormWithIdPipe } from './selection.pipes';
 import { FormBlockIdAttributePipe, FormIdAttributePipe, LeftAnchorIdAttributePipe, RightAnchorIdAttributePipe } from './ids_generator.pipes';
+import { FormBlockIconNamePipe } from './blocks.pipes';
 
 @NgModule({
     imports: [],
@@ -12,6 +13,7 @@ import { FormBlockIdAttributePipe, FormIdAttributePipe, LeftAnchorIdAttributePip
         FormBlockIdAttributePipe,
         LeftAnchorIdAttributePipe,
         RightAnchorIdAttributePipe,
+        FormBlockIconNamePipe,
     ],
     declarations: [
         SelectionIsFormWithIdPipe,
@@ -21,6 +23,7 @@ import { FormBlockIdAttributePipe, FormIdAttributePipe, LeftAnchorIdAttributePip
         FormBlockIdAttributePipe,
         LeftAnchorIdAttributePipe,
         RightAnchorIdAttributePipe,
+        FormBlockIconNamePipe,
     ],
     providers: [],
 })

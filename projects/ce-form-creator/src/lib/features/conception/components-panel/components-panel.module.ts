@@ -2,7 +2,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { CeBarcodeModule } from '@codeffekt/ce-barcode';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { DndModule } from 'ngx-drag-drop';
 import { CeComponentItemComponent, CeComponentItemLabelComponent } from './component-item/component-item.component';
@@ -28,7 +27,9 @@ import { CeFormFieldModule } from '../../../components/layout';
     // CeBarcodeModule
   ],
   exports: [
-    CeComponentsPanel
+    CeComponentsPanel,
+    CeComponentItemComponent,
+    CeComponentItemLabelComponent,
   ]
 })
 export class CeFormCreatorComponentsModule { }

@@ -5,3 +5,11 @@
 body {
     height: 100vh;
 }
+
+path {
+    pointer-events: all;
+}
+
+path:hover {
+    stroke: red;
+}

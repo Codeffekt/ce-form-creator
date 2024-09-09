@@ -17,5 +17,5 @@ export class RenderPanelComponent {
 
   onFormChangedEvent($event: FormInstanceBase) {
     this.formUpdaterService.update($event);
-  }
+  }  
 }

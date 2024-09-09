@@ -8,3 +8,4 @@ export * from './form-drag.service';
 export * from './forms-connectors.service';
 export * from './forms-canvas.service';
 export * from './ids-attribute.service';
+export * from './form-block-icons.service';

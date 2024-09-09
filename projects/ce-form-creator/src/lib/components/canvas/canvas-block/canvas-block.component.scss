@@ -1,15 +1,17 @@
 :host {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid transparent;
+
     &.active {
         border: 1px solid #2196f3 !important;
     }
 
     &:hover {
         border: 1px solid #f89837;
-    }
-    
-    border: 1px solid transparent;
-    padding: 0px 24px;
-    ::ng-deep ce-form-block-factory {
-        pointer-events: none;
-    }
+    }        
+        
 }

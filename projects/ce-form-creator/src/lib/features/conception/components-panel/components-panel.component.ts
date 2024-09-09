@@ -61,7 +61,7 @@ export class CeComponentsPanel implements OnInit {
     },
     {
       label: 'Sous-formulaire',
-      icon: 'title',
+      icon: 'view_agenda',
       block: {
         field: 'index',
         type: 'index',
@@ -71,7 +71,7 @@ export class CeComponentsPanel implements OnInit {
     },
     {
       label: 'Tableaux',
-      icon: 'title',
+      icon: 'dataset',
       block: {
         field: 'array',
         type: 'formArray',

@@ -21,6 +21,8 @@ import { CanvasBlockIndexComponent } from './canvas-block/canvas-block-index/can
 import { CanvasBlockBarcodeComponent } from './canvas-block/canvas-block-barcode/canvas-block-barcode.component';
 import { CanvasBlockAssetComponent } from './canvas-block/canvas-block-asset/canvas-block-asset.component';
 import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-timestamp/canvas-block-timestamp.component';
+import { CeFormCreatorComponentsModule } from '../../features/conception/components-panel/components-panel.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,14 @@ import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-times
     CanvasBlockAssocComponent,
     CanvasConnectorsComponent,
     CanvasBlockTextComponent,
+    CanvasBlockBarcodeComponent,
     CanvasBlockIndexComponent,
     CanvasBlockAssetComponent,
     CanvasBlockTimestampComponent,
   ],
   imports: [
     CommonModule,
+    MatIconModule,
     CeLayoutModule,
     CeFormsModule,
     DragDropModule,
@@ -52,6 +56,7 @@ import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-times
     ZoomPanContainerComponent,
     DragDropModule,
     CeFormCreatorPipesModule,
+    CeFormCreatorComponentsModule,
   ], exports: [
     CeFormCreatorCanvasComponent
   ], providers: [

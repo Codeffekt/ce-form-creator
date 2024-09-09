@@ -5,30 +5,28 @@
     border: 1px solid red;
   }
 
-  .canvas-block-elt {   
-    flex: auto;
+  .canvas-block-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;    
+  }
 
-    .left-connector {
-      display: block;
-      position: relative;
-      background-color: red;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 5px;
-    }
+  .left-connector {
+    display: block;  
+    background-color: red;    
+    width: 5px;
+    height: 5px;
+  }
 
-    .right-connector {
-      display: block;
-      position: relative;
-      background-color: red;
-      top: 0;
-      right: 0;
-      width: 5px;
-      height: 5px;
-    }
+  .right-connector {
+    display: block;    
+    background-color: red;    
+    width: 5px;
+    height: 5px;
+  }
+
+  ce-form-block-factory {    
+    width: 100%;
   }
 }

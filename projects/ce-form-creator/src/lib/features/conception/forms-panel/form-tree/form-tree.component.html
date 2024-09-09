@@ -14,7 +14,7 @@
                        (onLabelEdit)="onFormIdEdit(form,$event)">
 
         <ce-form-tree-node *ngFor="let block of (form | formInstanceBlocks)"
-                           icon="title"
+                           [icon]="block | formBlockIconName"
                            type="block"
                            [level]="1"
                            [label]="block.field"

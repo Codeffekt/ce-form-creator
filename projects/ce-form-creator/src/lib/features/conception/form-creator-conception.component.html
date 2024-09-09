@@ -1,4 +1,4 @@
-<ce-grid templateColumns="450px 1fr 350px" cdkDropListGroup overflow-auto>
+<ce-grid templateColumns="250px 1fr 250px" cdkDropListGroup overflow-auto>
     <ce-tab-group>
         <ce-tab label="Formulaires">
             <as-split direction="vertical">
@@ -27,6 +27,12 @@
             </div>
         </ce-tab>
     </ce-tab-group>
-    <ce-render-panel [forms]="forms"></ce-render-panel>
+    <ce-grid overflow-auto templateRows="auto 1fr">
+        <div class="render-panel-buttons">
+            <button (click)="onAutoLayout()">Auto Layout</button>  
+            <button (click)="onZoomFit()">Zoom to Fit</button>
+          </div>
+        <ce-render-panel [forms]="forms"></ce-render-panel>
+    </ce-grid>
     <ce-params-panel></ce-params-panel>
 </ce-grid> 

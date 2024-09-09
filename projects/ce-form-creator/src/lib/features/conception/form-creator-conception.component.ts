@@ -1,8 +1,10 @@
-import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
 import { FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { FormRootUpdateService } from '../../core/services/form-root-update.service';
 import { CreatorSelectionService } from '../../core/services/selection.service';
+import { FormsCanvasService } from '../../core';
+import { SingleRowAutoLayout, ZoomToFit } from '@codeffekt/ce-canvas-nodes';
 
 @UntilDestroy()
 @Component({
@@ -23,10 +25,19 @@ export class FormCreatorConceptionComponent implements OnInit {
     }
   }
 
+  private canvasService = inject(FormsCanvasService);
+
   constructor(
     private selectionService: CreatorSelectionService,
-    private formUpdateService: FormRootUpdateService
+    private formUpdateService: FormRootUpdateService,    
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { }  
+
+  onZoomFit() {    
+    this.canvasService.getCanvas().applyAutoLayout(new ZoomToFit());
+  }
+  onAutoLayout() {
+    this.canvasService.getCanvas().applyAutoLayout(new SingleRowAutoLayout());
+  }
 }
