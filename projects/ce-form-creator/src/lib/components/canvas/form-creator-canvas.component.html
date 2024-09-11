@@ -4,5 +4,5 @@
 </ce-row> -->
 
 <div id="canvas-nodes" class="canvas-nodes">
-    <ce-form-creator-canvas-form id="{{form | formIdAttribute}}" *ngFor="let form of forms" [form]="form" class="canvas-node-elt"></ce-form-creator-canvas-form>
+    <ce-form-creator-canvas-form id="{{form | formIdAttribute}}" *ngFor="let form of forms; trackBy: trackForm" [form]="form" class="canvas-node-elt"></ce-form-creator-canvas-form>
 </div>

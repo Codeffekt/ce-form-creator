@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormRoot } from '@codeffekt/ce-core-data';
 import { CreatorSelectionService, FormRootUpdateService, FormsCanvasService } from './core';
 import { CreatorActionsHistoryService } from './core/services/actions-history.service';
@@ -20,7 +20,7 @@ import { SingleRowAutoLayout, ZoomToFit } from '@codeffekt/ce-canvas-nodes';
     CreatorActionsHistoryService
   ]
 })
-export class CeFormCreatorComponent implements OnInit {
+export class CeFormCreatorComponent implements OnInit, AfterViewInit {
 
   mode$ = this.modeService.modeChanges();
   forms$ = this.formsService.formsChanges();

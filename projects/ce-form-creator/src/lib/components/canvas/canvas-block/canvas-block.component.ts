@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { CreatorSelectionService } from '../../../core';
+import { CreatorSelectionService } from '../../../core/services';
 
 
 @UntilDestroy()
@@ -17,8 +17,10 @@ export class FormBlockEditComponent implements OnInit {
 
   @Input() form!: FormRoot;
   @Input() formBlock!: FormBlock;
+  @Input() link!: string;
 
-  constructor(private selectionService: CreatorSelectionService) { }
+  constructor(private selectionService: CreatorSelectionService) {
+  }
 
   ngOnInit(): void {
     this.listenBlockSelection();

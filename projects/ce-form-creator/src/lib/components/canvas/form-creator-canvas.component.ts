@@ -4,6 +4,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { FormDragService } from '../../core/services/form-drag.service';
 import { FormsCanvasService } from '../../core/services/forms-canvas.service';
 import { FormsConnectorsService } from '../../core/services/forms-connectors.service';
+import { CreatorFormsService } from '../../core/services/forms.service';
 
 @UntilDestroy()
 @Component({
@@ -22,10 +23,15 @@ export class CeFormCreatorCanvasComponent {
   formDragService = inject(FormDragService);
   formsCanvasService = inject(FormsCanvasService);  
   formsConnectors = inject(FormsConnectorsService);
-  elementRef = inject(ElementRef);
+  formsService = inject(CreatorFormsService);
+  elementRef = inject(ElementRef);    
 
   ngAfterViewInit() {    
-    this.formsCanvasService.setCanvasRootElement(this.elementRef, this.forms);
-    this.formsConnectors.updateConnectors();    
+    this.formsCanvasService.setCanvasRootElement(this.elementRef, this.forms);    
   }
+
+  trackForm(index: number, form: FormRoot) {
+    return form ? form.id : undefined;
+  }
+
 }

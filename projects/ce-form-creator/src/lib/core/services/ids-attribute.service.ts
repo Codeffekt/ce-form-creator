@@ -1,22 +1,20 @@
 import { Injectable } from "@angular/core";
-import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
-import { FormConnector } from "./forms-connectors.service";
+import { FormBlock } from "@codeffekt/ce-core-data";
 
 @Injectable({ providedIn: 'root'})
 export class IdsAttributeService {
 
-    forForm(form: FormRoot) {
-        return `root/${form.id}`;
+    forForm(id: string) {
+        return id;
     }
 
-    forFormBlock(form: FormRoot, block: FormBlock) {
-        return `${this.forForm(form)}/${block.field}`;
+    forFormBlockHeader(id: string) {
+        return `header`;
     }
 
-    forConnector(connector: FormConnector) {
-        const dstBlockId = connector.dstBlock ? `/${connector.dstBlock.block.field}` : "";
-        return `${connector.srcElement.form.id}/${connector.dstElement.form.id}${dstBlockId}`;
-    }
+    forFormBlock(id: string, block: FormBlock) {
+        return block.field;
+    }    
 
     forLeftAnchor() {
         return "left-anchor";

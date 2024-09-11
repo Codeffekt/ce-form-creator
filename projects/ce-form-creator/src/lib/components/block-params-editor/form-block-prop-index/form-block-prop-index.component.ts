@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormCreatorContext } from '../../../core/models';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
+import { RootSelectionDialogComponent } from '../../dialogs';
+import { MatDialog } from '@angular/material/dialog';
+import { CreatorFormsService } from '../../../core';
 
 @Component({
   selector: 'ce-form-block-prop-index',
@@ -9,8 +12,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./form-block-prop-index.component.scss']
 })
 export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy {
+
   @Input() context!: FormCreatorContext;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
+
+  private dialog = inject(MatDialog);
+  private formsService = inject(CreatorFormsService);
 
   formGroup!: UntypedFormGroup;
 
@@ -18,13 +25,13 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-  ) {    
+  ) {
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {    
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.formGroup) {
       this.createForm();
     } else {
@@ -42,7 +49,22 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
     this.blockChanges.emit(context);
   }
 
+  onOpenSelection() {
+    const roots = this.formsService.getForms();
+
+    const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
+
+    dialogRef.afterClosed().pipe(
+      filter(root => root !== undefined)
+    ).subscribe(root => {
+      this.formGroup.patchValue({
+        root: root.id
+      });
+    });
+  }
+
   private createForm() {    
+
     this.formGroup = this.formBuilder.group({
       root: [this.block!.root],
       required: [this.block!.required],

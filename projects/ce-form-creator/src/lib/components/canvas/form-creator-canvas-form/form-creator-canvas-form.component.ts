@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormControlsBuilder } from '@codeffekt/ce-core';
 import { FormBlock, FormInstance, FormRoot } from '@codeffekt/ce-core-data';
@@ -6,8 +6,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { Observable, filter } from 'rxjs';
 import {
-    CreatorSelectionService,    
-    FormRootUpdateService, FormsCanvasService
+    CreatorSelectionService,
+    FormRootUpdateService
 } from '../../../core/services';
 import { FormCreatorContext } from '../../../core/models';
 
@@ -18,7 +18,7 @@ import { FormCreatorContext } from '../../../core/models';
     styleUrls: ['./form-creator-canvas-form.component.scss']
 })
 
-export class CeFormCreatorCanvasFormComponent implements OnInit, OnDestroy {
+export class CeFormCreatorCanvasFormComponent implements OnInit {
     @Input() form!: FormRoot;
 
     @Output() formChangedEvent: EventEmitter<FormRoot> = new EventEmitter();
@@ -38,24 +38,12 @@ export class CeFormCreatorCanvasFormComponent implements OnInit, OnDestroy {
         private formControlsBuilder: FormControlsBuilder,
         private selectionService: CreatorSelectionService,
         private formRootUpdateService: FormRootUpdateService,
-        private elementRef: ElementRef,
-        private formsCanvasService: FormsCanvasService,
-    ) { }
-
+    ) {      
+    }
+    
     ngOnInit(): void {
         this.listenSelectionChanges();
-        this.listenFormChanges();        
-        /* this.formsCanvasService.addElement({
-            ref: this.elementRef,
-            form: this.form
-        }); */
-    }
-
-    ngOnDestroy(): void {
-        /* this.formsCanvasService.removeElement(this.elementRef); */
-    }
-
-    ngAfterViewInit() {        
+        this.listenFormChanges();
     }
 
     onDropElement(event: DndDropEvent) {
@@ -82,6 +70,9 @@ export class CeFormCreatorCanvasFormComponent implements OnInit, OnDestroy {
         this.updateFormGroup(form);
     }
 
+    trackBlock(index: number, block: FormBlock) {
+        return block ? block.field : undefined;
+    }
 
     private listenSelectionChanges() {
         this.selectionService.selectionChanges()

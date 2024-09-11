@@ -20,7 +20,7 @@ export class FormCreatorConceptionComponent implements OnInit {
   @HostListener('document:keydown.delete', ['$event'])
   onDeleteComponent(event: KeyboardEvent) {
     const selection = this.selectionService.getCurrentSelection();
-    if (selection?.form && selection?.block) {
+    if (selection?.form && selection?.block) {      
       this.formUpdateService.deleteBlock(selection.form, selection.block, { emitEvent: true });
     }
   }
@@ -30,14 +30,17 @@ export class FormCreatorConceptionComponent implements OnInit {
   constructor(
     private selectionService: CreatorSelectionService,
     private formUpdateService: FormRootUpdateService,    
-  ) { }
+  ) {     
+  }
 
   ngOnInit(): void { }  
 
   onZoomFit() {    
     this.canvasService.getCanvas().applyAutoLayout(new ZoomToFit());
   }
+  
   onAutoLayout() {
     this.canvasService.getCanvas().applyAutoLayout(new SingleRowAutoLayout());
   }
+  
 }

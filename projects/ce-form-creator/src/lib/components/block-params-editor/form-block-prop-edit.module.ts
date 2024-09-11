@@ -14,6 +14,11 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBlockPropIndexComponent } from './form-block-prop-index/form-block-prop-index.component';
 import { FormBlockPropArrayComponent } from './form-block-prop-array/form-block-prop-array.component';
 import { FormBlockPropAssocComponent } from './form-block-prop-assoc/form-block-prop-assoc.component';
+import { FormBlockPropTimestampComponent } from './form-block-prop-timestamp/form-block-prop-timestamp.component';
+import { FormBlockPropBarcodeComponent } from './form-block-prop-barcode/form-block-prop-barcode.component';
+import { FormBlockPropAssetComponent } from './form-block-prop-asset/form-block-prop-asset.component';
+import { CeFormCreatorDialogs } from '../dialogs';
+import { FormBlockPropNumberComponent } from './form-block-prop-number/form-block-prop-number.component';
 
 @NgModule({
     imports: [
@@ -23,7 +28,8 @@ import { FormBlockPropAssocComponent } from './form-block-prop-assoc/form-block-
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,
-        CePanelModule
+        CePanelModule,
+        CeFormCreatorDialogs,
     ],
     exports: [
         FormBlockPropEditComponent,
@@ -36,6 +42,10 @@ import { FormBlockPropAssocComponent } from './form-block-prop-assoc/form-block-
         FormBlockPropIndexComponent,
         FormBlockPropArrayComponent,
         FormBlockPropAssocComponent,
+        FormBlockPropTimestampComponent,
+        FormBlockPropBarcodeComponent,
+        FormBlockPropAssetComponent,
+        FormBlockPropNumberComponent,
     ],
     providers: [],
 })
@@ -47,6 +57,10 @@ export class CeFormBlockPropEditModule {
             "index": FormBlockPropIndexComponent,
             "formArray": FormBlockPropArrayComponent,
             "formAssoc": FormBlockPropAssocComponent,
+            "timestamp": FormBlockPropTimestampComponent,
+            "barcode": FormBlockPropBarcodeComponent,
+            "asset": FormBlockPropAssetComponent,
+            "number": FormBlockPropNumberComponent,
         });
     }
 

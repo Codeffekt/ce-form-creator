@@ -13,3 +13,12 @@ export class FormBlockIconNamePipe implements PipeTransform {
         return this.formBlockIconsService.getIconFromBlock(block);
     }
 }
+
+@Pipe({
+    name: 'formBlockHaveAnchor'
+})
+export class FormBlockHaveAnchor implements PipeTransform {
+    transform(block: FormBlock): boolean {
+        return block.type === "index" || block.type === "formArray" || block.type === "formAssoc";
+    }
+}

@@ -54,20 +54,20 @@ export class FormsConnectorsService {
         console.log(this.connectors);
         const canvasConnectors = this.connectors.map(connector =>
             Connector.fromElementsId(this.formsCanvasService.getCanvas(), {
-                nodeId: this.idsAttributeService.forForm(connector.srcElement.form),
+                nodeId: this.idsAttributeService.forForm(connector.srcElement.form.id),
                 blockId: this.idsAttributeService.forFormBlock(
-                    connector.srcElement.form,
+                    connector.srcElement.form.id,
                     connector.srcBlock.block),
             }, {
-                nodeId: this.idsAttributeService.forForm(connector.dstElement.form),
+                nodeId: this.idsAttributeService.forForm(connector.dstElement.form.id),
                 blockId: connector.dstBlock ? this.idsAttributeService.forFormBlock(
-                    connector.dstElement.form,
+                    connector.dstElement.form.id,
                     connector.dstBlock.block,
-                ) : this.idsAttributeService.forForm(connector.dstElement.form),
+                ) : this.idsAttributeService.forForm(connector.dstElement.form.id),
             })
         );
         console.log(canvasConnectors);
-        this.formsCanvasService.getCanvas().updateConnectors(canvasConnectors);
+        // this.formsCanvasService.getCanvas().updateConnectors(canvasConnectors);
     }
 
     onFormDragged(evt: FormDragEvent) {
@@ -102,7 +102,7 @@ export class FormsConnectorsService {
     }
 
     private createFormCanvasBlockElt(parent: FormCanvasElt, block: FormBlock): FormCanvasBlockElt {
-        const blockId = this.idsAttributeService.forFormBlock(parent.form, block);
+        const blockId = this.idsAttributeService.forFormBlock(parent.form.id, block);
         const blockElement = document.getElementById(blockId);
         if (!blockElement) {
             throw new Error(`Cannot find elt ${blockId}`);
@@ -144,10 +144,6 @@ export class FormsConnectorsService {
             return false;
         }
         return connectors.find(c => c.dstBlock === src.srcBlock);
-    }
-
-    private createConnectorId(connector: FormConnector) {
-        return this.idsAttributeService.forConnector(connector);
-    }
+    }    
 
 }

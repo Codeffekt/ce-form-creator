@@ -23,6 +23,7 @@ import { CanvasBlockAssetComponent } from './canvas-block/canvas-block-asset/can
 import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-timestamp/canvas-block-timestamp.component';
 import { CeFormCreatorComponentsModule } from '../../features/conception/components-panel/components-panel.module';
 import { MatIconModule } from '@angular/material/icon';
+import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/canvas-block-number.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     CanvasBlockIndexComponent,
     CanvasBlockAssetComponent,
     CanvasBlockTimestampComponent,
+    CanvasBlockNumberComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ export class CeFormCreatorCanvasModule {
       'barcode': CanvasBlockBarcodeComponent,
       'asset': CanvasBlockAssetComponent,   
       'timestamp': CanvasBlockTimestampComponent, 
+      'number': CanvasBlockNumberComponent,
     });
   }
 }

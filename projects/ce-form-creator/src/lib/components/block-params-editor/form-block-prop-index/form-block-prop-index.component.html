@@ -7,7 +7,7 @@
 
         <mat-form-field>
             <mat-label>Root</mat-label>
-            <input matInput formControlName="root">
+            <input matInput (click)="onOpenSelection()" formControlName="root" readonly="true">
         </mat-form-field>
 
         <ce-row gap="12px" cePadding="0px 0px 20px 0px">

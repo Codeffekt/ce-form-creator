@@ -16,9 +16,9 @@ const FORM_TECH: FormRoot = {
       "label": "Nom"
     },
     "value": {
-      "type": "text",
+      "type": "number",
       "field": "value",
-      "label": "Id"
+      "label": "Value"
     },
     "tech": {
       "type": "text",

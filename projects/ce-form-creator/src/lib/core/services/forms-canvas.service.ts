@@ -2,7 +2,7 @@ import { ElementRef, inject, Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { FormCanvasElt } from "../models/FormCanvasElt";
 import { Canvas } from "@codeffekt/ce-canvas-nodes";
-import { FormRoot } from "@codeffekt/ce-core-data";
+import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
 import { IdsAttributeService } from "./ids-attribute.service";
 
 @Injectable({ providedIn: 'root' })
@@ -30,7 +30,7 @@ export class FormsCanvasService {
         console.log(this.canvas.getNodes());
 
         for(let form of forms) {
-            const id = this.idsAttributeService.forForm(form);
+            const id = this.idsAttributeService.forForm(form.id);
             const canvasNodeElt = this.canvas.getNodeFromElementId(id);
             this.canvasElts.push({
                 ref: new ElementRef(canvasNodeElt.getElement()),
@@ -60,6 +60,13 @@ export class FormsCanvasService {
             this.canvas.removeNodeFromElement(ref.nativeElement);
         }
 
+    }
+
+    removeBlock(form: FormRoot, block: FormBlock) {
+        this.canvas.removeBlockFromId({
+            nodeId: this.idsAttributeService.forForm(form.id),
+            blockId: this.idsAttributeService.forFormBlock(form.id, block),
+        });
     }
 
     formsCanvasChanges(): Observable<FormCanvasElt[]> {
