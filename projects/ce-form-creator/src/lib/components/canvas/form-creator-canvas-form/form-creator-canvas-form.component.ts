@@ -49,7 +49,7 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
     onDropElement(event: DndDropEvent) {
         const block = event.data;
         const res = this.formRootUpdateService
-            .addNewBlock(this.form, block, { emitEvent: false });
+            .addNewBlock(this.form, block, { emitEvent: true });
         this.form = res.form;
         this.updateFormGroup(this.form);
         this.formChangedEvent.emit(this.form);
