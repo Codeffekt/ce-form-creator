@@ -1,11 +1,14 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormRoot } from '@codeffekt/ce-core-data';
+import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { CreatorFormsService } from '../../core';
+import { Select } from '@ngxs/store';
+import { filter, Observable } from 'rxjs';
+import { CreatorFormsService, FormsLibraryService } from '../../core';
 import { CreatorActionsHistoryService } from '../../core/services/actions-history.service';
 import { HistorySelectors } from '../../core/store';
+import { MatDialog } from '@angular/material/dialog';
+import { RootCreatorDialogComponent, RootSelectionDialogComponent } from '../dialogs';
+import { MessagesService } from '../layout';
 
 @UntilDestroy()
 @Component({
@@ -22,11 +25,41 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   @Select(HistorySelectors.canRedo) canRedo$!: Observable<boolean>;
 
   constructor(
+    private dialog: MatDialog,
     private formsService: CreatorFormsService,
-    private historyService: CreatorActionsHistoryService
+    private historyService: CreatorActionsHistoryService,
+    private formsLibrary: FormsLibraryService,
+    private messagesService: MessagesService,
   ) { }
 
   ngOnInit(): void { }
+
+  createForm() {    
+    const ref = this.dialog.open(
+      RootCreatorDialogComponent,
+      RootCreatorDialogComponent.createDialog()
+    );
+
+    ref.afterClosed()
+      .subscribe(formConfig => {
+        if(formConfig?.root?.length) {
+          this.createNewRoot(formConfig?.root);
+        }
+      })
+  }
+
+  importForm()  { 
+    const roots = this.formsLibrary.getForms();
+    
+    const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
+
+    dialogRef.afterClosed().pipe(
+      filter(root => root !== undefined)
+    ).subscribe(root => {
+      const newForms = this.formsLibrary.getFormWithDeps(root);      
+      this.formsService.addForms(newForms);
+    });
+  }
 
   undo() {
     this.historyService.undo();
@@ -43,5 +76,14 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   onSave() {
     const forms = this.formsService.getForms();
     this.save.emit(forms);
+  }
+
+  private async createNewRoot(root: IndexType) {
+    const existingRoot = this.formsService.getFormRoot(root);
+    if (existingRoot?.id) {
+      this.messagesService.showErrorMessage(`Root ${root} id already exists.`);
+      return;
+    }
+    this.formsService.createNewForm(root);
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRoot } from '@codeffekt/ce-core-data';
+import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Forms, FormsSelectors } from '../store';
@@ -16,7 +16,9 @@ export class CreatorFormsService {
     }
 
     addForms(forms: FormRoot[]) {
-        this.store.dispatch(new Forms.AddForms(forms));
+        const existingForms = this.getForms();
+        const formsToBeAdded = forms.filter(form => !existingForms.find(elt => elt.id === form.id));
+        this.store.dispatch(new Forms.AddForms(formsToBeAdded));
     }
 
     removeForms(forms: FormRoot[]) {
@@ -29,5 +31,25 @@ export class CreatorFormsService {
 
     getForms(): FormRoot[] {
         return this.store.selectSnapshot<FormRoot[]>((state) => state.formsState.forms);
+    }
+
+    getFormRoot(root: IndexType) {
+        const roots = this.getForms();
+        return roots.find(elt => elt.id === root);
+    }
+
+    createNewForm(root: IndexType) {
+        const existingRoot = this.getFormRoot(root);
+        if(existingRoot) {
+            throw new Error(`Cannot create ${root} already exists`);
+        }
+        this.addForms([
+            {
+                id: root,
+                ctime: Date.now(),
+                title: root,
+                content: {}
+            }
+        ]);
     }
 }

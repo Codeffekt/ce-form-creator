@@ -13,7 +13,7 @@
                        (select)="selectForm(form)"
                        (onLabelEdit)="onFormIdEdit(form,$event)">
 
-        <ce-form-tree-node *ngFor="let block of (form | formInstanceBlocks)"
+        <ce-form-tree-node *ngFor="let block of (form | formInstanceBlocks); trackBy: trackBlock"
                            [icon]="block | formBlockIconName"
                            type="block"
                            [level]="1"

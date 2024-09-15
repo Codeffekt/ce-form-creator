@@ -1,13 +1,15 @@
 <ce-grid templateColumns="auto  auto" alignItems="center" justifyContent="space-between" gap="24px">
     <ce-row ceMarginStart="12px">
-        <button mat-icon-button
-                (click)="undo()"
-                [disabled]="!(canUndo$ | async)">
+        <button mat-icon-button (click)="createForm()">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button (click)="importForm()">
+            <mat-icon>library_add</mat-icon>
+        </button>
+        <button mat-icon-button (click)="undo()" [disabled]="!(canUndo$ | async)">
             <mat-icon>arrow_back_ios</mat-icon>
         </button>
-        <button mat-icon-button
-                (click)="redo()"
-                [disabled]="!(canRedo$ | async)">
+        <button mat-icon-button (click)="redo()" [disabled]="!(canRedo$ | async)">
             <mat-icon>arrow_forward_ios</mat-icon>
         </button>
     </ce-row>

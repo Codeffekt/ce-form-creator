@@ -74,6 +74,14 @@ export class FormRootUpdateService {
         return { form: newRoot, block: newRoot.content[field] };
     }
 
+    deleteForm(form: FormRoot) {
+        this.store.dispatch(new Forms.RemoveForms([form]));
+    }
+
+    addForm(form: FormRoot) {
+        this.store.dispatch(new Forms.AddForms([form]));
+    }
+
     private init() {
         // TODO: Shoud unsubscribe
         this.doUpdate$

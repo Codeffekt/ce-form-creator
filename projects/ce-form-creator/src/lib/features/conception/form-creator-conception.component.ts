@@ -22,6 +22,8 @@ export class FormCreatorConceptionComponent implements OnInit {
     const selection = this.selectionService.getCurrentSelection();
     if (selection?.form && selection?.block) {      
       this.formUpdateService.deleteBlock(selection.form, selection.block, { emitEvent: true });
+    } else if(selection?.form) {
+      this.formUpdateService.deleteForm(selection.form);
     }
   }
 

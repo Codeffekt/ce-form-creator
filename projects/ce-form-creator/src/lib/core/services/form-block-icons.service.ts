@@ -10,6 +10,9 @@ const blocksIconFactory: {[key: string]: string} = {
     "formArray": "dataset",
     "formAssoc": "dataset",
     "asset": "image",
+    "boolean": "toggle_off",
+    "select": "format_list_bulleted",
+    "coordinates": "location_on",
 };
 
 @Injectable({providedIn:'root'})

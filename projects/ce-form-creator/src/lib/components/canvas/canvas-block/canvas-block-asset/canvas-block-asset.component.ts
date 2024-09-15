@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
-import { FormBlockComponent } from '@codeffekt/ce-core';
+import { Component, Input } from '@angular/core';
+import { CanvasBlockComponentType } from '../../../../core/models';
+import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 
 @Component({
   selector: 'ce-canvas-block-asset',
   templateUrl: './canvas-block-asset.component.html',
   styleUrls: ['./canvas-block-asset.component.scss']
 })
-export class CanvasBlockAssetComponent extends FormBlockComponent<void> {
+export class CanvasBlockAssetComponent implements CanvasBlockComponentType {
+  
+  @Input() formInstance!: FormInstanceBase;
+  @Input() formBlock!: FormBlock;
+
 
 }

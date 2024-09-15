@@ -5,6 +5,8 @@ import { CreatorModeSwitcherComponent } from './creator-mode-switcher/creator-mo
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CeFormCreatorDialogs } from '../dialogs';
+import { MessagesModule } from '../layout';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     CeLayoutModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CeFormCreatorDialogs,
+    MessagesModule,
   ],
   exports: [
     CeFormCreatorToolbarComponent

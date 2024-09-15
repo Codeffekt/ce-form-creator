@@ -1,10 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { FormControlsBuilder } from '@codeffekt/ce-core';
-import { FormBlock, FormInstance, FormRoot } from '@codeffekt/ce-core-data';
+import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DndDropEvent } from 'ngx-drag-drop';
-import { Observable, filter } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import {
     CreatorSelectionService,
     FormRootUpdateService
@@ -17,12 +15,10 @@ import { FormCreatorContext } from '../../../core/models';
     templateUrl: './form-creator-canvas-form.component.html',
     styleUrls: ['./form-creator-canvas-form.component.scss']
 })
-
 export class CeFormCreatorCanvasFormComponent implements OnInit {
     @Input() form!: FormRoot;
 
     @Output() formChangedEvent: EventEmitter<FormRoot> = new EventEmitter();
-    formGroup!: UntypedFormGroup;
     selection$: Observable<FormCreatorContext | undefined> = this.selectionService.selectionChanges();
     isActive: boolean = false;
 
@@ -34,8 +30,6 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
 
 
     constructor(
-        private formBuilder: UntypedFormBuilder,
-        private formControlsBuilder: FormControlsBuilder,
         private selectionService: CreatorSelectionService,
         private formRootUpdateService: FormRootUpdateService,
     ) {      
@@ -51,7 +45,6 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
         const res = this.formRootUpdateService
             .addNewBlock(this.form, block, { emitEvent: true });
         this.form = res.form;
-        this.updateFormGroup(this.form);
         this.formChangedEvent.emit(this.form);
 
         this.selectionService.selectBlock(this.form, res.block);
@@ -65,13 +58,12 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
         this.selectionService.selectBlock(form, block);
     }
 
-    setCurrentForm(form: FormRoot) {
-        this.form = form;
-        this.updateFormGroup(form);
-    }
-
     trackBlock(index: number, block: FormBlock) {
         return block ? block.field : undefined;
+    }
+
+    setCurrentForm(form: FormRoot) {
+        this.form = form;        
     }
 
     private listenSelectionChanges() {
@@ -90,8 +82,4 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
             .subscribe(form => this.setCurrentForm(form!));
     }
 
-    private updateFormGroup(form: FormRoot) {
-        const controls = this.formControlsBuilder.build(<FormInstance>form);
-        this.formGroup = this.formBuilder.group(controls);
-    }
 }

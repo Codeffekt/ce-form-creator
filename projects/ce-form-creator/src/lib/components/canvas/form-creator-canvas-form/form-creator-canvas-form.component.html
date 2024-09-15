@@ -1,22 +1,21 @@
-<ce-column *ngIf="form" gap="18px" class="form" [class.active]="isActive" (click)="selectForm(form)"
-  dndDropzone [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
+<ce-column *ngIf="form" gap="18px" class="form" [class.active]="isActive" (click)="selectForm(form)" dndDropzone
+  [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
 
   <div class="canvas-block-elt canvas-block-header" id="{{form | formBlockIdAttribute}}">
     <div class="canvas-anchor left-connector" id="{{form | leftAnchorIdAttribute}}"></div>
     <h3>{{form.title}}</h3>
-    <div class="canvas-anchor right-connector" id="{{form | rightAnchorIdAttribute}}"></div>
+    <div class="right-connector" id="{{form | rightAnchorIdAttribute}}"></div>
   </div>
 
-  <form [formGroup]="formGroup">
-    <ng-container *ngFor="let formBlock of (form | formInstanceBlocks); trackBy: trackBlock">
-      <ce-canvas-block id="{{form | formBlockIdAttribute: formBlock}}" [form]="form" [formBlock]="formBlock"
-        (clickStopPropagation)="selectBlock(form, formBlock)" class="canvas-block-elt" [attr.link]="form | formBlockLinkAttribute: formBlock">
-        <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor left-connector" id="{{form | leftAnchorIdAttribute}}"></div>
-        <ce-form-block-factory [formControlName]="formBlock.field" [formBlock]="formBlock" [formInstance]="$any(form)"
-          [dndDraggable]="formBlock">
-        </ce-form-block-factory>
-        <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor right-connector" id="{{form | rightAnchorIdAttribute}}"></div>
-      </ce-canvas-block>
-    </ng-container>
-  </form>
+  <ng-container *ngFor="let formBlock of (form | formInstanceBlocks); trackBy: trackBlock">
+    <ce-canvas-block id="{{form | formBlockIdAttribute: formBlock}}" [form]="form" [formBlock]="formBlock"
+      (clickStopPropagation)="selectBlock(form, formBlock)" class="canvas-block-elt"
+      [attr.link]="form | formBlockLinkAttribute: formBlock">
+      <div *ngIf="formBlock | formBlockHaveAnchor" class="left-connector" id="{{form | leftAnchorIdAttribute}}"></div>
+      <ce-canvas-block-factory [formBlock]="formBlock" [formInstance]="$any(form)" [dndDraggable]="formBlock">
+      </ce-canvas-block-factory>
+      <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor right-connector"
+        id="{{form | rightAnchorIdAttribute}}"></div>
+    </ce-canvas-block>
+  </ng-container>
 </ce-column>

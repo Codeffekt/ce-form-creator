@@ -44,6 +44,10 @@ export class FormBlocksTreeComponent implements OnInit {
     this.formUpdateService.update(form);
   }
 
+  trackBlock(index: number, block: FormBlock) {
+    return block ? block.field : undefined;
+}
+
   onBlockFieldEdit(form: FormRoot, block: FormBlock, field: string) {
     // quand on change le field du block il faut aussi mettre à jour
     // le content du FormRoot et mettre à jour la clef qui pointe vers ce block

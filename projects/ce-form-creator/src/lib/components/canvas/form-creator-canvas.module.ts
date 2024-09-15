@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CeCodeEditorModule } from '@codeffekt/ce-code-editor';
-import { CeFormModule, CeFormsModule, CeFormsPipesModule, CeLayoutModule, FormBlockStoreService, FormControlsBuilder, FormStyleBuilder } from '@codeffekt/ce-core';
+import { CeFormModule, CeFormsModule, CeFormsPipesModule, CeLayoutModule, FormStyleBuilder } from '@codeffekt/ce-core';
 import { DndModule } from 'ngx-drag-drop';
-import { CoreDirectivesModule } from '../../core';
+import { CanvasBlockStoreService, CoreDirectivesModule } from '../../core';
 import { CeFormCreatorPipesModule } from '../../core/pipes/pipes.module';
 import { FormViewComponent } from '../form-view/form-view.component';
 import { FormBlockEditComponent } from './canvas-block/canvas-block.component';
@@ -24,6 +24,10 @@ import { CanvasBlockTimestampComponent } from './canvas-block/canvas-block-times
 import { CeFormCreatorComponentsModule } from '../../features/conception/components-panel/components-panel.module';
 import { MatIconModule } from '@angular/material/icon';
 import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/canvas-block-number.component';
+import { CanvasBlockBooleanComponent } from './canvas-block/canvas-block-boolean/canvas-block-boolean.component';
+import { CanvasBlockSelectComponent } from './canvas-block/canvas-block-select/canvas-block-select.component';
+import { CanvasBlockCoordinatesComponent } from './canvas-block/canvas-block-coordinates/canvas-block-coordinates.component';
+import { CanvasBlockFactoryComponent } from './canvas-block/canvas-block-factory/canvas-block-factory.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/c
     CanvasBlockAssetComponent,
     CanvasBlockTimestampComponent,
     CanvasBlockNumberComponent,
+    CanvasBlockBooleanComponent,
+    CanvasBlockSelectComponent,
+    CanvasBlockCoordinatesComponent,
+    CanvasBlockFactoryComponent,
   ],
   imports: [
     CommonModule,
@@ -50,8 +58,7 @@ import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/c
     ReactiveFormsModule,
     CeFormsPipesModule,
     DndModule,
-    CeCodeEditorModule,
-    CeFormCreatorPipesModule,
+    CeCodeEditorModule,    
     CoreDirectivesModule,
     CeFormModule,
     FormViewComponent,
@@ -60,16 +67,16 @@ import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/c
     CeFormCreatorPipesModule,
     CeFormCreatorComponentsModule,
   ], exports: [
-    CeFormCreatorCanvasComponent
+    CeFormCreatorCanvasComponent,
+    CanvasBlockFactoryComponent,
   ], providers: [
-    FormStyleBuilder,
-    FormControlsBuilder,
+    FormStyleBuilder,   
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ]
 })
 export class CeFormCreatorCanvasModule { 
-  constructor(private readonly formBlockStore: FormBlockStoreService) {
-    this.formBlockStore.setComponents({
+  constructor(private readonly canvasBlockStore: CanvasBlockStoreService) {
+    this.canvasBlockStore.setComponents({
       'formArray': CanvasBlockArrayComponent,
       'text': CanvasBlockTextComponent,  
       'index': CanvasBlockIndexComponent,
@@ -77,6 +84,9 @@ export class CeFormCreatorCanvasModule {
       'asset': CanvasBlockAssetComponent,   
       'timestamp': CanvasBlockTimestampComponent, 
       'number': CanvasBlockNumberComponent,
+      'boolean': CanvasBlockBooleanComponent,
+      'select': CanvasBlockSelectComponent,
+      'coordinates': CanvasBlockCoordinatesComponent,
     });
   }
 }

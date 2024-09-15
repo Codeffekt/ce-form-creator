@@ -19,6 +19,9 @@ import { FormBlockPropBarcodeComponent } from './form-block-prop-barcode/form-bl
 import { FormBlockPropAssetComponent } from './form-block-prop-asset/form-block-prop-asset.component';
 import { CeFormCreatorDialogs } from '../dialogs';
 import { FormBlockPropNumberComponent } from './form-block-prop-number/form-block-prop-number.component';
+import { FormBlockPropBooleanComponent } from './form-block-prop-boolean/form-block-prop-boolean.component';
+import { FormBlockPropSelectComponent } from './form-block-prop-select/form-block-prop-select.component';
+import { FormBlockPropCoordinatesComponent } from './form-block-prop-coordinates/form-block-prop-coordinates.component';
 
 @NgModule({
     imports: [
@@ -46,6 +49,9 @@ import { FormBlockPropNumberComponent } from './form-block-prop-number/form-bloc
         FormBlockPropBarcodeComponent,
         FormBlockPropAssetComponent,
         FormBlockPropNumberComponent,
+        FormBlockPropBooleanComponent,
+        FormBlockPropSelectComponent,
+        FormBlockPropCoordinatesComponent,
     ],
     providers: [],
 })
@@ -61,6 +67,9 @@ export class CeFormBlockPropEditModule {
             "barcode": FormBlockPropBarcodeComponent,
             "asset": FormBlockPropAssetComponent,
             "number": FormBlockPropNumberComponent,
+            "boolean": FormBlockPropBooleanComponent,
+            "select": FormBlockPropSelectComponent,
+            "coordinates": FormBlockPropCoordinatesComponent,
         });
     }
 
