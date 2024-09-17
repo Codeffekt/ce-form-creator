@@ -3,6 +3,7 @@ import { FormRoot } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
 import { FormRootUpdateService } from '../../../core/services/form-root-update.service';
 import { CreatorSelectionService } from '../../../core/services/selection.service';
+import { CanvasForm } from '../../../core';
 
 @Component({
   selector: 'ce-params-panel',
@@ -11,7 +12,7 @@ import { CreatorSelectionService } from '../../../core/services/selection.servic
 })
 export class ParamsPanelComponent implements OnInit {
 
-  selection$: Observable<FormRoot | undefined> = this.selectionService.selectionFormChanges();
+  selection$: Observable<CanvasForm | undefined> = this.selectionService.selectionFormChanges();
 
   constructor(
     private formUpdaterService: FormRootUpdateService,
@@ -19,7 +20,7 @@ export class ParamsPanelComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onFormChanged(form: FormRoot) {
+  onFormChanged(form: CanvasForm) {
     this.formUpdaterService.update(form);
   }
 }

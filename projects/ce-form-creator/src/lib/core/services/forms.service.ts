@@ -3,30 +3,53 @@ import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Forms, FormsSelectors } from '../store';
+import { CanvasForm } from '../models';
 
 @Injectable()
 export class CreatorFormsService {
 
-    @Select(FormsSelectors.allForms) private forms$: Observable<FormRoot[]> | undefined;
+    @Select(FormsSelectors.allForms) private canvasForms$: Observable<CanvasForm[]> | undefined;    
 
     constructor(private store: Store) { }
 
     init(forms: FormRoot[]) {
-        this.store.dispatch(new Forms.Init(forms));
+        this.store.dispatch(new Forms.Init(
+            forms.map(form => ({
+                form,
+                layout: {
+                    id: form.id,
+                    coords: {
+                        x: 0,
+                        y: 0
+                    }
+                }
+            })),            
+        ));
     }
 
     addForms(forms: FormRoot[]) {
         const existingForms = this.getForms();
         const formsToBeAdded = forms.filter(form => !existingForms.find(elt => elt.id === form.id));
-        this.store.dispatch(new Forms.AddForms(formsToBeAdded));
-    }
+        this.store.dispatch(new Forms.AddForms(
+            formsToBeAdded.map(form => ({
+                form,
+                layout: {
+                    id: form.id,
+                    coords: {
+                        x: 0,
+                        y: 0
+                    }
+                }
+            })),            
+        ));
+    }    
 
-    removeForms(forms: FormRoot[]) {
-        this.store.dispatch(new Forms.RemoveForms(forms));
-    }
+    //removeForms(forms: FormRoot[]) {
+    //    this.store.dispatch(new Forms.RemoveForms(forms));
+    //}
 
-    formsChanges(): Observable<FormRoot[]> | undefined {
-        return this.forms$;
+    canvasFormsChanges(): Observable<CanvasForm[]> | undefined {
+        return this.canvasForms$;
     }
 
     getForms(): FormRoot[] {

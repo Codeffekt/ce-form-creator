@@ -2,7 +2,7 @@ import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
 import { Selector } from "@ngxs/store";
 import { FormsSelectors } from "../forms";
 import { SelectionState, SelectionStateModel } from "./selection.state";
-import { FormCreatorContext } from "../../models";
+import { CanvasForm, FormCreatorContext } from "../../models";
 
 export class SelectionSelectors {
 
@@ -12,7 +12,7 @@ export class SelectionSelectors {
     }
 
     @Selector([SelectionState])
-    static form(state: SelectionStateModel): FormRoot | undefined {
+    static form(state: SelectionStateModel): CanvasForm | undefined {
         return state.form;
     }
 
@@ -26,20 +26,20 @@ export class SelectionSelectors {
     }
 
     @Selector([SelectionSelectors.form, FormsSelectors.allForms])
-    static formChanges(currentForm: FormRoot | undefined, forms: FormRoot[]): FormRoot | undefined {
-        return forms.find(f => f.id === currentForm?.id);
+    static formChanges(currentForm: CanvasForm | undefined, forms: CanvasForm[]): CanvasForm | undefined {
+        return forms.find(f => f.form.id === currentForm?.form.id);
     }
 
     @Selector([SelectionState, SelectionSelectors.formChanges])
-    static blockChanges(state: SelectionStateModel, form: FormRoot | undefined): FormCreatorContext | undefined {
+    static blockChanges(state: SelectionStateModel, form: CanvasForm | undefined): FormCreatorContext | undefined {
 
-        if (form?.id !== state.form?.id || !state.form || !state.block) {
+        if (form?.form.id !== state.form?.form.id || !state.form || !state.block) {
             return undefined;
         }
 
         const context: FormCreatorContext = {
             form: form!,
-            block: form?.content[state.block.field]
+            block: form?.form.content[state.block.field]
         }
 
         return context;

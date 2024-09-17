@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
+import { FormBlock } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { filter, Observable } from 'rxjs';
@@ -7,7 +7,8 @@ import {
     CreatorSelectionService,
     FormRootUpdateService
 } from '../../../core/services';
-import { FormCreatorContext } from '../../../core/models';
+import { CanvasForm, FormCreatorContext } from '../../../core/models';
+import { CanvasNodeLayoutConfig } from '@codeffekt/ce-canvas-nodes';
 
 @UntilDestroy()
 @Component({
@@ -16,16 +17,17 @@ import { FormCreatorContext } from '../../../core/models';
     styleUrls: ['./form-creator-canvas-form.component.scss']
 })
 export class CeFormCreatorCanvasFormComponent implements OnInit {
-    @Input() form!: FormRoot;
+    @Input() canvasForm!: CanvasForm;
+    @Input() layout!: CanvasNodeLayoutConfig;
 
-    @Output() formChangedEvent: EventEmitter<FormRoot> = new EventEmitter();
+    @Output() formChangedEvent: EventEmitter<CanvasForm> = new EventEmitter();
     selection$: Observable<FormCreatorContext | undefined> = this.selectionService.selectionChanges();
     isActive: boolean = false;
 
     @HostListener('click', ['$event'])
-    onSelect(event: MouseEvent) {
+    onSelect(event: MouseEvent) {        
         event.preventDefault();
-        this.selectForm(this.form);
+        this.selectForm(this.canvasForm);
     }
 
 
@@ -38,23 +40,24 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
     ngOnInit(): void {
         this.listenSelectionChanges();
         this.listenFormChanges();
+        console.log("CANVAS FORM", this.canvasForm, this.layout);
     }
 
     onDropElement(event: DndDropEvent) {
         const block = event.data;
         const res = this.formRootUpdateService
-            .addNewBlock(this.form, block, { emitEvent: true });
-        this.form = res.form;
-        this.formChangedEvent.emit(this.form);
+            .addNewBlock(this.canvasForm, block, { emitEvent: true });
+        this.canvasForm = res.form;
+        this.formChangedEvent.emit(this.canvasForm);
 
-        this.selectionService.selectBlock(this.form, res.block);
+        this.selectionService.selectBlock(this.canvasForm, res.block);
     }
 
-    selectForm(form: FormRoot) {
+    selectForm(form: CanvasForm) {
         this.selectionService.selectForm(form);
     }
 
-    selectBlock(form: FormRoot, block: FormBlock) {
+    selectBlock(form: CanvasForm, block: FormBlock) {
         this.selectionService.selectBlock(form, block);
     }
 
@@ -62,20 +65,20 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
         return block ? block.field : undefined;
     }
 
-    setCurrentForm(form: FormRoot) {
-        this.form = form;        
+    setCurrentForm(form: CanvasForm) {
+        this.canvasForm = form;        
     }
 
     private listenSelectionChanges() {
         this.selectionService.selectionChanges()
             .pipe(untilDestroyed(this))
             .subscribe(selection => {
-                this.isActive = selection?.form.id === this.form.id;
+                this.isActive = selection?.form.form.id === this.canvasForm.form.id;
             });
     }
 
     private listenFormChanges() {
-        this.formRootUpdateService.listenUpdates(this.form.id)
+        this.formRootUpdateService.listenUpdates(this.canvasForm.form.id)
             .pipe(
                 untilDestroyed(this),
                 filter(form => !!form))

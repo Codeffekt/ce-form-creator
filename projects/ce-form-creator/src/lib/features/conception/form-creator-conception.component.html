@@ -3,7 +3,7 @@
         <ce-tab label="Formulaires">
             <as-split direction="vertical">
                 <as-split-area>
-                    <ce-forms-panel [forms]="forms"></ce-forms-panel>
+                    <ce-forms-panel [canvasForms]="canvasForms"></ce-forms-panel>
                 </as-split-area>
                 <as-split-area>
                     <ce-components-panel overflow-auto></ce-components-panel>
@@ -32,7 +32,7 @@
             <button (click)="onAutoLayout()">Auto Layout</button>  
             <button (click)="onZoomFit()">Zoom to Fit</button>
           </div>
-        <ce-render-panel [forms]="forms"></ce-render-panel>
+        <ce-render-panel [canvasForms]="canvasForms"></ce-render-panel>
     </ce-grid>
     <ce-params-panel></ce-params-panel>
 </ce-grid> 

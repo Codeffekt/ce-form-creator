@@ -1,7 +1,8 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
+import { FormBlock } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CreatorSelectionService } from '../../../core/services';
+import { CanvasForm } from '../../../core/models';
 
 
 @UntilDestroy()
@@ -15,7 +16,7 @@ export class FormBlockEditComponent implements OnInit {
   @HostBinding('class.active')
   active = false
 
-  @Input() form!: FormRoot;
+  @Input() form!: CanvasForm;
   @Input() formBlock!: FormBlock;
   @Input() link!: string;
 

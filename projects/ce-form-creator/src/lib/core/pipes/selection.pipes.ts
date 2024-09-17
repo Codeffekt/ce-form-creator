@@ -7,7 +7,7 @@ import { FormCreatorContext } from '../models';
 })
 export class SelectionIsBlockWithFieldPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot, block: FormBlock): boolean {
-        return selection?.form.id === form.id && selection?.block?.field === block.field;
+        return selection?.form.form.id === form.id && selection?.block?.field === block.field;
 
     }
 }
@@ -17,7 +17,7 @@ export class SelectionIsBlockWithFieldPipe implements PipeTransform {
 })
 export class SelectionIsFormWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
-        return selection?.form.id === form.id && !selection?.block;
+        return selection?.form.form.id === form.id && !selection?.block;
     }
 }
 
@@ -26,6 +26,6 @@ export class SelectionIsFormWithIdPipe implements PipeTransform {
 })
 export class SelectionHasFormWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
-        return selection?.form.id === form.id && !!selection?.block;;
+        return selection?.form.form.id === form.id && !!selection?.block;;
     }
 }

@@ -1,7 +1,8 @@
-import { FormBlock, FormInstance, FormRoot } from "@codeffekt/ce-core-data";
+import { FormBlock, FormInstance } from "@codeffekt/ce-core-data";
+import { CanvasForm } from "./CanvasForm";
 
 export interface FormCreatorContext {
-    form: FormRoot;    
+    form: CanvasForm;    
     mask?: FormInstance;
     block?: FormBlock;
 }

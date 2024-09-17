@@ -2,27 +2,27 @@ import { Injectable } from '@angular/core';
 import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { Select, Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
-import { FormCreatorContext } from '../models';
+import { CanvasForm, FormCreatorContext } from '../models';
 import { Selection, SelectionSelectors, SelectionState, SelectionStateModel } from '../store/selection';
 
 @Injectable()
 export class CreatorSelectionService {
 
   @Select(SelectionSelectors.get) selection$!: Observable<FormCreatorContext | undefined>;
-  @Select(SelectionSelectors.formChanges) selectionFormChanges$!: Observable<FormRoot | undefined>;
+  @Select(SelectionSelectors.formChanges) selectionFormChanges$!: Observable<CanvasForm | undefined>;
   @Select(SelectionSelectors.blockChanges) selectionBlockChanges$!: Observable<FormCreatorContext | undefined>;
 
   constructor(private store: Store) { }
 
-  selectForm(form: FormRoot) {
+  selectForm(form: CanvasForm) {    
     this.store.dispatch(new Selection.SelectForm(form));
   }
 
-  selectBlock(form: FormRoot, block: FormBlock) {
+  selectBlock(form: CanvasForm, block: FormBlock) {
     this.store.dispatch(new Selection.SelectBlock(form, block));
   }
 
-  selectionFormChanges(): Observable<FormRoot | undefined> {
+  selectionFormChanges(): Observable<CanvasForm | undefined> {
     return this.selectionFormChanges$;
   }
 
@@ -34,8 +34,8 @@ export class CreatorSelectionService {
     return this.selectionBlockChanges$;
   }
 
-  static isSelectionMatch(selection: FormCreatorContext | undefined, form: FormRoot, block?: FormBlock): boolean {
-    return selection?.form.id === form.id && selection?.block?.field === block?.field;
+  static isSelectionMatch(selection: FormCreatorContext | undefined, form: CanvasForm, block?: FormBlock): boolean {
+    return selection?.form.form.id === form.form.id && selection?.block?.field === block?.field;
   }
 
   getCurrentSelection() {

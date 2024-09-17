@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { FormInstanceBase, FormRoot } from '@codeffekt/ce-core-data';
 import { FormRootUpdateService } from '../../../core/services/form-root-update.service';
+import { CanvasForm } from '../../../core';
 
 @Component({
   selector: 'ce-render-panel',
@@ -9,13 +9,13 @@ import { FormRootUpdateService } from '../../../core/services/form-root-update.s
 })
 export class RenderPanelComponent {
 
-  @Input() forms: FormRoot[] = [];
+  @Input() canvasForms: CanvasForm[] = [];  
 
   constructor(
     private formUpdaterService: FormRootUpdateService
   ) { }
 
-  onFormChangedEvent($event: FormInstanceBase) {
+  onFormChangedEvent($event: CanvasForm) {
     this.formUpdaterService.update($event);
   }  
 }

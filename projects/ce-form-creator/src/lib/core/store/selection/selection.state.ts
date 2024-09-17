@@ -3,9 +3,10 @@ import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
 import { Action, State, StateContext } from "@ngxs/store";
 import { History } from "../history/history.actions";
 import { Selection } from "./selection.actions";
+import { CanvasForm } from "../../models";
 
-export class SelectionStateModel {
-    form?: FormRoot;
+export class SelectionStateModel {    
+    form?: CanvasForm;
     block?: FormBlock;
 }
 
@@ -28,7 +29,7 @@ export class SelectionState {
     }
 
     @Action(Selection.SelectForm)
-    selectForm(ctx: StateContext<SelectionStateModel>, { form }: Selection.SelectForm) {
+    selectForm(ctx: StateContext<SelectionStateModel>, { form }: Selection.SelectForm) {        
         ctx.setState({ form, block: undefined });
         ctx.dispatch(new History.AddSelection({ form, block: undefined }));
     }

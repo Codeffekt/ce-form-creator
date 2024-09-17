@@ -23,7 +23,7 @@ import { SingleRowAutoLayout, ZoomToFit } from '@codeffekt/ce-canvas-nodes';
 export class CeFormCreatorComponent implements OnInit, AfterViewInit {
 
   mode$ = this.modeService.modeChanges();
-  forms$ = this.formsService.formsChanges();
+  canvasForms$ = this.formsService.canvasFormsChanges();
 
   @Input() initialForms?: FormRoot[];
   @Output() cancel = new EventEmitter();
@@ -38,13 +38,15 @@ export class CeFormCreatorComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.initialForms) {
-      this.formsService.init(this.initialForms);
+      this.formsService.init(
+        this.initialForms
+      );
     }
   }
 
   ngAfterViewInit() {
-    this.canvasService.getCanvas().applyAutoLayout(new SingleRowAutoLayout({ hSpacing: 100 }));
-    this.canvasService.getCanvas().applyAutoLayout(new ZoomToFit());
+    // this.canvasService.getCanvas().applyAutoLayout(new SingleRowAutoLayout({ hSpacing: 100 }));
+    // this.canvasService.getCanvas().applyAutoLayout(new ZoomToFit());
   }
 
   onSave(forms: FormRoot[]) {

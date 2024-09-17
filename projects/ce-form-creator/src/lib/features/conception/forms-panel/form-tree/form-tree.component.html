@@ -5,22 +5,22 @@
      (dndDrop)="onDropElement($event)">
     <ce-form-tree-node
                        type="id"
-                       [label]="form.id"
-                       [form]="form"
+                       [label]="form.form.id"
+                       [form]="form.form"
                        [level]="0"
-                       [active]="selection.value | isForm:form"
+                       [active]="selection.value | isForm:form.form"
                        [expandable]="true"
                        (select)="selectForm(form)"
                        (onLabelEdit)="onFormIdEdit(form,$event)">
 
-        <ce-form-tree-node *ngFor="let block of (form | formInstanceBlocks); trackBy: trackBlock"
+        <ce-form-tree-node *ngFor="let block of (form.form | formInstanceBlocks); trackBy: trackBlock"
                            [icon]="block | formBlockIconName"
                            type="block"
                            [level]="1"
                            [label]="block.field"
                            [block]="block"
-                           [form]="form"
-                           [active]="selection.value | isBlock:form:block"
+                           [form]="form.form"
+                           [active]="selection.value | isBlock:form.form:block"
                            (select)="selectBlock(form, block)"
                            (onLabelEdit)="onBlockFieldEdit(form, block, $event)">
         </ce-form-tree-node>

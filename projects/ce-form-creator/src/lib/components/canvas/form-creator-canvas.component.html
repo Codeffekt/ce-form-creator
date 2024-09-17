@@ -1,3 +1,6 @@
 <div id="canvas-nodes" class="canvas-nodes">
-    <ce-form-creator-canvas-form id="{{form | formIdAttribute}}" *ngFor="let form of forms; trackBy: trackForm" [form]="form" class="canvas-node-elt"></ce-form-creator-canvas-form>
+    <ce-form-creator-canvas-form 
+        id="{{canvasForm.form | formIdAttribute}}" *ngFor="let canvasForm of canvasForms; trackBy: trackForm" 
+        [canvasForm]="canvasForm" [attr.x]="canvasForm.layout.coords.x" [attr.y]="canvasForm.layout.coords.y"
+        class="canvas-node-elt"></ce-form-creator-canvas-form>
 </div>

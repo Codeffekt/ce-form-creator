@@ -7,6 +7,7 @@ import { SelectionStateModel } from "../selection/selection.state";
 import { HistoryRevisionBuilder } from "./history-revision.builder";
 import { History } from "./history.actions";
 import { Selection } from "../selection/selection.actions";
+import { CanvasForm } from "../../models";
 
 export interface HistoryStateRevision {
     formsState: FormsStateModel;
@@ -75,16 +76,28 @@ export class HistoryState {
         this.addRevision(ctx, newRevision);
     }
 
-    @Action(History.AddFormUpdate)
-    addFormUpdate(ctx: StateContext<HistoryStateModel>, { form }: History.AddFormUpdate) {
+    @Action(History.AddFormsUpdate)
+    addFormsUpdate(ctx: StateContext<HistoryStateModel>, { forms }: History.AddFormsUpdate) {
 
         const newRevision =
             new HistoryRevisionBuilder(this.store)
-                .withForm(form)
+                .withForms(forms)
                 .build();
 
         this.addRevision(ctx, newRevision);
     }
+
+    // @Action(History.FormsLayoutUpdate)
+    // formLayoutUpdate(ctx: StateContext<HistoryStateModel>, { layout }: History.FormsLayoutUpdate) {
+
+    //     const newRevision =
+    //         new HistoryRevisionBuilder(this.store)
+    //             .withLayout(layout)
+    //             .build();
+
+    //     this.addRevision(ctx, newRevision);
+
+    // }
 
     private addRevision(ctx: StateContext<HistoryStateModel>, revision: HistoryStateRevision) {
 
@@ -111,7 +124,7 @@ export class HistoryState {
         const historyState = ctx.getState();
         const revision = historyState.revisions[head];
 
-        const forms: FormRoot[] = revision.formsState.forms;
+        const forms: CanvasForm[] = revision.formsState.forms;
 
         this.store.dispatch([
             new Selection.Restore(revision.selectionState.form, revision.selectionState.block),
