@@ -6,6 +6,13 @@
         <button mat-icon-button (click)="importForm()">
             <mat-icon>library_add</mat-icon>
         </button>
+        <button mat-icon-button (click)="fileInput.click()">
+            <mat-icon>upload_file</mat-icon>
+        </button>
+        <input #fileInput type="file" style="display: none" (change)="loadProject($event)"/>
+        <button mat-icon-button (click)="saveProject()">
+            <mat-icon>download_file</mat-icon>
+        </button>
         <button mat-icon-button (click)="undo()" [disabled]="!(canUndo$ | async)">
             <mat-icon>arrow_back_ios</mat-icon>
         </button>

@@ -2,7 +2,7 @@
      dndDropzone
      [dndHorizontal]="false"
      dndDragoverClass="dragover"
-     (dndDrop)="onDropElement($event)">
+     (dndDrop)="onDropElement($event)">     
     <ce-form-tree-node
                        type="id"
                        [label]="form.form.id"
@@ -10,6 +10,7 @@
                        [level]="0"
                        [active]="selection.value | isForm:form.form"
                        [expandable]="true"
+                       [expanded]="selection.value | hasBlock:form.form"
                        (select)="selectForm(form)"
                        (onLabelEdit)="onFormIdEdit(form,$event)">
 

@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Component, Input, ViewChild } from '@angular/core';
+import { FormBlock } from '@codeffekt/ce-core-data';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { Observable } from 'rxjs';
 import { CanvasForm, FormCreatorContext } from '../../../../core/models';
@@ -8,13 +7,12 @@ import { FormRootUpdateService } from '../../../../core/services/form-root-updat
 import { CreatorSelectionService } from '../../../../core/services/selection.service';
 import { FormBlocksTreeNodeComponent } from './form-tree-node/form-tree-node.component';
 
-@UntilDestroy()
 @Component({
   selector: 'ce-form-tree',
   templateUrl: './form-tree.component.html',
   styleUrls: ['./form-tree.component.scss']
 })
-export class FormBlocksTreeComponent implements OnInit {
+export class FormBlocksTreeComponent {
 
   @Input() form!: CanvasForm;
 
@@ -25,11 +23,7 @@ export class FormBlocksTreeComponent implements OnInit {
   constructor(
     private formUpdateService: FormRootUpdateService,
     private selectionService: CreatorSelectionService
-  ) { }
-
-  ngOnInit(): void {
-    this.listenSelectionChanges();
-  }
+  ) { }  
 
   selectForm(form: CanvasForm) {
     this.selectionService.selectForm(form);
@@ -76,15 +70,5 @@ export class FormBlocksTreeComponent implements OnInit {
       .addNewBlock(this.form, event.data, { emitEvent: true });
     this.form = res.form;
     this.selectionService.selectBlock(this.form, res.block);
-  }
-
-  private listenSelectionChanges() {
-    this.selectionService.selectionChanges()
-      .pipe(untilDestroyed(this))
-      .subscribe(selection => {
-        if (selection?.form.form.id === this.form.form.id && selection?.block) {
-          this.formNode.expand();
-        }
-      });
-  }
+  }  
 }

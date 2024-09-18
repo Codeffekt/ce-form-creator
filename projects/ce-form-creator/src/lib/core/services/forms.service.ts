@@ -53,7 +53,7 @@ export class CreatorFormsService {
     }
 
     getForms(): FormRoot[] {
-        return this.store.selectSnapshot<FormRoot[]>((state) => state.formsState.forms);
+        return this.store.selectSnapshot<FormRoot[]>((state) => state.formsState.forms.map((canvasForm: CanvasForm) => canvasForm.form));
     }
 
     getFormRoot(root: IndexType) {

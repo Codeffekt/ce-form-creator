@@ -26,6 +26,15 @@ export class SelectionIsFormWithIdPipe implements PipeTransform {
 })
 export class SelectionHasFormWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
-        return selection?.form.form.id === form.id && !!selection?.block;;
+        return selection?.form.form.id === form.id && !!selection?.block;
+    }
+}
+
+@Pipe({
+    name: 'hasBlock'
+})
+export class SelectionHasBlockWithIdPipe implements PipeTransform {
+    transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
+        return selection?.form.form.id === form.id && selection?.block !== undefined;
     }
 }

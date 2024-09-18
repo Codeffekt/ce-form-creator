@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Select } from '@ngxs/store';
@@ -9,6 +9,7 @@ import { HistorySelectors } from '../../core/store';
 import { MatDialog } from '@angular/material/dialog';
 import { RootCreatorDialogComponent, RootSelectionDialogComponent } from '../dialogs';
 import { MessagesService } from '../layout';
+import { ProjectService } from '../../project';
 
 @UntilDestroy()
 @Component({
@@ -24,6 +25,8 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   @Select(HistorySelectors.canUndo) canUndo$!: Observable<boolean>;
   @Select(HistorySelectors.canRedo) canRedo$!: Observable<boolean>;
 
+  private projectService = inject(ProjectService);
+
   constructor(
     private dialog: MatDialog,
     private formsService: CreatorFormsService,
@@ -34,7 +37,7 @@ export class CeFormCreatorToolbarComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  createForm() {    
+  createForm() {
     const ref = this.dialog.open(
       RootCreatorDialogComponent,
       RootCreatorDialogComponent.createDialog()
@@ -42,21 +45,21 @@ export class CeFormCreatorToolbarComponent implements OnInit {
 
     ref.afterClosed()
       .subscribe(formConfig => {
-        if(formConfig?.root?.length) {
+        if (formConfig?.root?.length) {
           this.createNewRoot(formConfig?.root);
         }
       })
   }
 
-  importForm()  { 
+  importForm() {
     const roots = this.formsLibrary.getForms();
-    
+
     const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
 
     dialogRef.afterClosed().pipe(
       filter(root => root !== undefined)
     ).subscribe(root => {
-      const newForms = this.formsLibrary.getFormWithDeps(root);      
+      const newForms = this.formsLibrary.getFormWithDeps(root);
       this.formsService.addForms(newForms);
     });
   }
@@ -67,6 +70,18 @@ export class CeFormCreatorToolbarComponent implements OnInit {
 
   redo() {
     this.historyService.redo();
+  }
+
+  loadProject(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const files = target.files as FileList;
+    if (files.length) {
+      this.projectService.loadProject(files[0]);
+    }
+  }
+
+  saveProject() {
+    this.projectService.saveProject();
   }
 
   onCancel() {
