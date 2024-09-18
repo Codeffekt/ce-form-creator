@@ -25,7 +25,7 @@ export class FormsState {
 
         // add initial history revision with forms and selection
         const initialSelection: SelectionStateModel = {
-            form: forms[0],
+            form: forms[0]?.form.id,
             block: undefined
         }
         context.dispatch([

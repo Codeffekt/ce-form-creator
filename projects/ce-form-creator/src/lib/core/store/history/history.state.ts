@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { FormRoot } from "@codeffekt/ce-core-data";
 import { Action, State, StateContext, Store } from "@ngxs/store";
 import { FormsStateModel } from "../forms";
 import { Forms } from "../forms/forms.actions";
@@ -19,12 +18,14 @@ export interface HistoryStateModel {
     head: number;
 }
 
+export const historyStateDefault: HistoryStateModel = {
+    revisions: [],
+    head: -1
+}
+
 @State<HistoryStateModel>({
     name: 'historyState',
-    defaults: {
-        revisions: [],
-        head: -1
-    }
+    defaults: historyStateDefault,
 })
 @Injectable()
 export class HistoryState {
@@ -85,19 +86,7 @@ export class HistoryState {
                 .build();
 
         this.addRevision(ctx, newRevision);
-    }
-
-    // @Action(History.FormsLayoutUpdate)
-    // formLayoutUpdate(ctx: StateContext<HistoryStateModel>, { layout }: History.FormsLayoutUpdate) {
-
-    //     const newRevision =
-    //         new HistoryRevisionBuilder(this.store)
-    //             .withLayout(layout)
-    //             .build();
-
-    //     this.addRevision(ctx, newRevision);
-
-    // }
+    }    
 
     private addRevision(ctx: StateContext<HistoryStateModel>, revision: HistoryStateRevision) {
 

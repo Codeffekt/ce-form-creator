@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
-import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
+import { IndexType } from "@codeffekt/ce-core-data";
 import { Action, State, StateContext } from "@ngxs/store";
 import { History } from "../history/history.actions";
 import { Selection } from "./selection.actions";
-import { CanvasForm } from "../../models";
 
 export class SelectionStateModel {    
-    form?: CanvasForm;
-    block?: FormBlock;
+    form?: IndexType;
+    block?: IndexType;
 }
 
 @State<SelectionStateModel>({

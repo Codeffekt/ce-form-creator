@@ -15,11 +15,11 @@ export class CreatorSelectionService {
   constructor(private store: Store) { }
 
   selectForm(form: CanvasForm) {    
-    this.store.dispatch(new Selection.SelectForm(form));
+    this.store.dispatch(new Selection.SelectForm(form.form.id));
   }
 
   selectBlock(form: CanvasForm, block: FormBlock) {
-    this.store.dispatch(new Selection.SelectBlock(form, block));
+    this.store.dispatch(new Selection.SelectBlock(form.form.id, block.field));
   }
 
   selectionFormChanges(): Observable<CanvasForm | undefined> {

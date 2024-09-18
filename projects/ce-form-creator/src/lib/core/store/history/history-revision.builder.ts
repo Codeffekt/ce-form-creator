@@ -36,7 +36,7 @@ export class HistoryRevisionBuilder {
                 }
 
                 // revision with new selection 
-                if (form.form.id === this.selection?.form?.form.id) {
+                if (form.form.id === this.selection?.form) {
                     return Utils.deepcopy(form);
                 }
 
@@ -53,19 +53,5 @@ export class HistoryRevisionBuilder {
         };
 
         return revision;
-    }
-
-    // private buildLayout(layout: CanvasLayoutConfig): CanvasLayoutConfig {
-
-    //     const newNodesLayout: CanvasNodeLayoutConfig[] = (this.form ? [this.form] : this.forms)
-    //         .filter(node => !layout.nodes.find(elt => elt.id === node.id))
-    //         .map(node => ({
-    //             id: node.id,
-    //             coords: { x: 0, y: 0 }
-    //         }));
-
-    //     return {
-    //         nodes: [...layout.nodes, ...newNodesLayout]
-    //     };
-    // }
+    }    
 }

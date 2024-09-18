@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FORM_BLOCK_TYPE_TEXT, FormBlock, IndexType } from "@codeffekt/ce-core-data";
-import { Actions, Select, Store } from "@ngxs/store";
-import { Observable, Subject, Subscription, debounceTime } from "rxjs";
+import { Store } from "@ngxs/store";
+import { Observable, Subject, debounceTime } from "rxjs";
 import { Forms, FormsSelectors } from "../store";
 import { FieldNamingService } from "./field-naming.service";
 import { CanvasForm } from "../models";
@@ -11,14 +11,11 @@ const UPDATE_DEBOUNCE_TIME_MS = 500;
 @Injectable()
 export class FormRootUpdateService {
 
-    @Select(FormsSelectors.allForms) private forms$!: Observable<CanvasForm[]>;
 
     private doUpdate$ = new Subject<CanvasForm>();
-    private subscription?: Subscription;
 
     constructor(
         private store: Store,
-        private actions$: Actions,
         private namingService: FieldNamingService,
     ) {
         this.init();
@@ -33,9 +30,17 @@ export class FormRootUpdateService {
     }    
 
     deleteBlock(
-        canvasForm: CanvasForm,
-        block: FormBlock,
+        formId: IndexType,
+        blockField: IndexType,
         options: { emitEvent: boolean } = { emitEvent: true }) {
+
+        const canvasForm = this.store.selectSnapshot<CanvasForm|undefined>(FormsSelectors.formWithId(formId))        
+
+        if(!canvasForm) {
+            return undefined;
+        }
+
+        const block = canvasForm.form.content[blockField];
 
         const blockKeys = Object.keys(canvasForm.form.content).filter(key => key !== block.field);
         var content: { [field: string]: FormBlock } = {};
@@ -52,7 +57,7 @@ export class FormRootUpdateService {
         };      
 
         if (options.emitEvent) {
-            this.store.dispatch(new Forms.UpdateForms([ newCanvasForm ]));
+            this.store.dispatch(new Forms.UpdateForms([ newCanvasForm ]));
         }
 
         return newCanvasForm;
@@ -83,13 +88,16 @@ export class FormRootUpdateService {
         return { form: newCanvasForm, block: newCanvasForm.form.content[field] };
     }
 
-    deleteForm(form: CanvasForm) {
-        this.store.dispatch(new Forms.RemoveForms([form]));
-    }
+    deleteForm(formId: IndexType) {
 
-    // addForm(form: FormRoot) {
-    //     this.store.dispatch(new Forms.AddForms([form]));
-    // }
+        const canvasForm = this.store.selectSnapshot<CanvasForm|undefined>(FormsSelectors.formWithId(formId))        
+
+        if(!canvasForm) {
+            return;
+        }
+
+        this.store.dispatch(new Forms.RemoveForms([ canvasForm ]));
+    }    
 
     private init() {
         // TODO: Shoud unsubscribe
