@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { FormTreeInputType } from './form-tree-input.types';
 
 export class CeFormTreeInputSanitizer {

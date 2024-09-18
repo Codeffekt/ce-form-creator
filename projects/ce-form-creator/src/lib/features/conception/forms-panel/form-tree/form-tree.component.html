@@ -9,8 +9,7 @@
                        [form]="form.form"
                        [level]="0"
                        [active]="selection.value | isForm:form.form"
-                       [expandable]="true"
-                       [expanded]="selection.value | hasBlock:form.form"
+                       [expandable]="true"                      
                        (select)="selectForm(form)"
                        (onLabelEdit)="onFormIdEdit(form,$event)">
 

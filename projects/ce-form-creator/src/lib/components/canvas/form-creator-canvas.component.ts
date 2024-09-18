@@ -22,6 +22,7 @@ export class CeFormCreatorCanvasComponent {
 
   @HostListener(`document:${CE_CANVAS_END_DRAGGING}`, ['$event'])
   onNodesMoved(evt: CustomEvent<CustomDragEvent>) {
+    console.log("On nodes moved");
     this.formsCanvasService.onNodesMoved(evt.detail.elts, this.canvasForms);
   }
 

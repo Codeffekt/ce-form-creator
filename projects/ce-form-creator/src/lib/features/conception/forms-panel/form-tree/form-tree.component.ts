@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import { FormBlock } from '@codeffekt/ce-core-data';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { Observable } from 'rxjs';
@@ -6,13 +6,16 @@ import { CanvasForm, FormCreatorContext } from '../../../../core/models';
 import { FormRootUpdateService } from '../../../../core/services/form-root-update.service';
 import { CreatorSelectionService } from '../../../../core/services/selection.service';
 import { FormBlocksTreeNodeComponent } from './form-tree-node/form-tree-node.component';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'ce-form-tree',
   templateUrl: './form-tree.component.html',
-  styleUrls: ['./form-tree.component.scss']
+  styleUrls: ['./form-tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormBlocksTreeComponent {
+export class FormBlocksTreeComponent implements AfterViewInit {
 
   @Input() form!: CanvasForm;
 
@@ -22,8 +25,13 @@ export class FormBlocksTreeComponent {
 
   constructor(
     private formUpdateService: FormRootUpdateService,
-    private selectionService: CreatorSelectionService
-  ) { }  
+    private selectionService: CreatorSelectionService,
+    private cdr: ChangeDetectorRef,
+  ) { }
+
+  ngAfterViewInit(): void {
+    this.listenSelectionChanges();
+  }
 
   selectForm(form: CanvasForm) {
     this.selectionService.selectForm(form);
@@ -40,7 +48,7 @@ export class FormBlocksTreeComponent {
 
   trackBlock(index: number, block: FormBlock) {
     return block ? block.field : undefined;
-}
+  }
 
   onBlockFieldEdit(form: CanvasForm, block: FormBlock, field: string) {
     // quand on change le field du block il faut aussi mettre à jour
@@ -48,8 +56,8 @@ export class FormBlocksTreeComponent {
     // TODO: create an utility function in ce-core-data
     const formContentBlockKeys = Object.keys(form.form.content);
     let newFormContent = {};
-    for(const key of formContentBlockKeys) {
-      if(key !== block.field) {
+    for (const key of formContentBlockKeys) {
+      if (key !== block.field) {
         newFormContent = {
           ...newFormContent,
           [key]: form.form.content[key]
@@ -70,5 +78,16 @@ export class FormBlocksTreeComponent {
       .addNewBlock(this.form, event.data, { emitEvent: true });
     this.form = res.form;
     this.selectionService.selectBlock(this.form, res.block);
-  }  
+  }
+
+  private listenSelectionChanges() {
+    this.selectionService.selectionChanges()
+      .pipe(untilDestroyed(this))
+      .subscribe(selection => {
+        if (selection?.form.form.id === this.form.form.id && selection?.block) {          
+          this.formNode.expand();
+          this.cdr.detectChanges();
+        }
+      });
+  }
 }
