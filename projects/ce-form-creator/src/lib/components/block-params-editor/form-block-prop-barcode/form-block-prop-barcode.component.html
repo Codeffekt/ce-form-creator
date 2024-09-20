@@ -1,3 +1,15 @@
 <ce-form-block-core-prop-edit [context]="context"
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
-    
+
+<form [formGroup]="formGroup">
+    <ce-column gap="12px">
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <span>Edition du type</span>
+            <mat-checkbox formControlName="editType"></mat-checkbox>
+        </ce-row>
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <span>Affichage en ligne</span>
+            <mat-checkbox formControlName="displayInline"></mat-checkbox>
+        </ce-row>
+    </ce-column>
+</form>

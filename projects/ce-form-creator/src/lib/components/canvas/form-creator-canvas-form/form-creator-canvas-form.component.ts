@@ -39,8 +39,7 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
     
     ngOnInit(): void {
         this.listenSelectionChanges();
-        this.listenFormChanges();
-        console.log("CANVAS FORM", this.canvasForm, this.layout);
+        this.listenFormChanges();        
     }
 
     onDropElement(event: DndDropEvent) {

@@ -1,4 +1,4 @@
-import { FormRoot, IndexType } from "@codeffekt/ce-core-data";
+import { IndexType } from "@codeffekt/ce-core-data";
 import { createSelector, Selector } from "@ngxs/store";
 import { FormsState, FormsStateModel } from "./forms.state";
 import { CanvasForm } from "../../models";

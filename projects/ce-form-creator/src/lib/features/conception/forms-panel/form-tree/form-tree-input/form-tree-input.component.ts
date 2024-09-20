@@ -43,6 +43,10 @@ export class FormTreeInputComponent implements OnChanges {
     }
   }
 
+  onDiscard() {
+    this.discardChanges.emit();
+  }
+
   private initFormControl() {
     const validator = new FormTreeValidatorBuilder().withContext({ injector: this.injector, block: this.block, form: this.form, type: this.type }).build();
     this.formControl = new UntypedFormControl(this.value, { asyncValidators: validator });

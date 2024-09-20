@@ -23,8 +23,11 @@ export namespace Forms {
     }
 
     export class UpdateForms {
-        static readonly type = '[Forms] Update forms    ';
+        static readonly type = '[Forms] Update forms';
         constructor(public forms: CanvasForm[]) { }
     }
 
+    export class Clear {
+        static readonly type = '[Forms] Clear forms';        
+    }
 }

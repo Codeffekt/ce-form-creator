@@ -1,0 +1,19 @@
+<form [formGroup]="formGroup">
+    <h1 mat-dialog-title>{{config.existingElt ? "Edition d'une option" : "Nouvelle option"}}</h1>
+    <div mat-dialog-content class="d-flex flex-column">      
+      <mat-form-field appearance="outline"> 
+        <mat-label>Label</mat-label>      
+        <input matInput placeHolder="Label" formControlName="label">                  
+        <mat-error *ngIf="formGroup.get('label')?.hasError('required')">Champ requis</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline"> 
+        <mat-label>Valeur</mat-label>            
+        <input matInput placeHolder="Value" formControlName="value">                  
+        <mat-error *ngIf="formGroup.get('value')?.hasError('required')">Champ requis</mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="d-flex flex-row justify-content-between">
+      <button mat-button (click)="dismiss()">Annuler</button>
+      <button mat-button color="accent" [disabled]="!formGroup.valid" [mat-dialog-close]="formGroup.value">Valider</button>
+    </div>
+  </form>

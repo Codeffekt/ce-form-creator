@@ -1,3 +1,26 @@
 <ce-form-block-core-prop-edit [context]="context"
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
-    
+
+<form [formGroup]="formGroup">
+    <ce-column gap="12px">
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <span>Date</span>
+            <mat-checkbox formControlName="date"></mat-checkbox>
+        </ce-row>
+    </ce-column>
+</form>
+
+<ce-column gap="12px">
+    <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+        <span>Format</span>
+        <mat-icon (click)="openFormat()">settings</mat-icon>
+    </ce-row>
+    <ce-row>
+        <span>Date</span>
+        <div>{{block?.params?.format}}</div>
+    </ce-row>
+    <ce-row>
+        <span>Heure</span>
+        <div>{{block?.params?.timeFormat}}</div>
+    </ce-row>
+</ce-column>

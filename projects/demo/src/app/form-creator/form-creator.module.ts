@@ -17,7 +17,9 @@ import { LOCAL_FORMS } from '../library/forms';
   ]
 })
 export class FormCreatorModule { 
-  constructor(libraryService: FormsLibraryService) {
-    libraryService.setForms(LOCAL_FORMS);
+  constructor(
+    libraryService: FormsLibraryService,        
+  ) {
+    libraryService.setForms(LOCAL_FORMS);    
   }
 }

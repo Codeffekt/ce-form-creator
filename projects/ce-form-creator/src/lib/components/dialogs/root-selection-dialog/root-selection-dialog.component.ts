@@ -20,8 +20,7 @@ export class RootSelectionDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public config: RootSelectionDialogConfig,
     private dialogRef: MatDialogRef<RootSelectionDialogComponent>,
-  ) {
-    console.log(config);
+  ) {    
   }
 
   select(root: FormRoot) {

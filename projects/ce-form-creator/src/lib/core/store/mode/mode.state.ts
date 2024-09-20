@@ -7,11 +7,13 @@ export interface ModeStateModel {
     mode: FormCreatorMode;
 }
 
+export const modeStateDefault: ModeStateModel = {
+    mode: 'conception'
+};
+
 @State<ModeStateModel>({
     name: 'modeState',
-    defaults: {
-        mode: 'conception'
-    }
+    defaults: modeStateDefault,
 })
 @Injectable()
 export class ModeState {

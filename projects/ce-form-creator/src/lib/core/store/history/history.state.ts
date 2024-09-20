@@ -7,8 +7,10 @@ import { HistoryRevisionBuilder } from "./history-revision.builder";
 import { History } from "./history.actions";
 import { Selection } from "../selection/selection.actions";
 import { CanvasForm } from "../../models";
+import { Project, ProjectStateModel } from "../project";
 
 export interface HistoryStateRevision {
+    projectState: ProjectStateModel;
     formsState: FormsStateModel;
     selectionState: SelectionStateModel;
 }
@@ -55,6 +57,18 @@ export class HistoryState {
         this.setHead(ctx, currentState.head + 1);
     }
 
+    @Action(History.AddProject)
+    addProject(ctx: StateContext<HistoryStateModel>, { project }: History.AddProject) {
+
+        const newRevision =
+            new HistoryRevisionBuilder(this.store)
+                .withProject(project)
+                .build();
+
+        this.addRevision(ctx, newRevision);
+
+    }
+
     @Action(History.AddSelection)
     addSelection(ctx: StateContext<HistoryStateModel>, { selection }: History.AddSelection) {
 
@@ -88,6 +102,11 @@ export class HistoryState {
         this.addRevision(ctx, newRevision);
     }    
 
+    @Action(History.Clear)
+    clear(ctx: StateContext<HistoryStateModel>) {
+        ctx.setState({ ...historyStateDefault })
+    }
+
     private addRevision(ctx: StateContext<HistoryStateModel>, revision: HistoryStateRevision) {
 
         const state = ctx.getState();
@@ -118,6 +137,7 @@ export class HistoryState {
         this.store.dispatch([
             new Selection.Restore(revision.selectionState.form, revision.selectionState.block),
             new Forms.Restore(forms),
+            new Project.Restore(revision.projectState.context),
         ]);
     }
 } 

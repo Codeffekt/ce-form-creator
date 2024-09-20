@@ -4,14 +4,14 @@ import { Action, State, StateContext } from "@ngxs/store";
 import { History } from "../history/history.actions";
 import { Selection } from "./selection.actions";
 
-export class SelectionStateModel {    
+export interface SelectionStateModel {    
     form?: IndexType;
     block?: IndexType;
 }
 
 @State<SelectionStateModel>({
     name: 'selectionState',
-    defaults: undefined
+    defaults: {}
 })
 @Injectable()
 export class SelectionState {
@@ -35,7 +35,7 @@ export class SelectionState {
 
     @Action(Selection.Restore)
     restore(ctx: StateContext<SelectionStateModel>, { form, block }: Selection.Restore) {
-        ctx.setState({ form: form, block: block })
+        ctx.setState({ form, block })
     }
 
     @Action(Selection.Clear)

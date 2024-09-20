@@ -7,7 +7,7 @@
     <div class="right-connector" id="{{canvasForm.form | rightAnchorIdAttribute}}"></div>
   </div>
 
-  <ng-container *ngFor="let formBlock of (canvasForm.form | formInstanceBlocks); trackBy: trackBlock">
+  <ng-container *ngFor="let formBlock of (canvasForm.form | formInstanceBlocks)">
     <ce-canvas-block id="{{canvasForm.form | formBlockIdAttribute: formBlock}}" [form]="canvasForm" [formBlock]="formBlock"
       (clickStopPropagation)="selectBlock(canvasForm, formBlock)" class="canvas-block-elt"
       [attr.link]="canvasForm.form | formBlockLinkAttribute: formBlock">

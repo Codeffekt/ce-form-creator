@@ -1,0 +1,12 @@
+<ce-column gap="12px">
+    <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+        <span>Validateurs</span>
+        <mat-icon (click)="addValidator()">add</mat-icon>
+    </ce-row>
+    <ng-container *ngFor="let validator of currentValidators">
+        <ce-row>
+            <div>{{validator}}</div>            
+            <mat-icon (click)="deleteValidator(validator)">delete</mat-icon>
+        </ce-row>
+    </ng-container>
+</ce-column>

@@ -1,5 +1,6 @@
 import { SelectionStateModel } from "../selection"
 import { CanvasForm } from "../../models";
+import { ProjectStateModel } from "../project/project.state";
 
 export namespace History {
     export class Undo {
@@ -34,4 +35,12 @@ export namespace History {
         constructor(public forms: CanvasForm[]) { }
     }    
    
+    export class AddProject {
+        static readonly type = '[History] add project';
+        constructor(public project: ProjectStateModel) { }
+    } 
+    
+    export class Clear {
+        static readonly type = '[History] clear';
+    }
 }

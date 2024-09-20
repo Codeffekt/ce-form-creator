@@ -5,6 +5,6 @@ export class CeFormTreeInputSanitizer {
     constructor() { }
 
     static sanitize(value: string, type: FormTreeInputType): string {
-        return value.replace(/\s/g, '-').replace(/[0-9]/g, '');
+        return value.replace(/\s/g, '-').replace(/^[0-9]+/g, '');
     }
 }

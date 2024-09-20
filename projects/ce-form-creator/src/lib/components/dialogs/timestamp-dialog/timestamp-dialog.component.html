@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">
+    <h1 mat-dialog-title>Timestamp format</h1>
+    <div mat-dialog-content class="d-flex flex-column">      
+      <mat-form-field appearance="outline"> 
+        <mat-label>Format de la date</mat-label>      
+        <input matInput placeHolder="DD/MM/YYYY HH:mm" formControlName="format">                          
+      </mat-form-field>
+      <mat-form-field appearance="outline"> 
+        <mat-label>Format de l'heure</mat-label>            
+        <input matInput placeHolder="HH:mm" formControlName="timeFormat">                          
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="d-flex flex-row justify-content-between">
+      <button mat-button (click)="dismiss()">Annuler</button>
+      <button mat-button color="accent" [mat-dialog-close]="formGroup.value">Valider</button>
+    </div>
+  </form>

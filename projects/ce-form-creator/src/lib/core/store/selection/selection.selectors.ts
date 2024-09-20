@@ -1,4 +1,4 @@
-import { FormBlock, IndexType } from "@codeffekt/ce-core-data";
+import { FormBlock } from "@codeffekt/ce-core-data";
 import { Selector } from "@ngxs/store";
 import { FormsSelectors } from "../forms";
 import { SelectionState, SelectionStateModel } from "./selection.state";

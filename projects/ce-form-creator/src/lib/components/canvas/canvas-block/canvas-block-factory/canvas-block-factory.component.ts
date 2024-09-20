@@ -41,7 +41,7 @@ export class CanvasBlockFactoryComponent implements AfterViewInit {
     this.blockComponent.changeDetectorRef.detectChanges();
   }
 
-  private connectInput() {
+  private connectInput() {    
     this.blockComponent.setInput("formInstance", this.formInstance);
     this.blockComponent.setInput("formBlock", this.formBlock);
   }  

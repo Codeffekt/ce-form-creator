@@ -1,0 +1,11 @@
+<ng-container *ngIf="project$ | async as project">
+    <ce-row alignItems="center" *ngIf="!isProjectNameEdition">
+        <div (click)="isProjectNameEdition = true">{{project.name}}</div>
+        <button mat-icon-button (click)="isProjectNameEdition = true"><mat-icon>edit</mat-icon></button>
+    </ce-row>
+    <ce-row alignItems="center" *ngIf="isProjectNameEdition" (keydown.esc)="isProjectNameEdition = false">
+        <input type="text" mat-input (keydown.enter)="updateProjectName(project, input.value)" placeholder="Project name" (click)="input.select()" [value]="project.name" #input cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+        <button mat-icon-button (click)="updateProjectName(project, input.value)"><mat-icon>check</mat-icon></button>
+        <button mat-icon-button (click)="isProjectNameEdition = false"><mat-icon>close</mat-icon></button>
+    </ce-row>
+</ng-container>

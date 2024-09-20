@@ -22,6 +22,8 @@ import { FormBlockPropNumberComponent } from './form-block-prop-number/form-bloc
 import { FormBlockPropBooleanComponent } from './form-block-prop-boolean/form-block-prop-boolean.component';
 import { FormBlockPropSelectComponent } from './form-block-prop-select/form-block-prop-select.component';
 import { FormBlockPropCoordinatesComponent } from './form-block-prop-coordinates/form-block-prop-coordinates.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     imports: [
@@ -31,26 +33,28 @@ import { FormBlockPropCoordinatesComponent } from './form-block-prop-coordinates
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,
+        MatIconModule,
+        MatButtonModule,
         CePanelModule,
         CeFormCreatorDialogs,
+        FormBlockCorePropEditComponent,
+        FormBlockPropSelectComponent,
+        FormBlockPropBooleanComponent, 
+        FormBlockPropNumberComponent,    
+        FormBlockPropBarcodeComponent,
+        FormBlockPropTimestampComponent,         
     ],
     exports: [
         FormBlockPropEditComponent,
     ],
     declarations: [
-        FormBlockPropEditComponent,
-        FormBlockCorePropEditComponent,
+        FormBlockPropEditComponent,        
         FormBlockPropFactoryComponent,
         FormBlockPropTextComponent,
         FormBlockPropIndexComponent,
         FormBlockPropArrayComponent,
-        FormBlockPropAssocComponent,
-        FormBlockPropTimestampComponent,
-        FormBlockPropBarcodeComponent,
-        FormBlockPropAssetComponent,
-        FormBlockPropNumberComponent,
-        FormBlockPropBooleanComponent,
-        FormBlockPropSelectComponent,
+        FormBlockPropAssocComponent,               
+        FormBlockPropAssetComponent,           
         FormBlockPropCoordinatesComponent,
     ],
     providers: [],

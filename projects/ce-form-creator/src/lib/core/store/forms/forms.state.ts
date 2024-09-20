@@ -7,8 +7,8 @@ import { Selection } from "../selection/selection.actions";
 import { SelectionStateModel } from "../selection/selection.state";
 import { CanvasForm } from "../../models";
 
-export class FormsStateModel {
-    forms!: CanvasForm[];   
+export interface FormsStateModel {
+    forms: CanvasForm[];   
 }
 
 @State<FormsStateModel>({
@@ -73,5 +73,10 @@ export class FormsState {
         });
 
         context.dispatch(new History.AddFormsUpdate(forms));
-    }    
+    } 
+    
+    @Action(Forms.Clear)
+    clear(ctx: StateContext<FormsStateModel>) {        
+        ctx.setState({ forms: [] })
+    }
 }

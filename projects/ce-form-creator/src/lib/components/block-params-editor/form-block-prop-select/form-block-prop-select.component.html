@@ -1,1 +1,19 @@
-<ce-form-block-core-prop-edit [context]="context" (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+<ce-form-block-core-prop-edit [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+<ce-form-block-prop-validators [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-prop-validators>
+<form [formGroup]="formGroup">
+    <ce-column gap="12px">
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <span>Options</span>
+            <mat-icon (click)="addOption()">add</mat-icon>
+        </ce-row>
+        <ng-container *ngFor="let option of options.controls; let i = index">
+            <ce-row>
+                <div>{{option.value.label}}</div>
+                <mat-icon (click)="editOption(i)">edit</mat-icon>
+                <mat-icon (click)="deleteOption(i)">delete</mat-icon>
+            </ce-row>
+        </ng-container>
+    </ce-column>
+</form>
