@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     CeLayoutModule,
     MatIconModule,
+    ValidatorsDialogComponent,
   ],
   templateUrl: './form-block-prop-validators.component.html',
   styleUrls: ['./form-block-prop-validators.component.scss']

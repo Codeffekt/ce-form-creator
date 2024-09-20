@@ -1,9 +1,30 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormCreatorContext } from '../../../core/models';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { filter, Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CeLayoutModule } from '@codeffekt/ce-core';
+import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CreatorFormsService } from '../../../core';
+import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialog';
 
 @Component({
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormBlockCorePropEditComponent,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    CeLayoutModule,
+    FormBlockPropFieldsComponent,
+    RootSelectionDialogComponent,
+  ],
   selector: 'ce-form-block-prop-array',
   templateUrl: './form-block-prop-array.component.html',
   styleUrls: ['./form-block-prop-array.component.scss']
@@ -11,6 +32,9 @@ import { Subscription } from 'rxjs';
 export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy {
   @Input() context!: FormCreatorContext;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
+
+  private dialog = inject(MatDialog);
+  private formsService = inject(CreatorFormsService);
 
   formGroup!: UntypedFormGroup;
 
@@ -40,6 +64,20 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
 
   onCoreBlockChange(context: FormCreatorContext) {
     this.blockChanges.emit(context);
+  }
+
+  onOpenSelection() {
+    const roots = this.formsService.getForms();
+
+    const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
+
+    dialogRef.afterClosed().pipe(
+      filter(root => root !== undefined)
+    ).subscribe(root => {
+      this.formGroup.patchValue({
+        root: root.id
+      });
+    });
   }
 
   private createForm() {    

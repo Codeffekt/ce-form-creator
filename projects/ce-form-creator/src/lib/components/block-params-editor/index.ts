@@ -6,3 +6,7 @@ export * from './form-block-prop-select';
 export * from './form-block-prop-number';
 export * from './form-block-prop-barcode';
 export * from './form-block-prop-timestamp';
+export * from './form-block-prop-text';
+export * from './form-block-prop-fields';
+export * from './form-block-prop-index';
+export * from './form-block-prop-array';

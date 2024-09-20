@@ -1,6 +1,9 @@
 <ce-form-block-core-prop-edit [context]="context"
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
 
+<ce-form-block-prop-fields [context]="context"
+(blockChanges)="onCoreBlockChange($event)"></ce-form-block-prop-fields>
+
 <form [formGroup]="formGroup">
 
     <ce-column gap="12px">
