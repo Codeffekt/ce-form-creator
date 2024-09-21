@@ -7,6 +7,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CoreUtils } from '../../../core';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @UntilDestroy()
 @Component({
@@ -17,6 +20,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormBlockCorePropEditComponent,
     MatCheckboxModule,
     CeLayoutModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   selector: 'ce-form-block-prop-number',
   templateUrl: './form-block-prop-number.component.html',
@@ -49,8 +55,10 @@ export class FormBlockPropNumberComponent implements FormBlockEditComponentType 
   private createForm() {
 
     this.formGroup = this.formBuilder.group({
+      unit: [this.block?.unit],
       decimal: [CoreUtils.getBlockParamsBooleanValue(this.block, "decimal", true)],
-      signed: [CoreUtils.getBlockParamsBooleanValue(this.block, "signed", true)]
+      signed: [CoreUtils.getBlockParamsBooleanValue(this.block, "signed", true)],
+      type: [CoreUtils.getBlockParamsStringValue(this.block, "type")],
     });
 
     this.formGroup.valueChanges
@@ -60,16 +68,20 @@ export class FormBlockPropNumberComponent implements FormBlockEditComponentType 
 
   private rebuildForm() {
     this.formGroup.patchValue({
+      unit: this.block?.unit,
       decimal: CoreUtils.getBlockParamsBooleanValue(this.block, "decimal", true),
       signed: CoreUtils.getBlockParamsBooleanValue(this.block, "signed", true),
+      type: CoreUtils.getBlockParamsStringValue(this.block, "type"),
     }, { emitEvent: false });
   }
 
   private onFormupdate() { 
+    this.block!.unit = this.formGroup.value.unit;
     this.block!.params = {
       ...this.block?.params,
       decimal: this.formGroup.value.decimal,
       signed: this.formGroup.value.signed,
+      type: this.formGroup.value.type,
     };      
     this.blockChanges.emit(this.context);
   }

@@ -6,4 +6,7 @@ export class CoreUtils {
         return !block?.params || block?.params[paramsField] === undefined ? defaultValue : !!block.params[paramsField];
     }
 
+    static getBlockParamsStringValue(block: FormBlock|undefined, paramsField: IndexType, defaultValue = undefined) {
+        return !block?.params || block?.params[paramsField] === undefined ? defaultValue : block.params[paramsField];
+    }   
 }

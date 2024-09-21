@@ -1,6 +1,10 @@
 <ce-form-block-core-prop-edit [context]="context" (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
 <form [formGroup]="formGroup">
     <ce-column gap="12px">
+        <mat-form-field>
+            <mat-label>Valeur initiale</mat-label>
+            <input matInput type="text" formControlName="defaultValue">
+        </mat-form-field>
         <ce-row gap="12px" cePadding="0px 0px 20px 0px">
             <span>Suggestions</span>
             <mat-icon (click)="addSuggestion()">add</mat-icon>

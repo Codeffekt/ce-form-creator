@@ -11,6 +11,7 @@ import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreatorFormsService } from '../../../core';
 import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialog';
+import { ArrayIndexDialogComponent } from '../../dialogs';
 
 @Component({
   standalone: true,
@@ -24,6 +25,7 @@ import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialo
     CeLayoutModule,
     FormBlockPropFieldsComponent,
     RootSelectionDialogComponent,
+    ArrayIndexDialogComponent,
   ],
   selector: 'ce-form-block-prop-array',
   templateUrl: './form-block-prop-array.component.html',
@@ -75,7 +77,30 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
       filter(root => root !== undefined)
     ).subscribe(root => {
       this.formGroup.patchValue({
-        root: root.id
+        root: root.id,
+        index: undefined,
+      });
+    });
+  }
+
+  onOpenIndex() {
+    if(!this.block?.root) {
+      return;
+    }
+
+    const root = this.formsService.getFormRoot(this.block.root);
+    
+    if(!root) {
+      return;
+    }
+
+    const dialogRef = ArrayIndexDialogComponent.open(this.dialog, { root });
+
+    dialogRef.afterClosed().pipe(
+      filter(block => block !== undefined)
+    ).subscribe(block => {
+      this.formGroup.patchValue({
+        index: block.field
       });
     });
   }

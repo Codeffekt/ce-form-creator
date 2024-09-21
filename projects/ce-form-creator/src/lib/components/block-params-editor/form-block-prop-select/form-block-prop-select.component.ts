@@ -10,6 +10,8 @@ import { SelectOptionDialogComponent } from '../../dialogs/select-option-dialog/
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { filter } from 'rxjs';
 import { FormBlockPropValidatorsComponent } from '../form-block-prop-validators';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @UntilDestroy()
 @Component({
@@ -19,6 +21,8 @@ import { FormBlockPropValidatorsComponent } from '../form-block-prop-validators'
     ReactiveFormsModule,
     MatIconModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
     CeLayoutModule,
     FormBlockCorePropEditComponent,
     FormBlockPropValidatorsComponent,
@@ -89,7 +93,8 @@ export class FormBlockPropSelectComponent {
   private createForm() {
 
     this.formGroup = this.formBuilder.group({
-      options: this.formBuilder.array(this.block!.params?.options ?? [])
+      options: this.formBuilder.array(this.block!.params?.options ?? []),
+      defaultValue: [this.block?.defaultValue],
     });
 
     this.formGroup.valueChanges
@@ -99,11 +104,13 @@ export class FormBlockPropSelectComponent {
 
   private rebuildForm() {
     this.formGroup.patchValue({
-      options: this.formBuilder.array(this.block!.params?.options ?? [])
+      options: this.formBuilder.array(this.block!.params?.options ?? []),
+      defaultValue: this.block?.defaultValue,
     }, { emitEvent: false });
   }
 
   private onFormupdate() {
+    this.block!.defaultValue = this.formGroup.value.defaultValue;
     this.block!.params = {
       ...this.block?.params,
       options: this.formGroup.value.options,

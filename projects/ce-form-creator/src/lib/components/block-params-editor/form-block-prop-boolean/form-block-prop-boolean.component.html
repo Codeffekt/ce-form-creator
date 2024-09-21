@@ -1,3 +1,11 @@
-<ce-form-block-core-prop-edit [context]="context" (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+<ce-form-block-core-prop-edit [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+<form [formGroup]="formGroup">
+    <ce-column gap="12px">
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <mat-checkbox formControlName="defaultValue">Valeur initiale</mat-checkbox>
+        </ce-row>
+    </ce-column>
+</form>
 <ce-form-block-prop-validators [context]="context"
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-prop-validators>

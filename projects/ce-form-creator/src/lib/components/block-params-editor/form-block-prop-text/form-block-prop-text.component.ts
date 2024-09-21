@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { SuggestionDialogComponent } from '../../dialogs';
 import { filter } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @UntilDestroy()
 @Component({
@@ -20,6 +22,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
     CeLayoutModule,
     MatIconModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormBlockCorePropEditComponent,
   ],
   selector: 'ce-form-block-prop-text',
@@ -84,6 +88,7 @@ export class FormBlockPropTextComponent implements FormBlockEditComponentType {
   private createForm() {
 
     this.formGroup = this.formBuilder.group({
+      defaultValue: [this.block?.defaultValue],
       suggestions: this.formBuilder.array(this.block!.params?.suggestions ?? [])
     });
 
@@ -94,11 +99,13 @@ export class FormBlockPropTextComponent implements FormBlockEditComponentType {
 
   private rebuildForm() {
     this.formGroup.patchValue({
+      defaultValue: this.block?.defaultValue,
       suggestions: this.formBuilder.array(this.block!.params?.suggestions ?? [])
     }, { emitEvent: false });
   }
 
   private onFormupdate() {
+    this.block!.defaultValue = this.formGroup.value.defaultValue; 
     this.block!.params = {
       ...this.block?.params,
       suggestions: this.formGroup.value.suggestions,

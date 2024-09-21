@@ -1,7 +1,20 @@
-<ce-form-block-core-prop-edit [context]="context" (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+<ce-form-block-core-prop-edit [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
 
 <form [formGroup]="formGroup">
     <ce-column gap="12px">
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option>---</mat-option>
+                <mat-option value="duration">Durée 
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Unité</mat-label>
+            <input type="text" matInput formControlName="unit">
+        </mat-form-field>
         <ce-row gap="12px" cePadding="0px 0px 20px 0px">
             <span>Décimal</span>
             <mat-checkbox formControlName="decimal"></mat-checkbox>

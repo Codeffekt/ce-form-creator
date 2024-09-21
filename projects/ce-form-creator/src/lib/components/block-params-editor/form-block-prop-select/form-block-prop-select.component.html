@@ -8,6 +8,15 @@
             <span>Options</span>
             <mat-icon (click)="addOption()">add</mat-icon>
         </ce-row>
+        <mat-form-field>
+            <mat-label>Valeur initiale</mat-label>
+            <mat-select formControlName="defaultValue">
+                <mat-option>---</mat-option>
+                <mat-option *ngFor="let option of options.controls" [value]="option.value.value">
+                    {{option.value.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <ng-container *ngFor="let option of options.controls; let i = index">
             <ce-row>
                 <div>{{option.value.label}}</div>

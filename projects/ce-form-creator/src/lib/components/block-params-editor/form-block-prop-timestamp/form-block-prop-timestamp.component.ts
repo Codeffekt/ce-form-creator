@@ -75,7 +75,8 @@ export class FormBlockPropTimestampComponent implements FormBlockEditComponentTy
   private createForm() {
 
     this.formGroup = this.formBuilder.group({
-      date: [CoreUtils.getBlockParamsBooleanValue(this.block, "date", true)],      
+      date: [CoreUtils.getBlockParamsBooleanValue(this.block, "date", true)],   
+      time: [CoreUtils.getBlockParamsBooleanValue(this.block, "time", true)],         
     });
 
     this.formGroup.valueChanges
@@ -85,14 +86,16 @@ export class FormBlockPropTimestampComponent implements FormBlockEditComponentTy
 
   private rebuildForm() {
     this.formGroup.patchValue({
-      date: CoreUtils.getBlockParamsBooleanValue(this.block, "date", true),      
+      date: CoreUtils.getBlockParamsBooleanValue(this.block, "date", true),  
+      time: CoreUtils.getBlockParamsBooleanValue(this.block, "time", true),      
     }, { emitEvent: false });
   }
 
   private onFormupdate() { 
     this.block!.params = {
       ...this.block?.params,
-      date: this.formGroup.value.date,      
+      date: this.formGroup.value.date,  
+      time: this.formGroup.value.time,      
     };      
     this.blockChanges.emit(this.context);
   }
