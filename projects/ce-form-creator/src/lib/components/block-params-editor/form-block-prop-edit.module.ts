@@ -46,6 +46,7 @@ import { MatButtonModule } from '@angular/material/button';
         FormBlockPropTextComponent,
         FormBlockPropIndexComponent,
         FormBlockPropArrayComponent,
+        FormBlockPropCoordinatesComponent,
     ],
     exports: [
         FormBlockPropEditComponent,
@@ -54,8 +55,7 @@ import { MatButtonModule } from '@angular/material/button';
         FormBlockPropEditComponent,        
         FormBlockPropFactoryComponent,                        
         FormBlockPropAssocComponent,               
-        FormBlockPropAssetComponent,           
-        FormBlockPropCoordinatesComponent,
+        FormBlockPropAssetComponent,                   
     ],
     providers: [],
 })

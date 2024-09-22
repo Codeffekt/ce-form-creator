@@ -9,4 +9,5 @@ export * from './form-block-prop-timestamp';
 export * from './form-block-prop-text';
 export * from './form-block-prop-fields';
 export * from './form-block-prop-index';
+export * from './form-block-prop-coordinates';
 export * from './form-block-prop-array';

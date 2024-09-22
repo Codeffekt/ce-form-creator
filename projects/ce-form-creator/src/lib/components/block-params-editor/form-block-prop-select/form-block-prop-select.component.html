@@ -4,10 +4,6 @@
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-prop-validators>
 <form [formGroup]="formGroup">
     <ce-column gap="12px">
-        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
-            <span>Options</span>
-            <mat-icon (click)="addOption()">add</mat-icon>
-        </ce-row>
         <mat-form-field>
             <mat-label>Valeur initiale</mat-label>
             <mat-select formControlName="defaultValue">
@@ -17,6 +13,10 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <ce-row gap="12px" cePadding="0px 0px 20px 0px">
+            <span>Options</span>
+            <mat-icon (click)="addOption()">add</mat-icon>
+        </ce-row>        
         <ng-container *ngFor="let option of options.controls; let i = index">
             <ce-row>
                 <div>{{option.value.label}}</div>
