@@ -9,7 +9,12 @@ export class FieldNamingService {
 
     constructor() { }
 
-    generateFieldName(form: FormRoot, type: FormBlockType) {
+    generateFieldName(form: FormRoot, type: FormBlockType, fieldNameWanted?: string) {
+
+        if(fieldNameWanted && !FormUtils.getBlocks(form).find(block => block.field === fieldNameWanted)) {
+            return fieldNameWanted;
+        }
+
         const nextSlot =
             FormUtils.getBlocks(form)
                 .filter(block => block.type === type)

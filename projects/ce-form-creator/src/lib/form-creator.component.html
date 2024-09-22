@@ -6,7 +6,7 @@
         </ce-form-creator-toolbar>
         <ce-container overflow-auto>
             <ng-container *ngIf="(canvasForms$ |async) as canvasForms">
-                <ce-form-creator-conception *ngIf="mode === 'conception'" [canvasForms]="canvasForms"></ce-form-creator-conception>
+                <ce-form-creator-conception copyPasteSelection *ngIf="mode === 'conception'" [canvasForms]="canvasForms"></ce-form-creator-conception>
                 <ce-form-creator-render *ngIf="mode === 'rendering'"></ce-form-creator-render>
                 <ce-form-creator-mask [forms]="[]" *ngIf="mode === 'mask'"></ce-form-creator-mask>
             </ng-container>

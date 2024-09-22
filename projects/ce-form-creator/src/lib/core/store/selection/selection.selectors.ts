@@ -3,6 +3,7 @@ import { Selector } from "@ngxs/store";
 import { FormsSelectors } from "../forms";
 import { SelectionState, SelectionStateModel } from "./selection.state";
 import { CanvasForm, FormCreatorContext } from "../../models";
+import { SelectionAdapter } from "./selection-adapter";
 
 export class SelectionSelectors {
 
@@ -22,17 +23,7 @@ export class SelectionSelectors {
 
     @Selector([SelectionState, FormsSelectors.allForms])
     static get(state: SelectionStateModel, forms: CanvasForm[]): FormCreatorContext | undefined {
-        if (!state.form) {
-            return undefined;
-        }
-
-        const form = forms.find(form => form.form.id === state.form);
-
-        if(!form) {
-            return undefined;
-        }        
-
-        return { form, block: state.block ? form.form.content[state.block] : undefined };
+        return SelectionAdapter.stateModelToCreatorContext(state, forms);
     }
 
     @Selector([SelectionSelectors.form, FormsSelectors.allForms])

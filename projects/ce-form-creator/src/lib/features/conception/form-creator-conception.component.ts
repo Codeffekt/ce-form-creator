@@ -20,9 +20,9 @@ export class FormCreatorConceptionComponent implements OnInit {
   onDeleteComponent(event: KeyboardEvent) {
     const selection = this.selectionService.getCurrentSelection();
     if (selection?.form && selection?.block) {      
-      this.formUpdateService.deleteBlock(selection.form, selection.block, { emitEvent: true });
+      this.formUpdateService.deleteBlock(selection.form.form.id, selection.block.field, { emitEvent: true });
     } else if(selection?.form) {
-      this.formUpdateService.deleteForm(selection.form);
+      this.formUpdateService.deleteForm(selection.form.form.id);
     }
   }
 

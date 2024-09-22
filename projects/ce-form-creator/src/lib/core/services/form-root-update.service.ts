@@ -69,7 +69,7 @@ export class FormRootUpdateService {
         options: { emitEvent: boolean } = { emitEvent: true }): { form: CanvasForm, block: FormBlock } {
 
         const field = this.namingService
-            .generateFieldName(canvasForm.form, block.type ?? FORM_BLOCK_TYPE_TEXT);        
+            .generateFieldName(canvasForm.form, block.type ?? FORM_BLOCK_TYPE_TEXT, block.field);        
         const newCanvasForm = {
             ...canvasForm,
             form: {

@@ -12,6 +12,7 @@ import { CeFormCreatorConceptionModule } from './features/conception/form-creato
 import { CeFormCreatorMaskModule } from './features/mask/form-creator-mask.module';
 import { CeFormCreatorRenderModule } from './features/render/form-creator-render.module';
 import { CeFormCreatorComponent } from './form-creator.component';
+import { CoreDirectivesModule } from './core/directives/core-directives.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CeFormCreatorComponent } from './form-creator.component';
     CeFormCreatorToolbarModule,
     FormCreatorStatusBarModule,
     CeContainerModule,
+    CoreDirectivesModule,
     NgxsModule.forFeature(creatorStore)
   ],
   exports: [

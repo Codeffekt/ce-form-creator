@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { OnClickStopPropagation } from './stop-propagation.directive';
+import { CopyPasteSelectionDirective } from './copy-paste-selection.directive';
 
 @NgModule({
     imports: [],
     exports: [
-        OnClickStopPropagation
+        OnClickStopPropagation,
+        CopyPasteSelectionDirective,
     ],
     declarations: [
-        OnClickStopPropagation
+        OnClickStopPropagation,
+        CopyPasteSelectionDirective,
     ],
     providers: [],
 })

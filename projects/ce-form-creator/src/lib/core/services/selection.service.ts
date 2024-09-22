@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
+import { FormBlock } from '@codeffekt/ce-core-data';
 import { Select, Store } from '@ngxs/store';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CanvasForm, FormCreatorContext } from '../models';
-import { Selection, SelectionSelectors, SelectionState, SelectionStateModel } from '../store/selection';
+import { Selection, SelectionAdapter, SelectionSelectors, SelectionState, SelectionStateModel } from '../store/selection';
+import { FormsState, FormsStateModel } from '../store/forms';
 
 @Injectable()
 export class CreatorSelectionService {
@@ -38,8 +39,9 @@ export class CreatorSelectionService {
     return selection?.form.form.id === form.form.id && selection?.block?.field === block?.field;
   }
 
-  getCurrentSelection() {
+  getCurrentSelection(): FormCreatorContext | undefined {
     const selection = this.store.selectSnapshot<SelectionStateModel>(SelectionState);
-    return { form: selection.form, block: selection.block };
+    const forms = this.store.selectSnapshot<FormsStateModel>(FormsState);
+    return SelectionAdapter.stateModelToCreatorContext(selection, forms.forms);  
   }
 }
