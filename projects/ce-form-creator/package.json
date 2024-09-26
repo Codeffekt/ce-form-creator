@@ -20,6 +20,7 @@
     "@codeffekt/ce-core-data": "^1.1.2",
     "@codeffekt/ce-barcode": "^16.0.0",
     "@codeffekt/ce-code-editor": "^16.0.0",
+    "@codeffekt/ce-canvas-nodes": "^0.0.6",
     "@ngneat/until-destroy": "^8.0.0",
     "@ngxs/devtools-plugin": "^3.8.0",
     "@ngxs/logger-plugin": "^3.8.0",
@@ -30,8 +31,7 @@
     "angular-split": "^16.2.1",
     "tslib": "^2.3.0",
     "@ngxs/store": "^3.8.0",
-    "ngx-drag-drop": "^16.1.0",
-    "@codeffekt/ce-canvas-nodes": "^0.0.6"
+    "ngx-drag-drop": "^16.1.0"    
   },
   "main": "./dist/lib/codeffekt-ce-form-creator.d.ts"
 }
