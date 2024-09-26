@@ -21,7 +21,8 @@ export class FormsCanvasService {
 
     setCanvasRootElement(root: ElementRef<HTMLElement>) {
         if (this.canvas) {
-            throw new Error("Canvas root element already defined");
+            this.canvas.dispose();
+            console.log("Canvas already defined");
         }
         this.canvas = new Canvas(root.nativeElement);
     }

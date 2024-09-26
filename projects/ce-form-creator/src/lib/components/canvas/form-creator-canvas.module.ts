@@ -28,6 +28,7 @@ import { CanvasBlockBooleanComponent } from './canvas-block/canvas-block-boolean
 import { CanvasBlockSelectComponent } from './canvas-block/canvas-block-select/canvas-block-select.component';
 import { CanvasBlockCoordinatesComponent } from './canvas-block/canvas-block-coordinates/canvas-block-coordinates.component';
 import { CanvasBlockFactoryComponent } from './canvas-block/canvas-block-factory/canvas-block-factory.component';
+import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent } from './canvas-block';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,10 @@ import { CanvasBlockFactoryComponent } from './canvas-block/canvas-block-factory
     DragDropModule,
     CeFormCreatorPipesModule,
     CeFormCreatorComponentsModule,
+    CanvasBlockAssetArrayComponent,
+    CanvasBlockRootComponent,
+    CanvasBlockRootArrayComponent,
+    CanvasBlockObjectComponent,
   ], exports: [
     CeFormCreatorCanvasComponent,
     CanvasBlockFactoryComponent,
@@ -87,6 +92,10 @@ export class CeFormCreatorCanvasModule {
       'boolean': CanvasBlockBooleanComponent,
       'select': CanvasBlockSelectComponent,
       'coordinates': CanvasBlockCoordinatesComponent,
+      'assetArray': CanvasBlockAssetArrayComponent,
+      'root': CanvasBlockRootComponent,
+      'rootArray': CanvasBlockRootArrayComponent,
+      'object': CanvasBlockObjectComponent,
     });
   }
 }

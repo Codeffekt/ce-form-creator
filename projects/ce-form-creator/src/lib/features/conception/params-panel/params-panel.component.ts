@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormRoot } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
 import { FormRootUpdateService } from '../../../core/services/form-root-update.service';
 import { CreatorSelectionService } from '../../../core/services/selection.service';

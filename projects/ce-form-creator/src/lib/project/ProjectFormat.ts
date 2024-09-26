@@ -1,4 +1,4 @@
-import { CanvasNodeLayoutConfig } from "@codeffekt/ce-canvas-nodes";
+import { CanvasLayoutConfig } from "@codeffekt/ce-canvas-nodes";
 import { FormRoot } from "@codeffekt/ce-core-data";
 
 export const PROJECT_FORMAT_VERSION = "1.0";
@@ -14,5 +14,5 @@ export interface ProjectFormatContext {
 export interface ProjectFormat {
     context: ProjectFormatContext;    
     forms: FormRoot[];
-    layout: CanvasNodeLayoutConfig[];
+    layout: CanvasLayoutConfig;
 }

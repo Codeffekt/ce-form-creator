@@ -2,4 +2,5 @@
     overflow: auto;
     display: grid;
     align-content: start;
+    grid-template-rows: auto 1fr;
 }

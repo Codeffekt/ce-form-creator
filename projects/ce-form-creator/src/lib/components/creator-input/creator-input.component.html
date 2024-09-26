@@ -1,0 +1,10 @@
+<input type="text" 
+(keydown.enter)="isEditMode = false; updateValue(input.value)" 
+(focus)="isEditMode = true; input.select()" 
+[readOnly]="!isEditMode" 
+(click)="isEditMode = true; input.select()"
+(keydown.esc)="isEditMode = false; input.value = value ?? ''; input.setSelectionRange(0, 0); input.blur()"
+#input 
+[value]="value" 
+[ngClass]="{ 'onEditMode': isEditMode }"
+(blur)="isEditMode = false; updateValue(input.value)">

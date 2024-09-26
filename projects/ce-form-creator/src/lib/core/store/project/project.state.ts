@@ -5,6 +5,7 @@ import { PROJECT_FORMAT_VERSION, ProjectFormatContext } from "../../../project/P
 import { Project } from "./project.actions";
 import { Selection } from "../selection";
 import { Forms } from "../forms";
+import { ProjectFormatStateAdapter } from "../../../project/ProjectFormatStateAdapter";
 
 export interface ProjectStateModel {
     context: ProjectFormatContext;
@@ -26,6 +27,14 @@ export const projectStateDefault: ProjectStateModel = {
 })
 @Injectable()
 export class ProjectState {    
+
+    @Action(Project.Init)
+    initProject(ctx: StateContext<ProjectStateModel>, { project }: Project.Init) {
+        const state = ProjectFormatStateAdapter
+        .convertProjectToState(project);    
+        ctx.setState({ context: state.projectState.context });
+        ctx.dispatch(new Forms.Init(state.formsState.forms));
+    }
 
     @Action(Project.Clear)
     clearProject(ctx: StateContext<ProjectStateModel>) {

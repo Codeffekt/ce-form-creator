@@ -24,6 +24,10 @@ import { FormBlockPropSelectComponent } from './form-block-prop-select/form-bloc
 import { FormBlockPropCoordinatesComponent } from './form-block-prop-coordinates/form-block-prop-coordinates.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FormBlockPropAssetArrayComponent } from './form-block-prop-asset-array';
+import { FormBlockPropRootComponent } from './form-block-prop-root';
+import { FormBlockPropRootArrayComponent } from './form-block-prop-root-array';
+import { FormBlockPropObjectComponent } from './form-block-prop-object';
 
 @NgModule({
     imports: [
@@ -47,6 +51,10 @@ import { MatButtonModule } from '@angular/material/button';
         FormBlockPropIndexComponent,
         FormBlockPropArrayComponent,
         FormBlockPropCoordinatesComponent,
+        FormBlockPropAssetArrayComponent,
+        FormBlockPropRootComponent,
+        FormBlockPropObjectComponent,
+        FormBlockPropRootArrayComponent,
     ],
     exports: [
         FormBlockPropEditComponent,
@@ -74,6 +82,10 @@ export class CeFormBlockPropEditModule {
             "boolean": FormBlockPropBooleanComponent,
             "select": FormBlockPropSelectComponent,
             "coordinates": FormBlockPropCoordinatesComponent,
+            "assetArray": FormBlockPropAssetArrayComponent,
+            "root": FormBlockPropRootComponent,
+            "object": FormBlockPropObjectComponent,
+            "rootArray": FormBlockPropRootArrayComponent,
         });
     }
 

@@ -1,15 +1,16 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
-import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
+import { IndexType } from '@codeffekt/ce-core-data';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Select } from '@ngxs/store';
 import { filter, Observable } from 'rxjs';
-import { CreatorFormsService, FormsLibraryService } from '../../core';
+import { CreatorFormsService } from '../../core';
 import { CreatorActionsHistoryService } from '../../core/services/actions-history.service';
 import { HistorySelectors } from '../../core/store';
 import { MatDialog } from '@angular/material/dialog';
-import { RootCreatorDialogComponent, RootSelectionDialogComponent } from '../dialogs';
+import { RootCreatorDialogComponent } from '../dialogs';
 import { MessagesService } from '../layout';
-import { ProjectService } from '../../project';
+import { ProjectFormat, ProjectService } from '../../project';
+import { RootSelectionDialogService } from '../../core/services/root-selection-dialog.service';
 
 @UntilDestroy()
 @Component({
@@ -20,18 +21,18 @@ import { ProjectService } from '../../project';
 export class CeFormCreatorToolbarComponent implements OnInit {
 
   @Output() cancel = new EventEmitter();
-  @Output() save = new EventEmitter<FormRoot[]>();
+  @Output() save = new EventEmitter<ProjectFormat>();
 
   @Select(HistorySelectors.canUndo) canUndo$!: Observable<boolean>;
   @Select(HistorySelectors.canRedo) canRedo$!: Observable<boolean>;
 
   private projectService = inject(ProjectService);
+  private rootSelectionDialogService = inject(RootSelectionDialogService);
 
   constructor(
     private dialog: MatDialog,
     private formsService: CreatorFormsService,
     private historyService: CreatorActionsHistoryService,
-    private formsLibrary: FormsLibraryService,
     private messagesService: MessagesService,
   ) { }
 
@@ -52,16 +53,11 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   }
 
   importForm() {
-    const roots = this.formsLibrary.getForms();
-
-    const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
-
-    dialogRef.afterClosed().pipe(
-      filter(root => root !== undefined)
-    ).subscribe(root => {
-      const newForms = this.formsLibrary.getFormWithDeps(root);
-      this.formsService.addForms(newForms);
-    });
+    this.rootSelectionDialogService.open().pipe(
+      filter(roots => roots.length > 0)
+    ).subscribe(roots => {
+      this.formsService.addForms(roots);
+    });    
   }
 
   undo() {
@@ -89,8 +85,8 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   }
 
   onSave() {
-    const forms = this.formsService.getForms();
-    this.save.emit(forms);
+    const project = this.projectService.exportProject();
+    this.save.emit(project);
   }
 
   private async createNewRoot(root: IndexType) {

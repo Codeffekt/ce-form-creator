@@ -9,6 +9,7 @@ import { NgxsModule } from '@ngxs/store';
 import { MockCeFormsService } from '../mock/mock-ce-forms-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     DragDropModule,
     CeCoreModule,
+    MatDialogModule,
     HttpClientModule,
     HammerModule,
     NgxsModule.forRoot([], {

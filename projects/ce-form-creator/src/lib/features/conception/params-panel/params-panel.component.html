@@ -1,16 +1,17 @@
-<ce-container padding="24px">
-    <ng-container *ngIf="{value: selection$ | async} as selection">
-        <ng-container *ngIf="selection.value;else noSelection">
-            <ce-form-prop-edit
-                               [form]="selection.value"
-                               (formChanges)="onFormChanged($event)">
-            </ce-form-prop-edit>
-
-            <ce-form-block-prop-edit (blockChanges)="onFormChanged($event.form)">
-            </ce-form-block-prop-edit>
-        </ng-container>
+<ng-container *ngIf="{value: selection$ | async} as selection">
+    <ng-container *ngIf="selection.value;else noSelection">
+        <ce-tab-group>
+            <ce-tab label="Formulaire">
+                <ce-form-prop-edit [form]="selection.value" (formChanges)="onFormChanged($event)">
+                </ce-form-prop-edit>
+            </ce-tab>
+            <ce-tab label="Block">
+                <ce-form-block-prop-edit (blockChanges)="onFormChanged($event.form)">
+                </ce-form-block-prop-edit>
+            </ce-tab>
+        </ce-tab-group>
     </ng-container>
-</ce-container>
+</ng-container>
 
 <ng-template #noSelection>
     <span>Aucune sélection</span>

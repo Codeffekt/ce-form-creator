@@ -5,3 +5,4 @@ export * from './FormCanvasElt';
 export * from './FormDragEvent';
 export * from './CanvasBlock';
 export * from './CanvasForm';
+export * from './FormCreatorComponentItem';

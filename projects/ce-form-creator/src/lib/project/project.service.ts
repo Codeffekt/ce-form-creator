@@ -33,8 +33,13 @@ export class ProjectService {
     reader.readAsText(file);
   }
 
-  saveProject() {
+  exportProject() {
     const project = ProjectFormatStateAdapter.convertStateToProject(this.store.snapshot());
+    return project;
+  }
+
+  saveProject() {
+    const project = this.exportProject();
     const blob = new Blob([JSON.stringify(project, null, 2)], { type: 'application/json' });
     saveAs(blob, `${project.context.name}.json`);
   }

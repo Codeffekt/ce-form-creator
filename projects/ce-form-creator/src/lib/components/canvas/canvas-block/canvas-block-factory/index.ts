@@ -1,0 +1,1 @@
+export * from './canvas-block-factory.component';

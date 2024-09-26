@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { FormCreatorContext } from '../../../core/models';
+import { FormCreatorContext } from '../../../core/models/Context';
 import { FormRootUpdateService } from '../../../core/services/form-root-update.service';
 import { CommonModule } from '@angular/common';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CreatorInputComponent } from '../../creator-input';
 
 @Component({
   standalone: true,
@@ -18,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    CreatorInputComponent,
   ],
   selector: 'ce-form-block-core-prop-edit',
   templateUrl: './form-block-core-prop-edit.component.html',

@@ -13,6 +13,10 @@ const blocksIconFactory: {[key: string]: string} = {
     "boolean": "toggle_off",
     "select": "format_list_bulleted",
     "coordinates": "location_on",
+    'assetArray': "dataset",
+    'root': "apps",
+    'rootArray': "dataset",
+    "object": "description",
 };
 
 @Injectable({providedIn:'root'})
@@ -27,4 +31,7 @@ export class FormBlockIconsService {
         return blocksIconFactory[block.type];
     }
 
+    getIconFromType(type: string) {
+        return blocksIconFactory[type];
+    }
 }

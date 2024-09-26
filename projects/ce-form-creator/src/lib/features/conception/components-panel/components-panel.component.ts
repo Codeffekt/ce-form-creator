@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBlock } from '@codeffekt/ce-core-data';
+import { Component, inject } from '@angular/core';
+import { CeFormCreatorComponentItem } from '../../../core/models/FormCreatorComponentItem';
+import { FormBlockListService } from '../../../core/services/form-block-list.service';
 
 interface CeFormCreatorComponentSection {
   title: string;
   components: CeFormCreatorComponentItem[];
-}
-interface CeFormCreatorComponentItem {
-  label: string;
-  icon: string;
-  block: FormBlock
 }
 
 @Component({
@@ -18,19 +14,13 @@ interface CeFormCreatorComponentItem {
 })
 export class CeComponentsPanel {
 
+  private blockListService = inject(FormBlockListService);
+
   sections: CeFormCreatorComponentSection[] = [
     {
       title: 'Composants',
       components: [
-        {
-          label: 'Texte',
-          icon: 'title',
-          block: {
-            field: 'text',
-            type: 'text',
-            label: 'Texte'
-          },
-        },
+        this.blockListService.getBlockComponent("simple-text"),
         {
           label: 'Multiligne',
           icon: 'notes',
@@ -88,6 +78,15 @@ export class CeComponentsPanel {
             root: undefined,
             index: undefined,
             label: 'Associations'
+          }
+        },
+        {
+          label: 'Modèle',
+          icon: 'apps',
+          block: {
+            field: 'root',
+            type: 'root',
+            label: 'Modèle',
           }
         }
       ],
@@ -162,6 +161,15 @@ export class CeComponentsPanel {
           field: 'image',
           type: 'asset',
           label: 'Image'
+        }
+      }, {
+        label: 'Data',
+        icon: 'dataset',
+        block: {
+          field: '_assets',
+          type: 'assetArray',
+          label: 'Data',
+          value: "assets-{$id}"
         }
       }]
     }, {

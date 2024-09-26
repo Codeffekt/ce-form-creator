@@ -53,8 +53,8 @@ export const LOCAL_PROJECT: ProjectFormat = {
         }
       }
     ],
-    "layout": [
-      {
+    "layout": {
+      "nodes": [{
         "id": "hardware",
         "coords": {
           "x": 0.26620269859153145,
@@ -62,4 +62,4 @@ export const LOCAL_PROJECT: ProjectFormat = {
         }
       }
     ]
-  };
+  }};

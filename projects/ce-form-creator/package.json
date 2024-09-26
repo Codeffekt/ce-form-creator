@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-form-creator",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "description": "Angular library components to create/edit CeForms",
   "author": {
     "name": "Codeffekt",

@@ -1,27 +1,17 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormRoot } from "@codeffekt/ce-core-data";
-import { ProjectService } from '@codeffekt/ce-form-creator';
+import { Component } from '@angular/core';
 import { LOCAL_PROJECT } from '../library/project';
+import { ProjectFormat } from '@codeffekt/ce-form-creator';
 
 @Component({
   selector: 'app-form-creator',
   templateUrl: './form-creator.component.html',
   styleUrls: ['./form-creator.component.scss']
 })
-export class FormCreatorComponent implements OnInit, AfterViewInit {
+export class FormCreatorComponent {
 
-  forms = [];
+  project = LOCAL_PROJECT;
 
-  constructor(private projectService: ProjectService) { }
-  
-  ngAfterViewInit(): void {
-    setTimeout(() => this.projectService.initProject(LOCAL_PROJECT), 0);
-  }
-
-  ngOnInit(): void {    
-  }
-
-  onSave(forms: FormRoot[]) {
+  onSave(format: ProjectFormat) {
     console.log('onSave - forms editing');
   }
 

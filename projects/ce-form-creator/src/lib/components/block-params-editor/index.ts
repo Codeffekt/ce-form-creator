@@ -11,3 +11,7 @@ export * from './form-block-prop-fields';
 export * from './form-block-prop-index';
 export * from './form-block-prop-coordinates';
 export * from './form-block-prop-array';
+export * from './form-block-prop-asset-array';
+export * from './form-block-prop-root';
+export * from './form-block-prop-object';
+export * from './form-block-prop-root-array';
