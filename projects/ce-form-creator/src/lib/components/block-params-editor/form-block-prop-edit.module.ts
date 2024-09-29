@@ -28,6 +28,7 @@ import { FormBlockPropAssetArrayComponent } from './form-block-prop-asset-array'
 import { FormBlockPropRootComponent } from './form-block-prop-root';
 import { FormBlockPropRootArrayComponent } from './form-block-prop-root-array';
 import { FormBlockPropObjectComponent } from './form-block-prop-object';
+import { FormBlockPropUnknownComponent } from './form-block-prop-unknown';
 
 @NgModule({
     imports: [
@@ -55,6 +56,7 @@ import { FormBlockPropObjectComponent } from './form-block-prop-object';
         FormBlockPropRootComponent,
         FormBlockPropObjectComponent,
         FormBlockPropRootArrayComponent,
+        FormBlockPropUnknownComponent,
     ],
     exports: [
         FormBlockPropEditComponent,

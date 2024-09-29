@@ -28,7 +28,7 @@ export class FormBlockIconsService {
             throw new Error(`Invalid block ${block}, not type found`);
         }
 
-        return blocksIconFactory[block.type];
+        return blocksIconFactory[block.type] ?? "warning";
     }
 
     getIconFromType(type: string) {

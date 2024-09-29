@@ -1,6 +1,7 @@
 import { Injectable, Type } from "@angular/core";
 import { FormBlockType } from "@codeffekt/ce-core-data";
 import { CanvasBlockComponents, CanvasBlockComponentType, CanvasBlockStore } from "../models/CanvasBlock";
+import { CanvasBlockUnknownComponent } from "../../components/canvas/canvas-block/canvas-block-unknown";
 
 @Injectable({ providedIn: 'root'})
 export class CanvasBlockStoreService {
@@ -14,7 +15,7 @@ export class CanvasBlockStoreService {
         const component = this.store.components[type];
 
         if(!component) {
-            throw new Error(`No canvas block component found for type ${type}`);
+            return CanvasBlockUnknownComponent;
         }
 
         return this.store.components[type];        

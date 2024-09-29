@@ -1,6 +1,7 @@
 import { Injectable, Type } from "@angular/core";
 import { FormBlockType } from "@codeffekt/ce-core-data";
 import { FormBlockEditComponents, FormBlockEditComponentType, FormBlockEditStore } from "../models/FormBlockEdit";
+import { FormBlockPropUnknownComponent } from "../../components/block-params-editor/form-block-prop-unknown";
 
 @Injectable({ providedIn: 'root'})
 export class FormBlockEditStoreService {
@@ -14,7 +15,7 @@ export class FormBlockEditStoreService {
         const component = this.store.components[type];
 
         if(!component) {
-            throw new Error(`No block edit store component found for type ${type}`);
+            return FormBlockPropUnknownComponent;
         }
 
         return this.store.components[type];        

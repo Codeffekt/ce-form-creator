@@ -28,7 +28,7 @@ import { CanvasBlockBooleanComponent } from './canvas-block/canvas-block-boolean
 import { CanvasBlockSelectComponent } from './canvas-block/canvas-block-select/canvas-block-select.component';
 import { CanvasBlockCoordinatesComponent } from './canvas-block/canvas-block-coordinates/canvas-block-coordinates.component';
 import { CanvasBlockFactoryComponent } from './canvas-block/canvas-block-factory/canvas-block-factory.component';
-import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent } from './canvas-block';
+import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent, CanvasBlockUnknownComponent } from './canvas-block';
 
 @NgModule({
   declarations: [
@@ -71,6 +71,7 @@ import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlock
     CanvasBlockRootComponent,
     CanvasBlockRootArrayComponent,
     CanvasBlockObjectComponent,
+    CanvasBlockUnknownComponent,
   ], exports: [
     CeFormCreatorCanvasComponent,
     CanvasBlockFactoryComponent,
@@ -83,6 +84,7 @@ export class CeFormCreatorCanvasModule {
   constructor(private readonly canvasBlockStore: CanvasBlockStoreService) {
     this.canvasBlockStore.setComponents({
       'formArray': CanvasBlockArrayComponent,
+      'formAssoc': CanvasBlockAssocComponent,
       'text': CanvasBlockTextComponent,  
       'index': CanvasBlockIndexComponent,
       'barcode': CanvasBlockBarcodeComponent,
