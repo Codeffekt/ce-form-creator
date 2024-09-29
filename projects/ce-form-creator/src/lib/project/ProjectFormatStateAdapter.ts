@@ -23,7 +23,7 @@ export class ProjectFormatStateAdapter {
                         .find(l => l.id === form.id) ??
                         { id: form.id, coords: { x: 0, y: 0 } }
                 }))
-            }
+            },          
         };
     }
 
@@ -35,7 +35,7 @@ export class ProjectFormatStateAdapter {
             forms: state.formsState.forms.map(form => form.form),
             layout: {
                 nodes: state.formsState.forms.map(form => form.layout),
-            }
+            },            
         };
     }
 }

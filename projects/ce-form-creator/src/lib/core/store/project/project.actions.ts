@@ -9,7 +9,7 @@ export namespace Project {
 
     export class Restore {
         static readonly type = '[Project] Restore';
-        constructor(public context: ProjectFormatContext) {}
+        constructor(public context: ProjectFormatContext) { }
     }
 
     export class UpdateProject {
@@ -23,6 +23,6 @@ export namespace Project {
     }
 
     export class Clear {
-        static readonly type = '[Project] clear project';        
+        static readonly type = '[Project] clear project';
     }
 }

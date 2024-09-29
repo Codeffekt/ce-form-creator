@@ -21,7 +21,7 @@ export class TabGroupComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     this.initActiveTab();
-    this.listenTabActiveChanges();
+    this.listenTabActiveChanges();    
   }
 
   selectTab(tab: TabComponent) {

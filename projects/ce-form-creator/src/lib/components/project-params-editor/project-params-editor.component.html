@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup">
+
+    <ce-column gap="12px">
+
+        <mat-form-field>
+            <mat-label>Point d'entrée</mat-label>
+            <input matInput (click)="onOpenSelection()" formControlName="entryPoint" readonly="true">
+        </mat-form-field>
+        
+    </ce-column>
+
+</form>

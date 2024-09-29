@@ -8,7 +8,7 @@ import { Forms } from "../forms";
 import { ProjectFormatStateAdapter } from "../../../project/ProjectFormatStateAdapter";
 
 export interface ProjectStateModel {
-    context: ProjectFormatContext;
+    context: ProjectFormatContext;    
 }
 
 export const projectStateDefault: ProjectStateModel = {
@@ -18,7 +18,8 @@ export const projectStateDefault: ProjectStateModel = {
         author: 'contact@codeffekt.com',
         ctime: Date.now(),
         mtime: Date.now(),
-    }
+        entryPoint: undefined,
+    },
 }
 
 @State<ProjectStateModel>({

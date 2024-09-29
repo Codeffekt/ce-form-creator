@@ -1,17 +1,25 @@
-<ng-container *ngIf="{value: selection$ | async} as selection">
-    <ng-container *ngIf="selection.value;else noSelection">
-        <ce-tab-group>
-            <ce-tab label="Formulaire">
+<ce-tab-group>
+    <ce-tab [active]="true" label="Project" *ngIf="(projectContext$ | async) as projectContext">
+        <ce-project-params-editor [projectContext]="projectContext"
+            (projectContextChanges)="onProjectChanged($event)"></ce-project-params-editor>
+    </ce-tab>
+    <ce-tab label="Formulaire">
+        <ng-container *ngIf="{value: selection$ | async} as selection">
+            <ng-container *ngIf="selection.value;else noSelection">
                 <ce-form-prop-edit [form]="selection.value" (formChanges)="onFormChanged($event)">
                 </ce-form-prop-edit>
-            </ce-tab>
-            <ce-tab label="Block">
+            </ng-container>
+        </ng-container>
+    </ce-tab>
+    <ce-tab label="Block">
+        <ng-container *ngIf="{value: selection$ | async} as selection">
+            <ng-container *ngIf="selection.value;else noSelection">
                 <ce-form-block-prop-edit (blockChanges)="onFormChanged($event.form)">
                 </ce-form-block-prop-edit>
-            </ce-tab>
-        </ce-tab-group>
-    </ng-container>
-</ng-container>
+            </ng-container>
+        </ng-container>
+    </ce-tab>
+</ce-tab-group>
 
 <ng-template #noSelection>
     <span>Aucune sélection</span>

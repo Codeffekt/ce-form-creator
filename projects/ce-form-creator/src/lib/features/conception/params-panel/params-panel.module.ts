@@ -6,12 +6,14 @@ import { CeFormPropEditModule } from '../../../components/form-params-editor/for
 import { CeContainerModule } from '../../../components/layout';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { CeTabsModule } from '../../../components/layout/tabs';
+import { ProjectParamsEditorComponent } from '../../../components/project-params-editor';
 
 @NgModule({
     imports: [
         CommonModule,
         CeFormPropEditModule,
         CeFormBlockPropEditModule,
+        ProjectParamsEditorComponent,
         CeLayoutModule,
         CeTabsModule,
         CeContainerModule

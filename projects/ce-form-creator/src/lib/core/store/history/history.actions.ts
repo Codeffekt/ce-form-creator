@@ -39,7 +39,7 @@ export namespace History {
         static readonly type = '[History] add project';
         constructor(public project: ProjectStateModel) { }
     } 
-    
+        
     export class Clear {
         static readonly type = '[History] clear';
     }

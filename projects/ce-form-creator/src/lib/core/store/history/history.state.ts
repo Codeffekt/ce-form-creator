@@ -12,7 +12,7 @@ import { Project, ProjectStateModel } from "../project";
 export interface HistoryStateRevision {
     projectState: ProjectStateModel;
     formsState: FormsStateModel;
-    selectionState: SelectionStateModel;
+    selectionState: SelectionStateModel;    
 }
 
 export interface HistoryStateModel {
@@ -137,7 +137,7 @@ export class HistoryState {
         this.store.dispatch([
             new Selection.Restore(revision.selectionState.form, revision.selectionState.block),
             new Forms.Restore(forms),
-            new Project.Restore(revision.projectState.context),
+            new Project.Restore(revision.projectState.context),            
         ]);
     }
 } 

@@ -9,7 +9,7 @@ export type StoreModel = [
     typeof FormsState,
     typeof SelectionState,
     typeof ModeState,   
-    typeof HistoryState
+    typeof HistoryState,    
 ];
 
 export interface StoreStateSnapshot {
@@ -17,6 +17,6 @@ export interface StoreStateSnapshot {
     formsState: FormsStateModel;
     selectionState: SelectionStateModel;
     modeState: ModeStateModel;   
-    historyState: HistoryStateModel;
+    historyState: HistoryStateModel;    
 };
 

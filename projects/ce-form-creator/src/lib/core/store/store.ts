@@ -10,5 +10,5 @@ export const creatorStore: StoreModel = [
     FormsState,
     SelectionState,
     ModeState,   
-    HistoryState
+    HistoryState,   
 ];

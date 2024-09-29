@@ -11,7 +11,7 @@ export class HistoryRevisionBuilder {
     
     private project: ProjectStateModel | undefined;
     private forms: CanvasForm[] = [];   
-    private selection: SelectionStateModel | undefined;
+    private selection: SelectionStateModel | undefined;    
 
     constructor(private store: Store) { }
 
@@ -28,7 +28,7 @@ export class HistoryRevisionBuilder {
     withSelection(selection: SelectionStateModel | undefined) {
         this.selection = selection;
         return this;
-    }   
+    }      
 
     build() {
         const snapshot = this.store.snapshot() as StoreStateSnapshot;
@@ -52,12 +52,12 @@ export class HistoryRevisionBuilder {
 
         // TODO: Should point toward previous form state
         const selectionState = this.selection ?? snapshot.selectionState;
-        const projectState = this.project ?? snapshot.projectState;
+        const projectState = this.project ?? snapshot.projectState;        
 
         const revision: HistoryStateRevision = {
             formsState,
             selectionState,
-            projectState,
+            projectState,           
         };
 
         return revision;
