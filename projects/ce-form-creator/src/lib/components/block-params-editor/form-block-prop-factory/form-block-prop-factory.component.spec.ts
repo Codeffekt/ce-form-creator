@@ -6,14 +6,10 @@ describe('FormBlockPropFactoryComponent', () => {
   let component: FormBlockPropFactoryComponent;
   let fixture: ComponentFixture<FormBlockPropFactoryComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ FormBlockPropFactoryComponent ]
-    })
-    .compileComponents();
-  });
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FormBlockPropFactoryComponent]
+    });
     fixture = TestBed.createComponent(FormBlockPropFactoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

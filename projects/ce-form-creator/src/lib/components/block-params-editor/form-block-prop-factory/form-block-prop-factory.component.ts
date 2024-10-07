@@ -1,77 +1,139 @@
-import {
-  AfterViewInit, Component,
-  ComponentRef, EventEmitter,
-  Input, OnChanges,
-  Output, SimpleChanges,
-  ViewChild, ViewContainerRef
-} from '@angular/core';
-import { FORM_BLOCK_TYPE_TEXT } from '@codeffekt/ce-core-data';
-import { FormCreatorContext } from '../../../core/models';
-import { FormBlockEditComponentType } from '../../../core/models/FormBlockEdit';
-import { FormBlockEditStoreService } from '../../../core/services/form-block-edit-store.service';
+import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormCreatorContext } from '../../../core/models/Context';
+import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { BlockSelectionDialogComponent, RootSelectionDialogComponent } from '../../dialogs';
+import { CreatorFormsService } from '../../../core/services/forms.service';
+import { filter, Subscription } from 'rxjs';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { CeLayoutModule } from '@codeffekt/ce-core';
 
 @Component({
   selector: 'ce-form-block-prop-factory',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormBlockCorePropEditComponent,
+    ReactiveFormsModule,
+    CeLayoutModule,
+    MatInputModule,
+    MatDialogModule,
+    RootSelectionDialogComponent,
+  ],
   templateUrl: './form-block-prop-factory.component.html',
   styleUrls: ['./form-block-prop-factory.component.scss']
 })
-export class FormBlockPropFactoryComponent implements OnChanges, AfterViewInit {
-
+export class FormBlockPropFactoryComponent implements OnChanges, OnDestroy {
+  
   @Input() context!: FormCreatorContext;
+  @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
 
-  @Output() blockChangedEvent = new EventEmitter<FormCreatorContext>();
+  private dialog = inject(MatDialog);
+  private formsService = inject(CreatorFormsService);
+  private formBuilder = inject(UntypedFormBuilder);
+  private subscription?: Subscription;
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  formGroup!: UntypedFormGroup;
 
-  private blockComponent!: ComponentRef<FormBlockEditComponentType>;
-
-  constructor(
-    private storeService: FormBlockEditStoreService
-  ) {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['context']?.isFirstChange()) {
-      this.updateComponent();
+  ngOnChanges(changes: SimpleChanges): void {    
+    if (!this.formGroup) {
+      this.createForm();
+    } else {
+      this.rebuildForm();
     }
   }
 
-  ngAfterViewInit(): void {
-    this.updateComponent();
-  }
-
-  private updateComponent() {
-
-    if (!this.vcr) {
-      throw new Error(`UpdateComponent must be called when ViewContainerRef is defined`);
-    }
-
-    if (!this.context) {
-      throw new Error(`Cannot create a block edit component with undefined block input`);
-    }
-
-    if (this.blockComponent) {
-      this.vcr.remove();
-    }
-
-    const componentType = this.storeService.getComponentType(this.context.block?.type ?? FORM_BLOCK_TYPE_TEXT);
-    this.blockComponent = this.vcr.createComponent(componentType);
-    this.connectInput();
-    this.connectOutput(this.blockComponent.instance);
-    this.blockComponent.changeDetectorRef.detectChanges();
-  }
-
-  private connectInput() {
-    this.blockComponent.setInput("context", this.context);
-  }
-
-  private connectOutput(component: FormBlockEditComponentType) {
-    if (component.blockChanges) {
-      component.blockChanges.subscribe(
-        (value) => this.blockChangedEvent.next(value),
-        (error) => this.blockChangedEvent.error(error),
-        () => this.blockChangedEvent.complete()
-      );
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
+
+  onCoreBlockChange(context: FormCreatorContext) {
+    this.blockChanges.emit(context);
+  }
+
+  onOpenSelection() {
+    const roots = this.formsService.getForms();
+
+    const dialogRef = RootSelectionDialogComponent.open(this.dialog, { roots });
+
+    dialogRef.afterClosed().pipe(
+      filter(root => root !== undefined)
+    ).subscribe(root => {
+      this.formGroup.patchValue({
+        root: root.id,
+        index: undefined,
+      });
+    });
+  }
+
+  onOpenIndex() {
+    if(!this.block?.root) {
+      return;
+    }
+
+    const root = this.formsService.getFormRoot(this.block.root);
+    
+    if(!root) {
+      return;
+    }
+
+    const dialogRef = BlockSelectionDialogComponent.open(this.dialog, { root, type: "root" });
+
+    dialogRef.afterClosed().pipe(
+      filter(block => block !== undefined)
+    ).subscribe(block => {
+      this.formGroup.patchValue({
+        index: block.field
+      });
+    });
+  }
+
+  onOpenTarget() {
+    
+    const root = this.context.form.form;
+
+    const dialogRef = BlockSelectionDialogComponent.open(this.dialog, { root, type: "index" });
+
+    dialogRef.afterClosed().pipe(
+      filter(block => block !== undefined)
+    ).subscribe(block => {
+      this.formGroup.patchValue({
+        target: block.field
+      });
+    });
+  }
+
+  private createForm() {    
+    this.formGroup = this.formBuilder.group({
+      root: [this.block!.root],      
+      index: [this.block!.index],
+      target: [this.block!.params?.target]
+    });
+
+    this.subscription = this.formGroup.valueChanges.subscribe(_ => this.onFormupdate());
+  }
+
+  private rebuildForm() {
+    this.formGroup.patchValue({
+      root: this.block!.root,    
+      index: this.block!.index,  
+      target: this.block!.params?.target,
+    }, { emitEvent: false });
+  }
+
+  private onFormupdate() {
+    this.block!.root = this.formGroup.value.root; 
+    this.block!.index = this.formGroup.value.index; 
+    this.block!.params = {
+      ...this.block?.params,
+      target: this.formGroup.value.target
+    };       
+    this.blockChanges.emit(this.context);
+  }
+
+  private get block() { return this.context.block };
 }

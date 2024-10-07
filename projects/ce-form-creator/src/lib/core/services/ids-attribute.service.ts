@@ -16,6 +16,10 @@ export class IdsAttributeService {
         return block.field;
     }    
 
+    forFormBlockField(field: string) {
+        return field;
+    }
+
     forLeftAnchor() {
         return "left-anchor";
     }

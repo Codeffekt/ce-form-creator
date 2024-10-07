@@ -27,8 +27,8 @@ import { CanvasBlockNumberComponent } from './canvas-block/canvas-block-number/c
 import { CanvasBlockBooleanComponent } from './canvas-block/canvas-block-boolean/canvas-block-boolean.component';
 import { CanvasBlockSelectComponent } from './canvas-block/canvas-block-select/canvas-block-select.component';
 import { CanvasBlockCoordinatesComponent } from './canvas-block/canvas-block-coordinates/canvas-block-coordinates.component';
-import { CanvasBlockFactoryComponent } from './canvas-block/canvas-block-factory/canvas-block-factory.component';
-import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent, CanvasBlockUnknownComponent } from './canvas-block';
+import { CanvasBlockDynamicComponent } from './canvas-block/canvas-block-dynamic/canvas-block-dynamic.component';
+import { CanvasBlockAssetArrayComponent, CanvasBlockFactoryComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent, CanvasBlockUnknownComponent } from './canvas-block';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlock
     CanvasBlockBooleanComponent,
     CanvasBlockSelectComponent,
     CanvasBlockCoordinatesComponent,
-    CanvasBlockFactoryComponent,
+    CanvasBlockDynamicComponent,
   ],
   imports: [
     CommonModule,
@@ -72,9 +72,10 @@ import { CanvasBlockAssetArrayComponent, CanvasBlockObjectComponent, CanvasBlock
     CanvasBlockRootArrayComponent,
     CanvasBlockObjectComponent,
     CanvasBlockUnknownComponent,
+    CanvasBlockFactoryComponent,
   ], exports: [
     CeFormCreatorCanvasComponent,
-    CanvasBlockFactoryComponent,
+    CanvasBlockDynamicComponent,
   ], providers: [
     FormStyleBuilder,   
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
@@ -98,6 +99,7 @@ export class CeFormCreatorCanvasModule {
       'root': CanvasBlockRootComponent,
       'rootArray': CanvasBlockRootArrayComponent,
       'object': CanvasBlockObjectComponent,
+      'factory': CanvasBlockFactoryComponent,
     });
   }
 }

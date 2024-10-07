@@ -1,7 +1,7 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
 import { IdsAttributeService } from "../services/ids-attribute.service";
-import { BlockIdUtils } from "@codeffekt/ce-canvas-nodes";
+import { BlockLinkService } from "../services";
 
 @Pipe({
     name: 'formIdAttribute'
@@ -21,19 +21,10 @@ export class FormIdAttributePipe implements PipeTransform {
 })
 export class formBlockLinkAttribute implements PipeTransform {
 
-    private idsAttributeService = inject(IdsAttributeService);
+    private blockLinkService = inject(BlockLinkService);
 
     transform(form: FormRoot, block: FormBlock): string | null {
-        if (block.type === "index" ||
-            block.type === "formArray" ||
-            block.type === "formAssoc"
-        ) {
-            return block.root ? BlockIdUtils.createLink({
-                nodeId: this.idsAttributeService.forForm(block.root),
-                blockId: this.idsAttributeService.forFormBlockHeader(block.root)
-            }) : null;
-        } 
-        return null;
+        return this.blockLinkService.createLinkFromBlock(block);
     }
 }
 

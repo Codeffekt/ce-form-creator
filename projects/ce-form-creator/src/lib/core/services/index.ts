@@ -12,3 +12,4 @@ export * from './forms-library.service';
 export * from './canvas-block-store.service';
 export * from './root-selection-dialog.service';
 export * from './form-block-list.service';
+export * from './block-link.service';

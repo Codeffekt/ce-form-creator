@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormBlockPropEditComponent } from './form-block-prop-edit.component';
 import { FormBlockCorePropEditComponent } from './form-block-core-prop-edit/form-block-core-prop-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormBlockPropFactoryComponent } from './form-block-prop-factory/form-block-prop-factory.component';
+import { FormBlockPropComponent } from './form-block-prop/form-block-prop.component';
 import { FormBlockPropTextComponent } from './form-block-prop-text/form-block-prop-text.component';
 import { FormBlockEditStoreService } from '../../core/services/form-block-edit-store.service';
-import { CeLayoutModule } from '@codeffekt/ce-core';
+import { CeLayoutModule, FormBlockFactoryComponent } from '@codeffekt/ce-core';
 import { CePanelModule } from '../layout/panel/panel.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +29,7 @@ import { FormBlockPropRootComponent } from './form-block-prop-root';
 import { FormBlockPropRootArrayComponent } from './form-block-prop-root-array';
 import { FormBlockPropObjectComponent } from './form-block-prop-object';
 import { FormBlockPropUnknownComponent } from './form-block-prop-unknown';
+import { FormBlockPropFactoryComponent } from './form-block-prop-factory';
 
 @NgModule({
     imports: [
@@ -57,13 +58,14 @@ import { FormBlockPropUnknownComponent } from './form-block-prop-unknown';
         FormBlockPropObjectComponent,
         FormBlockPropRootArrayComponent,
         FormBlockPropUnknownComponent,
+        FormBlockPropFactoryComponent,
     ],
     exports: [
         FormBlockPropEditComponent,
     ],
     declarations: [
         FormBlockPropEditComponent,        
-        FormBlockPropFactoryComponent,                        
+        FormBlockPropComponent,                        
         FormBlockPropAssocComponent,               
         FormBlockPropAssetComponent,                   
     ],
@@ -88,6 +90,7 @@ export class CeFormBlockPropEditModule {
             "root": FormBlockPropRootComponent,
             "object": FormBlockPropObjectComponent,
             "rootArray": FormBlockPropRootArrayComponent,
+            "factory": FormBlockPropFactoryComponent,
         });
     }
 

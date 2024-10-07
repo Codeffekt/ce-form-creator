@@ -16,3 +16,5 @@ export * from './form-block-prop-root';
 export * from './form-block-prop-object';
 export * from './form-block-prop-root-array';
 export * from './form-block-prop-unknown';
+export * from './form-block-prop-factory';
+export * from './form-block-prop';

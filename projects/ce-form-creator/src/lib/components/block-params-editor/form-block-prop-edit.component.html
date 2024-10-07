@@ -3,9 +3,9 @@
     <ce-panel-section-content>
         <ng-container *ngIf="(context$ | async) as context">
 
-            <ce-form-block-prop-factory *ngIf="context.block; else noBlock"
+            <ce-form-block-prop *ngIf="context.block; else noBlock"
                                         [context]="context"
-                                        (blockChangedEvent)="onBlockChanged($event)"></ce-form-block-prop-factory>
+                                        (blockChangedEvent)="onBlockChanged($event)"></ce-form-block-prop>
         </ng-container>
         <ng-template #noBlock>
             <span>Aucun bloc sélectionné</span>

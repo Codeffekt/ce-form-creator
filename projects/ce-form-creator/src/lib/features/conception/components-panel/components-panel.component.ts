@@ -80,15 +80,8 @@ export class CeComponentsPanel {
             label: 'Associations'
           }
         },
-        {
-          label: 'Modèle',
-          icon: 'apps',
-          block: {
-            field: 'root',
-            type: 'root',
-            label: 'Modèle',
-          }
-        }
+        this.blockListService.getBlockComponent("model"),
+        this.blockListService.getBlockComponent("factory"),
       ],
     }, {
       title: 'Date',

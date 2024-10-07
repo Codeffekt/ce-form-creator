@@ -6,4 +6,4 @@ export * from './validators-dialog';
 export * from './timestamp-dialog';
 export * from './suggestion-dialog';
 export * from './fields-dialog';
-export * from './array-index-dialog';
+export * from './block-selection-dialog';

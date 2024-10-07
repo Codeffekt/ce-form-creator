@@ -8,7 +8,7 @@ describe('CanvasBlockFactoryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CanvasBlockFactoryComponent]
+      imports: [CanvasBlockFactoryComponent]
     });
     fixture = TestBed.createComponent(CanvasBlockFactoryComponent);
     component = fixture.componentInstance;

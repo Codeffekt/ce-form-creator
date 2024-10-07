@@ -12,8 +12,8 @@
       (clickStopPropagation)="selectBlock(canvasForm, formBlock)" class="canvas-block-elt"
       [attr.link]="canvasForm.form | formBlockLinkAttribute: formBlock">
       <div *ngIf="formBlock | formBlockHaveAnchor" class="left-connector" id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>
-      <ce-canvas-block-factory [formBlock]="formBlock" [formInstance]="$any(canvasForm.form)" [dndDraggable]="formBlock">
-      </ce-canvas-block-factory>
+      <ce-canvas-block-dynamic [formBlock]="formBlock" [formInstance]="$any(canvasForm.form)" [dndDraggable]="formBlock">
+      </ce-canvas-block-dynamic>
       <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor right-connector"
         id="{{canvasForm.form | rightAnchorIdAttribute}}"></div>
     </ce-canvas-block>

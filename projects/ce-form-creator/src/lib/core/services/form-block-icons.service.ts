@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { FormBlock } from "@codeffekt/ce-core-data";
+import { FormBlock, FormBlockType } from "@codeffekt/ce-core-data";
 
-const blocksIconFactory: {[key: string]: string} = {
+const blocksIconFactory: {[key in FormBlockType]?: string} = {
     "text": "title",
     "number": "123",
     "barcode": "qr_code",
@@ -17,6 +17,8 @@ const blocksIconFactory: {[key: string]: string} = {
     'root': "apps",
     'rootArray': "dataset",
     "object": "description",
+    "factory": "factory",
+    "action": "memory",    
 };
 
 @Injectable({providedIn:'root'})
@@ -28,10 +30,10 @@ export class FormBlockIconsService {
             throw new Error(`Invalid block ${block}, not type found`);
         }
 
-        return blocksIconFactory[block.type] ?? "warning";
+        return this.getIconFromType(block.type);
     }
 
-    getIconFromType(type: string) {
-        return blocksIconFactory[type];
+    getIconFromType(type: FormBlockType) {
+        return blocksIconFactory[type] ?? "warning";
     }
 }
