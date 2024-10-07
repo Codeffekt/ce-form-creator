@@ -1,8 +1,17 @@
 <h1 mat-dialog-title>Select a field</h1>
 <div mat-dialog-content>
-    <mat-selection-list role="list">
-        <mat-list-item (click)="select(item)" *ngFor="let item of config.fields">{{item}}</mat-list-item>
-    </mat-selection-list>
+    <ce-tab-group>
+        <ce-tab label="Forms fields">
+            <mat-selection-list role="list">
+                <mat-list-item (click)="select(item)" *ngFor="let item of config.fields">{{item}}</mat-list-item>
+            </mat-selection-list>
+        </ce-tab>
+        <ce-tab label="Meta fields">
+            <mat-selection-list role="list">
+                <mat-list-item (click)="select(item.value)" *ngFor="let item of metaFields">{{item.name}}</mat-list-item>
+            </mat-selection-list>
+        </ce-tab>
+    </ce-tab-group>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
