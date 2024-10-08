@@ -1,6 +1,6 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { FormBlock } from "@codeffekt/ce-core-data";
-import { FormBlockIconsService } from "../services";
+import { BlockLinkService, FormBlockIconsService } from "../services";
 
 @Pipe({
     name: 'formBlockIconName'
@@ -18,7 +18,10 @@ export class FormBlockIconNamePipe implements PipeTransform {
     name: 'formBlockHaveAnchor'
 })
 export class FormBlockHaveAnchor implements PipeTransform {
+
+    private blockLinkService = inject(BlockLinkService);
+
     transform(block: FormBlock): boolean {
-        return block.type === "index" || block.type === "formArray" || block.type === "formAssoc";
+        return this.blockLinkService.hasLinkAttribute(block);
     }
 }

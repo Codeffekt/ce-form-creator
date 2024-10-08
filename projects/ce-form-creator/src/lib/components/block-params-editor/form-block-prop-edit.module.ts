@@ -30,6 +30,7 @@ import { FormBlockPropRootArrayComponent } from './form-block-prop-root-array';
 import { FormBlockPropObjectComponent } from './form-block-prop-object';
 import { FormBlockPropUnknownComponent } from './form-block-prop-unknown';
 import { FormBlockPropFactoryComponent } from './form-block-prop-factory';
+import { FormBlockPropActionComponent } from './form-block-prop-action';
 
 @NgModule({
     imports: [
@@ -59,6 +60,7 @@ import { FormBlockPropFactoryComponent } from './form-block-prop-factory';
         FormBlockPropRootArrayComponent,
         FormBlockPropUnknownComponent,
         FormBlockPropFactoryComponent,
+        FormBlockPropActionComponent,
     ],
     exports: [
         FormBlockPropEditComponent,
@@ -91,6 +93,7 @@ export class CeFormBlockPropEditModule {
             "object": FormBlockPropObjectComponent,
             "rootArray": FormBlockPropRootArrayComponent,
             "factory": FormBlockPropFactoryComponent,
+            "action": FormBlockPropActionComponent,
         });
     }
 

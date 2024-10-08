@@ -176,7 +176,12 @@ export class CeComponentsPanel {
           label: 'Coordonnées'
         }
       }]
-    },];
+    }, {
+      title: 'Traitements',
+      components: [
+        this.blockListService.getBlockComponent("action"),
+      ]
+    }];
 
   constructor() { }
 

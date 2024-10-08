@@ -3,23 +3,27 @@ import { BlockIdUtils } from "@codeffekt/ce-canvas-nodes";
 import { FormBlock } from "@codeffekt/ce-core-data";
 import { IdsAttributeService } from "./ids-attribute.service";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class BlockLinkService {
-    
+
     private idsAttributeService = inject(IdsAttributeService);
 
-    createLinkFromBlock(block: FormBlock): string|null {
+    createLinkFromBlock(block: FormBlock): string | null {
 
-        if (block.type === "index" ||
-            block.type === "formArray" ||
-            block.type === "formAssoc"
-        ) {
+        if (this.hasLinkAttribute(block)) {
             return this.createLinkFromBlockRoot(block);
-        } else if(block.type === "factory") {
-            return this.createLinkFromBlockFactory(block);
         }
 
         return null;
+    }
+
+    hasLinkAttribute(block: FormBlock): boolean {
+        return (block.type === "index" ||
+            block.type === "formArray" ||
+            block.type === "formAssoc" ||
+            block.type === "action" ||
+            block.type === "factory"
+        )
     }
 
     private createLinkFromBlockRoot(block: FormBlock) {
@@ -29,7 +33,7 @@ export class BlockLinkService {
         }) : null;
     }
 
-    private createLinkFromBlockFactory(block: FormBlock) {
+    /* private createLinkFromBlockFactory(block: FormBlock) {
         if(!block.root || !block.index) {
             return null;
         }
@@ -37,5 +41,5 @@ export class BlockLinkService {
             nodeId: this.idsAttributeService.forForm(block.root),
             blockId: this.idsAttributeService.forFormBlockField(block.index),
         });
-    }
+    }     */
 }

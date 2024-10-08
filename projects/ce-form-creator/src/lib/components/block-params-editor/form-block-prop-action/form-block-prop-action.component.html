@@ -1,0 +1,15 @@
+<ce-form-block-core-prop-edit [context]="context"
+    (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>    
+
+    <form [formGroup]="formGroup">
+
+        <ce-column gap="12px">
+    
+            <mat-form-field>
+                <mat-label>Source</mat-label>
+                <input matInput (click)="onOpenSource()" formControlName="source" readonly="true">
+            </mat-form-field>           
+
+        </ce-column>
+    
+    </form>

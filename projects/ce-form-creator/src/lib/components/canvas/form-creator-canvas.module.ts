@@ -28,7 +28,11 @@ import { CanvasBlockBooleanComponent } from './canvas-block/canvas-block-boolean
 import { CanvasBlockSelectComponent } from './canvas-block/canvas-block-select/canvas-block-select.component';
 import { CanvasBlockCoordinatesComponent } from './canvas-block/canvas-block-coordinates/canvas-block-coordinates.component';
 import { CanvasBlockDynamicComponent } from './canvas-block/canvas-block-dynamic/canvas-block-dynamic.component';
-import { CanvasBlockAssetArrayComponent, CanvasBlockFactoryComponent, CanvasBlockObjectComponent, CanvasBlockRootArrayComponent, CanvasBlockRootComponent, CanvasBlockUnknownComponent } from './canvas-block';
+import {
+  CanvasBlockActionComponent, CanvasBlockAssetArrayComponent,
+  CanvasBlockFactoryComponent, CanvasBlockObjectComponent,
+  CanvasBlockRootArrayComponent, CanvasBlockRootComponent, CanvasBlockUnknownComponent
+} from './canvas-block';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,7 @@ import { CanvasBlockAssetArrayComponent, CanvasBlockFactoryComponent, CanvasBloc
     ReactiveFormsModule,
     CeFormsPipesModule,
     DndModule,
-    CeCodeEditorModule,    
+    CeCodeEditorModule,
     CoreDirectivesModule,
     CeFormModule,
     FormViewComponent,
@@ -73,24 +77,25 @@ import { CanvasBlockAssetArrayComponent, CanvasBlockFactoryComponent, CanvasBloc
     CanvasBlockObjectComponent,
     CanvasBlockUnknownComponent,
     CanvasBlockFactoryComponent,
+    CanvasBlockActionComponent,
   ], exports: [
     CeFormCreatorCanvasComponent,
     CanvasBlockDynamicComponent,
   ], providers: [
-    FormStyleBuilder,   
+    FormStyleBuilder,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
   ]
 })
-export class CeFormCreatorCanvasModule { 
+export class CeFormCreatorCanvasModule {
   constructor(private readonly canvasBlockStore: CanvasBlockStoreService) {
     this.canvasBlockStore.setComponents({
       'formArray': CanvasBlockArrayComponent,
       'formAssoc': CanvasBlockAssocComponent,
-      'text': CanvasBlockTextComponent,  
+      'text': CanvasBlockTextComponent,
       'index': CanvasBlockIndexComponent,
       'barcode': CanvasBlockBarcodeComponent,
-      'asset': CanvasBlockAssetComponent,   
-      'timestamp': CanvasBlockTimestampComponent, 
+      'asset': CanvasBlockAssetComponent,
+      'timestamp': CanvasBlockTimestampComponent,
       'number': CanvasBlockNumberComponent,
       'boolean': CanvasBlockBooleanComponent,
       'select': CanvasBlockSelectComponent,
@@ -100,6 +105,7 @@ export class CeFormCreatorCanvasModule {
       'rootArray': CanvasBlockRootArrayComponent,
       'object': CanvasBlockObjectComponent,
       'factory': CanvasBlockFactoryComponent,
+      'action': CanvasBlockActionComponent,
     });
   }
 }
