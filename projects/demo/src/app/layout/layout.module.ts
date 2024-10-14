@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,27 +16,21 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutSidenavEntryComponent } from './layout-sidenav-entry/layout-sidenav-entry.component';
 import { LayoutComponent } from './layout.component';
 
-@NgModule({
-  declarations: [
-    LayoutComponent,
-    ColumnComponent,
-    LayoutSidenavEntryComponent,
-    ColumnWithGapComponent,
-    ColumnBasicComponent,
-    LayoutExampleViewerComponent,
-    ColumnOverflowComponent
-  ],
-  imports: [
-    CommonModule,
-    LayoutRoutingModule,
-    CeLayoutModule,
-    MatButtonModule,
-    HttpClientModule,
-    CeCodeEditorModule,
-    MatIconModule,
-    MatTabsModule,
-    CeSidenavModule,
-    CeContainerModule
-  ]
-})
+@NgModule({ declarations: [
+        LayoutComponent,
+        ColumnComponent,
+        LayoutSidenavEntryComponent,
+        ColumnWithGapComponent,
+        ColumnBasicComponent,
+        LayoutExampleViewerComponent,
+        ColumnOverflowComponent
+    ], imports: [CommonModule,
+        LayoutRoutingModule,
+        CeLayoutModule,
+        MatButtonModule,
+        CeCodeEditorModule,
+        MatIconModule,
+        MatTabsModule,
+        CeSidenavModule,
+        CeContainerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class LayoutModule { }

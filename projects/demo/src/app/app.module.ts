@@ -1,5 +1,5 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { HammerModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,33 +11,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    DragDropModule,
-    CeCoreModule,
-    MatDialogModule,
-    HttpClientModule,
-    HammerModule,
-    NgxsModule.forRoot([], {
-      selectorOptions: {
-        suppressErrors: false,
-        injectContainerState: false
-      }
-    }),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    // NgxsLoggerPluginModule.forRoot(),
-  ],
-  providers: [
-    {
-      provide: CeFormsService,
-      useClass: MockCeFormsService
-    },
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserAnimationsModule,
+        AppRoutingModule,
+        DragDropModule,
+        CeCoreModule,
+        MatDialogModule,
+        HammerModule,
+        NgxsModule.forRoot([], {
+            selectorOptions: {
+                suppressErrors: false,
+                injectContainerState: false
+            }
+        }),
+        NgxsReduxDevtoolsPluginModule.forRoot()], providers: [
+        {
+            provide: CeFormsService,
+            useClass: MockCeFormsService
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
