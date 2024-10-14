@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FormRoot, IndexType } from '@codeffekt/ce-core-data';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { CanvasForm } from '../models';
 @Injectable()
 export class CreatorFormsService {
 
-    @Select(FormsSelectors.allForms) private canvasForms$: Observable<CanvasForm[]> | undefined;    
+    private canvasForms$: Observable<CanvasForm[]> | undefined = inject(Store).select(FormsSelectors.allForms);    
 
     constructor(private store: Store) { }
 

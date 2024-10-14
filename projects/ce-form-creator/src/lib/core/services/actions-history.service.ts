@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { History, HistorySelectors } from '../store/history';
 
 @Injectable()
 export class CreatorActionsHistoryService {
-    @Select(HistorySelectors.canUndo) canUndo$!: Observable<boolean>;
-    @Select(HistorySelectors.canRedo) canRedo$!: Observable<boolean>;
+    canUndo$: Observable<boolean> = inject(Store).select(HistorySelectors.canUndo);
+    canRedo$: Observable<boolean> = inject(Store).select(HistorySelectors.canRedo);
 
     constructor(private store: Store) { }
 

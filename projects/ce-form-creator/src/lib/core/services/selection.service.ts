@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FormBlock } from '@codeffekt/ce-core-data';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CanvasForm, FormCreatorContext } from '../models';
 import { Selection, SelectionAdapter, SelectionSelectors, SelectionState, SelectionStateModel } from '../store/selection';
@@ -9,9 +9,9 @@ import { FormsState, FormsStateModel } from '../store/forms';
 @Injectable()
 export class CreatorSelectionService {
 
-  @Select(SelectionSelectors.get) selection$!: Observable<FormCreatorContext | undefined>;
-  @Select(SelectionSelectors.formChanges) selectionFormChanges$!: Observable<CanvasForm | undefined>;
-  @Select(SelectionSelectors.blockChanges) selectionBlockChanges$!: Observable<FormCreatorContext | undefined>;
+  selection$: Observable<FormCreatorContext | undefined> = inject(Store).select(SelectionSelectors.get);
+  selectionFormChanges$: Observable<CanvasForm | undefined> = inject(Store).select(SelectionSelectors.formChanges);
+  selectionBlockChanges$: Observable<FormCreatorContext | undefined> = inject(Store).select(SelectionSelectors.blockChanges);
 
   constructor(private store: Store) { }
 
@@ -40,8 +40,8 @@ export class CreatorSelectionService {
   }
 
   getCurrentSelection(): FormCreatorContext | undefined {
-    const selection = this.store.selectSnapshot<SelectionStateModel>(SelectionState);
-    const forms = this.store.selectSnapshot<FormsStateModel>(FormsState);
+    const selection = this.store.selectSnapshot<SelectionStateModel>((state) => state.selectionState);
+    const forms = this.store.selectSnapshot<FormsStateModel>((state) => state.formsState);
     return SelectionAdapter.stateModelToCreatorContext(selection, forms.forms);  
   }
 }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { IndexType } from '@codeffekt/ce-core-data';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { filter, Observable } from 'rxjs';
 import { CreatorFormsService } from '../../core';
 import { CreatorActionsHistoryService } from '../../core/services/actions-history.service';
@@ -23,8 +23,8 @@ export class CeFormCreatorToolbarComponent implements OnInit {
   @Output() cancel = new EventEmitter();
   @Output() save = new EventEmitter<ProjectFormat>();
 
-  @Select(HistorySelectors.canUndo) canUndo$!: Observable<boolean>;
-  @Select(HistorySelectors.canRedo) canRedo$!: Observable<boolean>;
+  canUndo$: Observable<boolean> = inject(Store).select(HistorySelectors.canUndo);
+  canRedo$: Observable<boolean> = inject(Store).select(HistorySelectors.canRedo);
 
   private projectService = inject(ProjectService);
   private rootSelectionDialogService = inject(RootSelectionDialogService);

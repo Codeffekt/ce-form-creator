@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { inject, Injectable } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FormCreatorMode } from '../models';
 import { Mode, ModeSelectors } from '../store/mode';
@@ -7,7 +7,7 @@ import { Mode, ModeSelectors } from '../store/mode';
 @Injectable()
 export class FormCreatorModeService {
 
-  @Select(ModeSelectors.getMode) private mode$!: Observable<FormCreatorMode>;
+  private mode$: Observable<FormCreatorMode> = inject(Store).select(ModeSelectors.getMode);
 
   constructor(private store: Store) { }
 

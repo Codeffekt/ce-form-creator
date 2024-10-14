@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import * as saveAs from 'file-saver';
 import { ProjectFormatStateAdapter } from './ProjectFormatStateAdapter';
 import { ProjectFormat, ProjectFormatContext } from './ProjectFormat';
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
 
-  @Select(ProjectSelectors.getProject) private project$!: Observable<ProjectFormatContext>;
+  private project$: Observable<ProjectFormatContext> = inject(Store).select(ProjectSelectors.getProject);
 
   private store = inject(Store);  
 
