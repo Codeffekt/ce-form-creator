@@ -19,3 +19,4 @@ export * from './form-block-prop-unknown';
 export * from './form-block-prop-factory';
 export * from './form-block-prop-action';
 export * from './form-block-prop';
+export * from './form-block-prop-asset';

@@ -61,6 +61,7 @@ import { FormBlockPropActionComponent } from './form-block-prop-action';
         FormBlockPropUnknownComponent,
         FormBlockPropFactoryComponent,
         FormBlockPropActionComponent,
+        FormBlockPropAssetComponent,    
     ],
     exports: [
         FormBlockPropEditComponent,
@@ -68,8 +69,7 @@ import { FormBlockPropActionComponent } from './form-block-prop-action';
     declarations: [
         FormBlockPropEditComponent,        
         FormBlockPropComponent,                        
-        FormBlockPropAssocComponent,               
-        FormBlockPropAssetComponent,                   
+        FormBlockPropAssocComponent,                                      
     ],
     providers: [],
 })
