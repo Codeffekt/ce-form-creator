@@ -11,7 +11,6 @@ import { CeFormCreatorPipesModule } from '../../core/pipes/pipes.module';
 import { FormViewComponent } from '../form-view/form-view.component';
 import { FormBlockEditComponent } from './canvas-block/canvas-block.component';
 import { CeFormCreatorCanvasComponent } from './form-creator-canvas.component';
-import { ZoomPanContainerComponent } from './zoom-pan-container/zoom-pan-container.component';
 import { CanvasBlockArrayComponent } from './canvas-block/canvas-block-array/canvas-block-array.component';
 import { CanvasBlockAssocComponent } from './canvas-block/canvas-block-assoc/canvas-block-assoc.component';
 import { CeFormCreatorCanvasFormComponent } from './form-creator-canvas-form/form-creator-canvas-form.component';
@@ -67,7 +66,6 @@ import {
     CoreDirectivesModule,
     CeFormModule,
     FormViewComponent,
-    ZoomPanContainerComponent,
     DragDropModule,
     CeFormCreatorPipesModule,
     CeFormCreatorComponentsModule,
