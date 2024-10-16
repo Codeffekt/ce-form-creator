@@ -1,38 +1,28 @@
 <ce-grid templateColumns="auto 1fr auto" cdkDropListGroup overflow-auto>
     <ce-tab-group>
         <ce-tab label="Formulaires">
-            <as-split direction="vertical">
-                <as-split-area>
-                    <ce-forms-panel [canvasForms]="canvasForms"></ce-forms-panel>
-                </as-split-area>
-                <as-split-area>
-                    <ce-components-panel overflow-auto></ce-components-panel>
-                </as-split-area>
-            </as-split>
+            <ce-column>
+                <ce-forms-panel [canvasForms]="canvasForms"></ce-forms-panel>
+                <ce-components-panel overflow-auto></ce-components-panel>
+            </ce-column>
         </ce-tab>
         <ce-tab label="Historique">
             <div cePadding="12px">
-                <ce-form-creator-history-item date="Aujourd'hui à 11:54"
-                                              form="forms-tech"
-                                              block="name">
+                <ce-form-creator-history-item date="Aujourd'hui à 11:54" form="forms-tech" block="name">
                 </ce-form-creator-history-item>
-                <ce-form-creator-history-item date="Hier à 10:30"
-                                              form="forms-tech"
-                                              block="name">
+                <ce-form-creator-history-item date="Hier à 10:30" form="forms-tech" block="name">
                 </ce-form-creator-history-item>
-                <ce-form-creator-history-item date="01 janvier à 11:54"
-                                              form="forms-tech"
-                                              block="name">
+                <ce-form-creator-history-item date="01 janvier à 11:54" form="forms-tech" block="name">
                 </ce-form-creator-history-item>
             </div>
         </ce-tab>
     </ce-tab-group>
     <ce-grid overflow-auto templateRows="auto 1fr">
         <div class="render-panel-buttons">
-            <button (click)="onAutoLayout()">Auto Layout</button>  
+            <button (click)="onAutoLayout()">Auto Layout</button>
             <button (click)="onZoomFit()">Zoom to Fit</button>
-          </div>
+        </div>
         <ce-render-panel [canvasForms]="canvasForms"></ce-render-panel>
     </ce-grid>
     <ce-params-panel></ce-params-panel>
-</ce-grid> 
+</ce-grid>
