@@ -6,3 +6,4 @@ export * from './canvas-block-root-array';
 export * from './canvas-block-unknown';
 export * from './canvas-block-factory';
 export * from './canvas-block-action';
+export * from './canvas-block-barcode';

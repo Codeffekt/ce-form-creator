@@ -41,8 +41,7 @@ import {
     CanvasBlockArrayComponent,
     CanvasBlockAssocComponent,
     CanvasConnectorsComponent,
-    CanvasBlockTextComponent,
-    CanvasBlockBarcodeComponent,
+    CanvasBlockTextComponent, 
     CanvasBlockIndexComponent,
     CanvasBlockAssetComponent,
     CanvasBlockTimestampComponent,
@@ -75,6 +74,7 @@ import {
     CanvasBlockObjectComponent,
     CanvasBlockUnknownComponent,
     CanvasBlockFactoryComponent,
+    CanvasBlockBarcodeComponent,
     CanvasBlockActionComponent,
   ], exports: [
     CeFormCreatorCanvasComponent,
@@ -86,7 +86,7 @@ import {
 })
 export class CeFormCreatorCanvasModule {
   constructor(private readonly canvasBlockStore: CanvasBlockStoreService) {
-    this.canvasBlockStore.setComponents({
+    /* this.canvasBlockStore.setComponents({
       'formArray': CanvasBlockArrayComponent,
       'formAssoc': CanvasBlockAssocComponent,
       'text': CanvasBlockTextComponent,
@@ -104,6 +104,6 @@ export class CeFormCreatorCanvasModule {
       'object': CanvasBlockObjectComponent,
       'factory': CanvasBlockFactoryComponent,
       'action': CanvasBlockActionComponent,
-    });
+    }); */
   }
 }

@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormBlockPropComponent } from './form-block-prop/form-block-prop.component';
 import { FormBlockPropTextComponent } from './form-block-prop-text/form-block-prop-text.component';
 import { FormBlockEditStoreService } from '../../core/services/form-block-edit-store.service';
-import { CeLayoutModule, FormBlockFactoryComponent } from '@codeffekt/ce-core';
+import { CeLayoutModule } from '@codeffekt/ce-core';
 import { CePanelModule } from '../layout/panel/panel.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';

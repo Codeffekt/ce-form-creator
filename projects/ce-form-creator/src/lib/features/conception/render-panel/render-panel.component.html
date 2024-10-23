@@ -1,5 +1,6 @@
+<div class="render-panel-buttons">
+  <button mat-button (click)="onAutoLayout()">Auto Layout</button>
+  <button mat-button (click)="onZoomFit()"><mat-icon>fit_screen</mat-icon>Fit screen</button>
+</div>
 <ce-form-creator-canvas [canvasForms]="canvasForms" (formChangedEvent)="onFormChangedEvent($event)">
 </ce-form-creator-canvas>
-<ng-template #noBlock>
-  <span>Aucun formulaire sélectionné</span>
-</ng-template>

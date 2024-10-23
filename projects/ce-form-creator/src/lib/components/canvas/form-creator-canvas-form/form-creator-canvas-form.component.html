@@ -1,4 +1,4 @@
-<ce-column *ngIf="canvasForm" gap="18px" class="form" [class.active]="isActive" dndDropzone
+<ce-column *ngIf="canvasForm" class="form" [class.active]="isActive" dndDropzone
   [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
 
   <div class="canvas-block-elt canvas-block-header" id="{{canvasForm.form | formBlockIdAttribute}}">
@@ -11,7 +11,7 @@
     <ce-canvas-block id="{{canvasForm.form | formBlockIdAttribute: formBlock}}" [form]="canvasForm" [formBlock]="formBlock"
       (clickStopPropagation)="selectBlock(canvasForm, formBlock)" class="canvas-block-elt"
       [attr.link]="canvasForm.form | formBlockLinkAttribute: formBlock">
-      <div *ngIf="formBlock | formBlockHaveAnchor" class="left-connector" id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>
+      <!-- <div *ngIf="formBlock | formBlockHaveAnchor" class="left-connector" id="{{canvasForm.form | leftAnchorIdAttribute}}"></div> -->
       <ce-canvas-block-dynamic [formBlock]="formBlock" [formInstance]="$any(canvasForm.form)" [dndDraggable]="formBlock">
       </ce-canvas-block-dynamic>
       <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor right-connector"

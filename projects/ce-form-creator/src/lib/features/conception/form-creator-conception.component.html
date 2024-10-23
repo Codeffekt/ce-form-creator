@@ -16,13 +16,7 @@
                 </ce-form-creator-history-item>
             </div>
         </ce-tab>
-    </ce-tab-group>
-    <ce-grid overflow-auto templateRows="auto 1fr">
-        <div class="render-panel-buttons">
-            <button (click)="onAutoLayout()">Auto Layout</button>
-            <button (click)="onZoomFit()">Zoom to Fit</button>
-        </div>
-        <ce-render-panel [canvasForms]="canvasForms"></ce-render-panel>
-    </ce-grid>
+    </ce-tab-group>   
+    <ce-render-panel [canvasForms]="canvasForms"></ce-render-panel>
     <ce-params-panel></ce-params-panel>
 </ce-grid>

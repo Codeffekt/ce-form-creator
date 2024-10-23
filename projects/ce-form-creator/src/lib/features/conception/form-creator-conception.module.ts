@@ -13,7 +13,7 @@ import { CeRenderPanelModule } from "./render-panel/render-panel.module";
 @NgModule({
     imports: [
         CommonModule,
-        DragDropModule,
+        DragDropModule,        
         CeTabsModule,
         CeLayoutModule,
         CeFormsPanelModule,

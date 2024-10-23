@@ -1,4 +1,8 @@
 :host {
     background: #f1f2f5;
-    overflow: hidden;     
+    overflow: hidden;  
+    
+    .render-panel-buttons {
+        position: absolute;;
+    }
 }

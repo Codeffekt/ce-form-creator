@@ -1,2 +1,4 @@
-<mat-icon>{{formBlock | formBlockIconName}}</mat-icon>
-<div>{{formBlock.label}}</div>
+<ce-block-row>
+    <mat-icon ngProjectAs="ce-block-row-icon">{{formBlock | formBlockIconName}}</mat-icon>
+    <div ngProjectAs="ce-block-row-label">{{formBlock.label}}</div>
+</ce-block-row>
