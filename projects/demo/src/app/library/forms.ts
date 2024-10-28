@@ -1,6 +1,6 @@
 import { FormRoot } from "@codeffekt/ce-core-data";
 
-const FORM_TECH: FormRoot = {
+export const FORM_TECH: FormRoot = {
   "id": "forms-tech",
   "type": "forms-tech",
   "ctime": 1638275198813,
@@ -42,7 +42,7 @@ const FORM_TECH: FormRoot = {
   }
 };
 
-const FORM_PHOTO: FormRoot = {
+export const FORM_PHOTO: FormRoot = {
   "id": "forms-photo",
   "type": "forms-photo",
   "ctime": 1638275198813,
@@ -67,7 +67,7 @@ const FORM_PHOTO: FormRoot = {
   }
 };
 
-const FORM_HARDWARE: FormRoot = {
+export const FORM_HARDWARE: FormRoot = {
   id: "form-hardware",
   type: "form-hardware",
   ctime: 0,

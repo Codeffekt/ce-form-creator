@@ -19,12 +19,24 @@ export class FormIdAttributePipe implements PipeTransform {
 @Pipe({
     name: 'formBlockLinkAttribute'
 })
-export class formBlockLinkAttribute implements PipeTransform {
+export class FormBlockLinkAttribute implements PipeTransform {
 
     private blockLinkService = inject(BlockLinkService);
 
     transform(form: FormRoot, block: FormBlock): string | null {
         return this.blockLinkService.createLinkFromBlock(block);
+    }
+}
+
+@Pipe({
+    name: 'formBlockLinkStyleAttribute'
+})
+export class FormBlockLinkStyleAttribute implements PipeTransform {
+
+    private blockLinkService = inject(BlockLinkService);
+
+    transform(form: FormRoot, block: FormBlock): string | null {
+        return this.blockLinkService.createLinkStyleFromBlock(block);
     }
 }
 
