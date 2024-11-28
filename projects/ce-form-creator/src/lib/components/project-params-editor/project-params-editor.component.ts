@@ -13,6 +13,8 @@ import { RootSelectionDialogComponent } from '../dialogs/root-selection-dialog/r
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CeLayoutModule } from '@codeffekt/ce-core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'ce-project-params-editor',
@@ -23,6 +25,8 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
     CeLayoutModule,
     RootSelectionDialogComponent,
   ],
@@ -70,6 +74,12 @@ export class ProjectParamsEditorComponent implements OnChanges, OnDestroy {
       this.formGroup.patchValue({
         entryPoint: root.id,
       });
+    });
+  }
+
+  onClearSelection() {
+    this.formGroup.patchValue({
+      entryPoint: undefined,
     });
   }
 

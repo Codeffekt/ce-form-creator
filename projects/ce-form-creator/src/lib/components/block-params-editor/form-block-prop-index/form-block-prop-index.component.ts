@@ -12,6 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -23,6 +25,8 @@ import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
     MatFormFieldModule,
     MatCheckboxModule,
     MatInputModule,
+    MatIconModule,
+    MatButtonModule,
     FormBlockPropFieldsComponent,
     RootSelectionDialogComponent,
   ],
@@ -79,6 +83,12 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
       this.formGroup.patchValue({
         root: root.id
       });
+    });
+  }
+
+  onClearSelection() {
+    this.formGroup.patchValue({
+      root: undefined
     });
   }
 

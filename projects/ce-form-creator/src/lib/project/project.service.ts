@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
-import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
 import { ProjectFormatStateAdapter } from './ProjectFormatStateAdapter';
 import { ProjectFormat, ProjectFormatContext } from './ProjectFormat';
 import { Project, ProjectSelectors } from '../core/store/project';

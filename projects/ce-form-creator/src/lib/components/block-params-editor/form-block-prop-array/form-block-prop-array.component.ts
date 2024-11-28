@@ -12,6 +12,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CreatorFormsService } from '../../../core';
 import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialog';
 import { BlockSelectionDialogComponent } from '../../dialogs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -22,6 +24,8 @@ import { BlockSelectionDialogComponent } from '../../dialogs';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
     CeLayoutModule,
     FormBlockPropFieldsComponent,
     RootSelectionDialogComponent,
@@ -80,6 +84,13 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
         root: root.id,
         index: undefined,
       });
+    });
+  }
+
+  onClearSelection() {
+    this.formGroup.patchValue({
+      root: undefined,
+      index: undefined,
     });
   }
 

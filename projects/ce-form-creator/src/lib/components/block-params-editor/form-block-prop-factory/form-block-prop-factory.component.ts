@@ -9,6 +9,8 @@ import { filter, Subscription } from 'rxjs';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CeLayoutModule } from '@codeffekt/ce-core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'ce-form-block-prop-factory',
@@ -20,6 +22,8 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
     CeLayoutModule,
     MatInputModule,
     MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
     BlockSelectionDialogComponent,
     RootSelectionDialogComponent,
   ],
@@ -68,6 +72,25 @@ export class FormBlockPropFactoryComponent implements OnChanges, OnDestroy {
         root: root.id,
         index: undefined,
       });
+    });
+  }
+
+  onClearSelection() {
+    this.formGroup.patchValue({
+      root: undefined,
+      index: undefined,
+    });
+  }
+
+  onClearIndex() {
+    this.formGroup.patchValue({
+      index: undefined,
+    });
+  }
+
+  onClearTarget() {
+    this.formGroup.patchValue({
+      target: undefined,
     });
   }
 

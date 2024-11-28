@@ -4,9 +4,14 @@
 
         <mat-form-field>
             <mat-label>Point d'entrée</mat-label>
-            <input matInput (click)="onOpenSelection()" formControlName="entryPoint" readonly="true">
+            <input #entryInput matInput (click)="onOpenSelection()" formControlName="entryPoint" readonly="true">
+            @if (entryInput.value) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="onClearSelection()">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
         </mat-form-field>
-        
+
     </ce-column>
 
 </form>
