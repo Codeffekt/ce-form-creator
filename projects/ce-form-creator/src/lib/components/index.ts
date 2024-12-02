@@ -4,3 +4,4 @@ export * from './creator-input';
 export * from './canvas';
 export * from './project-params-editor';
 export * from './layout';
+export * from './form-params-editor';

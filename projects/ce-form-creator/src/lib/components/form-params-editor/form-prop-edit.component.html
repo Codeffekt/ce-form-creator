@@ -24,5 +24,8 @@
                 </mat-form-field>
             </ce-column>
         </form>
+
+        <ce-form-prop-fields [root]="form.form" (rootChanges)="onFormParamsChanges($event)"></ce-form-prop-fields>
+
     </ce-panel-section-content>
 </ce-panel-section>

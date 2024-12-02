@@ -1,11 +1,28 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CanvasForm } from '../../core';
+import { CommonModule } from '@angular/common';
+import { CeLayoutModule } from '@codeffekt/ce-core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CePanelModule } from '../layout/panel/panel.module';
+import { FormPropFieldsComponent } from './form-prop-fields/form-prop-fields.component';
+import { FormRoot } from '@codeffekt/ce-core-data';
 
 @UntilDestroy()
 @Component({
   selector: 'ce-form-prop-edit',
+  standalone: true,
+  imports: [
+    CommonModule,
+    CeLayoutModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CePanelModule,
+    FormPropFieldsComponent,
+  ],
   templateUrl: './form-prop-edit.component.html',
   styleUrls: ['./form-prop-edit.component.scss']
 })
@@ -29,6 +46,11 @@ export class FormPropEditComponent implements OnInit, OnChanges {
     } else {
       this.rebuildForm();
     }
+  }
+
+  onFormParamsChanges(root: FormRoot) {
+    this.form.form.params = root.params;
+    this.formChanges.emit(this.form);
   }
 
   private createForm() {
