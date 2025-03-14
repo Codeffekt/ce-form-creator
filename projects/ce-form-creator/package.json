@@ -18,19 +18,17 @@
     "@angular/material": "^19.2.3",
     "@codeffekt/ce-core": "^19.0.0",
     "@codeffekt/ce-core-data": "^1.2.3",
-    "@codeffekt/ce-barcode": "^19.0.0",
+    "@codeffekt/ce-barcode": "^19.0.2",
     "@codeffekt/ce-code-editor": "^19.0.0",
     "@codeffekt/ce-canvas-nodes": "^0.0.8",
     "@ngneat/until-destroy": "^8.0.0",
-    "@ngxs/devtools-plugin": "^18.1.1",
-    "@ngxs/logger-plugin": "^18.1.1",
-    "@ngxs/store": "^18.1.1",
+    "@ngxs/devtools-plugin": "^19.0.0",
+    "@ngxs/logger-plugin": "^19.0.0",
+    "@ngxs/store": "^19.0.0",
     "file-saver": "^2.0.5"
   },
   "dependencies": {    
-    "tslib": "^2.3.0",
-    "@ngxs/store": "^18.1.1",
-    "ngx-drag-drop": "^18.0.2"
+    "tslib": "^2.3.0"    
   },
   "main": "./dist/lib/codeffekt-ce-form-creator.d.ts"
 }

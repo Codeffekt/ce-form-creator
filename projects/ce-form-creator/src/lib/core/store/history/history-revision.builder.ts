@@ -38,12 +38,12 @@ export class HistoryRevisionBuilder {
 
                 // revision with multiple new forms
                 if (this.forms.findIndex(f => f.form.id === form.form.id) !== -1) {
-                    return Utils.deepcopy(form);
+                    return Utils.deepcopy(form)!;
                 }
 
                 // revision with new selection 
                 if (form.form.id === this.selection?.form) {
-                    return Utils.deepcopy(form);
+                    return Utils.deepcopy(form)!;
                 }
 
                 return form;

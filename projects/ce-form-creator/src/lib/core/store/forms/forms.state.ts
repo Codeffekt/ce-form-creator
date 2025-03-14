@@ -66,7 +66,7 @@ export class FormsState {
             forms: state.forms.map(f => {
                 const existingForm = forms.find(form => form.form.id === f.form.id);
                 if (existingForm) {
-                    return { ...Utils.deepcopy(existingForm) };
+                    return { ...Utils.deepcopy(existingForm)! };
                 }
                 return f;
             })
