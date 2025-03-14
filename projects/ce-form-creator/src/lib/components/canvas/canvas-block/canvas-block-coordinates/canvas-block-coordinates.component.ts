@@ -3,9 +3,10 @@ import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 import { CanvasBlockComponentType } from '../../../../core';
 
 @Component({
-  selector: 'ce-canvas-block-coordinates',
-  templateUrl: './canvas-block-coordinates.component.html',
-  styleUrls: ['./canvas-block-coordinates.component.scss']
+    selector: 'ce-canvas-block-coordinates',
+    templateUrl: './canvas-block-coordinates.component.html',
+    styleUrls: ['./canvas-block-coordinates.component.scss'],
+    standalone: false
 })
 export class CanvasBlockCoordinatesComponent implements CanvasBlockComponentType {
 

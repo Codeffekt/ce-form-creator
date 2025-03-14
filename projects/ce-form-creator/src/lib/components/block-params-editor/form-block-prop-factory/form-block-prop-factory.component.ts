@@ -13,22 +13,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ce-form-block-prop-factory',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatInputModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    BlockSelectionDialogComponent,
-    RootSelectionDialogComponent,
-  ],
-  templateUrl: './form-block-prop-factory.component.html',
-  styleUrls: ['./form-block-prop-factory.component.scss']
+    selector: 'ce-form-block-prop-factory',
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatInputModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatIconModule,
+        BlockSelectionDialogComponent,
+        RootSelectionDialogComponent,
+    ],
+    templateUrl: './form-block-prop-factory.component.html',
+    styleUrls: ['./form-block-prop-factory.component.scss']
 })
 export class FormBlockPropFactoryComponent implements OnChanges, OnDestroy {
   

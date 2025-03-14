@@ -4,14 +4,13 @@ import { FormCreatorContext } from '../../../core/models';
 import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
 
 @Component({
-  selector: 'ce-form-block-prop-root-array',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-  ],
-  templateUrl: './form-block-prop-root-array.component.html',
-  styleUrls: ['./form-block-prop-root-array.component.scss']
+    selector: 'ce-form-block-prop-root-array',
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+    ],
+    templateUrl: './form-block-prop-root-array.component.html',
+    styleUrls: ['./form-block-prop-root-array.component.scss']
 })
 export class FormBlockPropRootArrayComponent {
 

@@ -11,19 +11,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CreatorInputComponent } from '../../creator-input';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCheckboxModule,
-    CreatorInputComponent,
-  ],
-  selector: 'ce-form-block-core-prop-edit',
-  templateUrl: './form-block-core-prop-edit.component.html',
-  styleUrls: ['./form-block-core-prop-edit.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        CreatorInputComponent,
+    ],
+    selector: 'ce-form-block-core-prop-edit',
+    templateUrl: './form-block-core-prop-edit.component.html',
+    styleUrls: ['./form-block-core-prop-edit.component.scss']
 })
 export class FormBlockCorePropEditComponent implements OnInit, OnChanges, OnDestroy {
 

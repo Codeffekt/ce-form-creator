@@ -4,12 +4,13 @@ import { MatInput } from '@angular/material/input';
 export type InputFormFieldAppearance = 'flat' | 'outline';
 
 @Component({
-  selector: 'ce-form-field',
-  templateUrl: './form-field.component.html',
-  styleUrls: [
-    './form-field.component.scss',
-    './form-field-input.scss'
-  ]
+    selector: 'ce-form-field',
+    templateUrl: './form-field.component.html',
+    styleUrls: [
+        './form-field.component.scss',
+        './form-field-input.scss'
+    ],
+    standalone: false
 })
 export class FormFieldComponent implements OnInit {
 

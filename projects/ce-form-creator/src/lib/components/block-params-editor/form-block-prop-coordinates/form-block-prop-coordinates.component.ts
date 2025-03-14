@@ -10,17 +10,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatCheckboxModule,
-    FormBlockCorePropEditComponent,   
-  ],
-  selector: 'ce-form-block-prop-coordinates',
-  templateUrl: './form-block-prop-coordinates.component.html',
-  styleUrls: ['./form-block-prop-coordinates.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatCheckboxModule,
+        FormBlockCorePropEditComponent,
+    ],
+    selector: 'ce-form-block-prop-coordinates',
+    templateUrl: './form-block-prop-coordinates.component.html',
+    styleUrls: ['./form-block-prop-coordinates.component.scss']
 })
 export class FormBlockPropCoordinatesComponent {
 

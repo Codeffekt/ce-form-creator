@@ -15,22 +15,21 @@ import { MatSelectModule } from '@angular/material/select';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    CeLayoutModule,
-    FormBlockCorePropEditComponent,
-    FormBlockPropValidatorsComponent,
-    SelectOptionDialogComponent,
-  ],
-  selector: 'ce-form-block-prop-select',
-  templateUrl: './form-block-prop-select.component.html',
-  styleUrls: ['./form-block-prop-select.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        CeLayoutModule,
+        FormBlockCorePropEditComponent,
+        FormBlockPropValidatorsComponent,
+        SelectOptionDialogComponent,
+    ],
+    selector: 'ce-form-block-prop-select',
+    templateUrl: './form-block-prop-select.component.html',
+    styleUrls: ['./form-block-prop-select.component.scss']
 })
 export class FormBlockPropSelectComponent {
 

@@ -12,19 +12,18 @@ import { FormRoot } from '@codeffekt/ce-core-data';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-prop-edit',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CeLayoutModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    CePanelModule,
-    FormPropFieldsComponent,
-  ],
-  templateUrl: './form-prop-edit.component.html',
-  styleUrls: ['./form-prop-edit.component.scss']
+    selector: 'ce-form-prop-edit',
+    imports: [
+        CommonModule,
+        CeLayoutModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        CePanelModule,
+        FormPropFieldsComponent,
+    ],
+    templateUrl: './form-prop-edit.component.html',
+    styleUrls: ['./form-prop-edit.component.scss']
 })
 export class FormPropEditComponent implements OnInit, OnChanges {
 

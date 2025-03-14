@@ -6,9 +6,10 @@ import { firstValueFrom } from 'rxjs';
 const ASSETS_SRC_PATH = '/assets/examples';
 
 @Component({
-  selector: 'app-layout-example-viewer',
-  templateUrl: './layout-example-viewer.component.html',
-  styleUrls: ['./layout-example-viewer.component.scss']
+    selector: 'app-layout-example-viewer',
+    templateUrl: './layout-example-viewer.component.html',
+    styleUrls: ['./layout-example-viewer.component.scss'],
+    standalone: false
 })
 export class LayoutExampleViewerComponent implements OnInit {
 

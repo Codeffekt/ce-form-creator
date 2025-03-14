@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-panel-section-content',
-  templateUrl: './panel-section-content.component.html',
-  styleUrls: ['./panel-section-content.component.scss']
+    selector: 'ce-panel-section-content',
+    templateUrl: './panel-section-content.component.html',
+    styleUrls: ['./panel-section-content.component.scss'],
+    standalone: false
 })
 export class PanelSectionContentComponent implements OnInit {
 

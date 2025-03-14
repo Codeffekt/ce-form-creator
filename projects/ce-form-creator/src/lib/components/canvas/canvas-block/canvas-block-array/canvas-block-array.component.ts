@@ -3,9 +3,10 @@ import { CanvasBlockComponentType } from '../../../../core/models';
 import { FormBlock, FormInstanceBase } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'ce-canvas-block-array',
-  templateUrl: './canvas-block-array.component.html',
-  styleUrls: ['./canvas-block-array.component.scss']
+    selector: 'ce-canvas-block-array',
+    templateUrl: './canvas-block-array.component.html',
+    styleUrls: ['./canvas-block-array.component.scss'],
+    standalone: false
 })
 export class CanvasBlockArrayComponent implements CanvasBlockComponentType {
 

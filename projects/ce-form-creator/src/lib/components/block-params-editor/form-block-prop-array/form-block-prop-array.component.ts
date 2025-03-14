@@ -16,24 +16,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatIconModule,
-    MatButtonModule,
-    CeLayoutModule,
-    FormBlockPropFieldsComponent,
-    RootSelectionDialogComponent,
-    BlockSelectionDialogComponent,
-  ],
-  selector: 'ce-form-block-prop-array',
-  templateUrl: './form-block-prop-array.component.html',
-  styleUrls: ['./form-block-prop-array.component.scss']
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        MatIconModule,
+        MatButtonModule,
+        CeLayoutModule,
+        FormBlockPropFieldsComponent,
+        RootSelectionDialogComponent,
+        BlockSelectionDialogComponent,
+    ],
+    selector: 'ce-form-block-prop-array',
+    templateUrl: './form-block-prop-array.component.html',
+    styleUrls: ['./form-block-prop-array.component.scss']
 })
 export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy {
   @Input() context!: FormCreatorContext;

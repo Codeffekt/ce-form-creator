@@ -4,9 +4,10 @@ import { FormCreatorContext } from '../../core/models';
 import { CreatorSelectionService } from '../../core/services/selection.service';
 
 @Component({
-  selector: 'ce-form-block-prop-edit',
-  templateUrl: './form-block-prop-edit.component.html',
-  styleUrls: ['./form-block-prop-edit.component.scss']
+    selector: 'ce-form-block-prop-edit',
+    templateUrl: './form-block-prop-edit.component.html',
+    styleUrls: ['./form-block-prop-edit.component.scss'],
+    standalone: false
 })
 export class FormBlockPropEditComponent {
 

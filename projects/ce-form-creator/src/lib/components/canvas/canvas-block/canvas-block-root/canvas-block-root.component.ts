@@ -6,15 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { CeFormCreatorPipesModule } from '../../../../core/pipes';
 
 @Component({
-  selector: 'ce-canvas-block-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    CeFormCreatorPipesModule
-  ],
-  templateUrl: './canvas-block-root.component.html',
-  styleUrls: ['./canvas-block-root.component.scss']
+    selector: 'ce-canvas-block-root',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        CeFormCreatorPipesModule
+    ],
+    templateUrl: './canvas-block-root.component.html',
+    styleUrls: ['./canvas-block-root.component.scss']
 })
 export class CanvasBlockRootComponent implements CanvasBlockComponentType {
 

@@ -3,9 +3,10 @@ import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 import { CanvasBlockComponentType } from '../../../../core';
 
 @Component({
-  selector: 'ce-canvas-block-timestamp',
-  templateUrl: './canvas-block-timestamp.component.html',
-  styleUrls: ['./canvas-block-timestamp.component.scss']
+    selector: 'ce-canvas-block-timestamp',
+    templateUrl: './canvas-block-timestamp.component.html',
+    styleUrls: ['./canvas-block-timestamp.component.scss'],
+    standalone: false
 })
 export class CanvasBlockTimestampComponent implements CanvasBlockComponentType {
 

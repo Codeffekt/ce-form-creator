@@ -14,7 +14,8 @@ import { CanvasNodeLayoutConfig } from '@codeffekt/ce-canvas-nodes';
 @Component({
     selector: 'ce-form-creator-canvas-form',
     templateUrl: './form-creator-canvas-form.component.html',
-    styleUrls: ['./form-creator-canvas-form.component.scss']
+    styleUrls: ['./form-creator-canvas-form.component.scss'],
+    standalone: false
 })
 export class CeFormCreatorCanvasFormComponent implements OnInit {
     @Input() canvasForm!: CanvasForm;

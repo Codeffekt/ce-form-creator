@@ -3,7 +3,8 @@ import { FormBlock } from "@codeffekt/ce-core-data";
 import { BlockLinkService, FormBlockIconsService } from "../services";
 
 @Pipe({
-    name: 'formBlockIconName'
+    name: 'formBlockIconName',
+    standalone: false
 })
 export class FormBlockIconNamePipe implements PipeTransform {
 
@@ -15,7 +16,8 @@ export class FormBlockIconNamePipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'formBlockHaveAnchor'
+    name: 'formBlockHaveAnchor',
+    standalone: false
 })
 export class FormBlockHaveAnchor implements PipeTransform {
 

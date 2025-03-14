@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-sidenav-container',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+    selector: 'ce-sidenav-container',
+    templateUrl: './sidenav.component.html',
+    styleUrls: ['./sidenav.component.scss'],
+    standalone: false
 })
 export class CeSidenavContainerComponent implements OnInit {
 
@@ -14,8 +15,9 @@ export class CeSidenavContainerComponent implements OnInit {
 }
 
 @Component({
-  selector: 'ce-sidenav',
-  template: '<ng-content></ng-content>'
+    selector: 'ce-sidenav',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 
 export class CeSidenav implements AfterViewInit {
@@ -32,8 +34,9 @@ export class CeSidenav implements AfterViewInit {
 }
 
 @Component({
-  selector: 'ce-sidenav-content',
-  template: '<ng-content></ng-content>'
+    selector: 'ce-sidenav-content',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 
 export class CeSidenavContent implements OnInit {

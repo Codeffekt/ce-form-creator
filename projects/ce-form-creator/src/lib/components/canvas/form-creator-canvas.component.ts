@@ -10,9 +10,10 @@ import { IndexType } from '@codeffekt/ce-core-data';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-creator-canvas',
-  templateUrl: './form-creator-canvas.component.html',
-  styleUrls: ['./form-creator-canvas.component.scss'],   
+    selector: 'ce-form-creator-canvas',
+    templateUrl: './form-creator-canvas.component.html',
+    styleUrls: ['./form-creator-canvas.component.scss'],
+    standalone: false
 })
 export class CeFormCreatorCanvasComponent {
 

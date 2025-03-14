@@ -10,10 +10,11 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-tree',
-  templateUrl: './form-tree.component.html',
-  styleUrls: ['./form-tree.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'ce-form-tree',
+    templateUrl: './form-tree.component.html',
+    styleUrls: ['./form-tree.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormBlocksTreeComponent implements AfterViewInit {
 

@@ -11,17 +11,16 @@ import { CoreUtils } from '../../../core';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatCheckboxModule,
-    FormBlockCorePropEditComponent,
-  ],
-  selector: 'ce-form-block-prop-barcode',
-  templateUrl: './form-block-prop-barcode.component.html',
-  styleUrls: ['./form-block-prop-barcode.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatCheckboxModule,
+        FormBlockCorePropEditComponent,
+    ],
+    selector: 'ce-form-block-prop-barcode',
+    templateUrl: './form-block-prop-barcode.component.html',
+    styleUrls: ['./form-block-prop-barcode.component.scss']
 })
 export class FormBlockPropBarcodeComponent implements FormBlockEditComponentType, OnChanges {
 

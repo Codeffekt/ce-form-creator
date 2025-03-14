@@ -3,9 +3,10 @@ import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 import { CanvasBlockComponentType } from '../../../../core';
 
 @Component({
-  selector: 'ce-canvas-block-number',
-  templateUrl: './canvas-block-number.component.html',
-  styleUrls: ['./canvas-block-number.component.scss']
+    selector: 'ce-canvas-block-number',
+    templateUrl: './canvas-block-number.component.html',
+    styleUrls: ['./canvas-block-number.component.scss'],
+    standalone: false
 })
 export class CanvasBlockNumberComponent implements CanvasBlockComponentType {
 

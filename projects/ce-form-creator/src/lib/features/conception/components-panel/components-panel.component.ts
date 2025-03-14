@@ -8,9 +8,10 @@ interface CeFormCreatorComponentSection {
 }
 
 @Component({
-  selector: 'ce-components-panel',
-  templateUrl: './components-panel.component.html',
-  styleUrls: ['./components-panel.component.scss']
+    selector: 'ce-components-panel',
+    templateUrl: './components-panel.component.html',
+    styleUrls: ['./components-panel.component.scss'],
+    standalone: false
 })
 export class CeComponentsPanel {
 

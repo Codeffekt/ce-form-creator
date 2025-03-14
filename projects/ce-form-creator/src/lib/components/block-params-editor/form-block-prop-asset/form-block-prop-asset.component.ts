@@ -12,20 +12,19 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
 import { CreatorFormsService } from '../../../core/services/forms.service';
 
 @Component({
-  selector: 'ce-form-block-prop-asset',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CeLayoutModule,
-    FormBlockCorePropEditComponent,
-    BlockSelectionDialogComponent,
-    RootSelectionDialogComponent,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatDialogModule,
-  ],
-  templateUrl: './form-block-prop-asset.component.html',
-  styleUrls: ['./form-block-prop-asset.component.scss']
+    selector: 'ce-form-block-prop-asset',
+    imports: [
+        CommonModule,
+        CeLayoutModule,
+        FormBlockCorePropEditComponent,
+        BlockSelectionDialogComponent,
+        RootSelectionDialogComponent,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatDialogModule,
+    ],
+    templateUrl: './form-block-prop-asset.component.html',
+    styleUrls: ['./form-block-prop-asset.component.scss']
 })
 export class FormBlockPropAssetComponent implements FormBlockEditComponentType {
 

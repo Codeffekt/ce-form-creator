@@ -10,16 +10,15 @@ export interface RootSelectionDialogConfig {
 }
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatListModule,
-  ],
-  selector: 'ce-root-selection-dialog',
-  templateUrl: './root-selection-dialog.component.html',
-  styleUrls: ['./root-selection-dialog.component.scss']
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatListModule,
+    ],
+    selector: 'ce-root-selection-dialog',
+    templateUrl: './root-selection-dialog.component.html',
+    styleUrls: ['./root-selection-dialog.component.scss']
 })
 export class RootSelectionDialogComponent {
 

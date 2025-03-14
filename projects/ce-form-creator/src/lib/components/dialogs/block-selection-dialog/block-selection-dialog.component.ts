@@ -11,16 +11,15 @@ export interface BlockSelectionDialogConfig {
 }
 
 @Component({
-  selector: 'ce-block-selection-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatListModule,
-  ],
-  templateUrl: './block-selection-dialog.component.html',
-  styleUrls: ['./block-selection-dialog.component.scss']
+    selector: 'ce-block-selection-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatListModule,
+    ],
+    templateUrl: './block-selection-dialog.component.html',
+    styleUrls: ['./block-selection-dialog.component.scss']
 })
 export class BlockSelectionDialogComponent {
 

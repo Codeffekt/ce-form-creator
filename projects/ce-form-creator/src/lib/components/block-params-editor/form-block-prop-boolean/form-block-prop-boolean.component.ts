@@ -10,18 +10,17 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatCheckboxModule,
-    FormBlockCorePropEditComponent,    
-    FormBlockPropValidatorsComponent,
-  ],
-  selector: 'ce-form-block-prop-boolean',
-  templateUrl: './form-block-prop-boolean.component.html',
-  styleUrls: ['./form-block-prop-boolean.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatCheckboxModule,
+        FormBlockCorePropEditComponent,
+        FormBlockPropValidatorsComponent,
+    ],
+    selector: 'ce-form-block-prop-boolean',
+    templateUrl: './form-block-prop-boolean.component.html',
+    styleUrls: ['./form-block-prop-boolean.component.scss']
 })
 export class FormBlockPropBooleanComponent {
 

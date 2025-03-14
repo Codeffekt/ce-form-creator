@@ -11,9 +11,10 @@ import { FormBlockEditComponentType } from '../../../core/models/FormBlockEdit';
 import { FormBlockEditStoreService } from '../../../core/services/form-block-edit-store.service';
 
 @Component({
-  selector: 'ce-form-block-prop',
-  templateUrl: './form-block-prop.component.html',
-  styleUrls: ['./form-block-prop.component.scss']
+    selector: 'ce-form-block-prop',
+    templateUrl: './form-block-prop.component.html',
+    styleUrls: ['./form-block-prop.component.scss'],
+    standalone: false
 })
 export class FormBlockPropComponent implements OnChanges, AfterViewInit {
 

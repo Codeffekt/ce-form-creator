@@ -8,17 +8,16 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ce-form-prop-fields',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    CeLayoutModule,
-    MatIconModule,
-    FieldsDialogComponent,
-  ],
-  templateUrl: './form-prop-fields.component.html',
-  styleUrl: './form-prop-fields.component.scss'
+    selector: 'ce-form-prop-fields',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        CeLayoutModule,
+        MatIconModule,
+        FieldsDialogComponent,
+    ],
+    templateUrl: './form-prop-fields.component.html',
+    styleUrl: './form-prop-fields.component.scss'
 })
 export class FormPropFieldsComponent {
 

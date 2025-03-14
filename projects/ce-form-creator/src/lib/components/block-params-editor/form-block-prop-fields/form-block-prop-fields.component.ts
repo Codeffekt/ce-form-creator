@@ -8,17 +8,16 @@ import { filter } from 'rxjs';
 import { FieldsDialogComponent } from '../../dialogs';
 
 @Component({
-  selector: 'ce-form-block-prop-fields',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    CeLayoutModule,
-    MatIconModule,
-    FieldsDialogComponent,
-  ],
-  templateUrl: './form-block-prop-fields.component.html',
-  styleUrls: ['./form-block-prop-fields.component.scss']
+    selector: 'ce-form-block-prop-fields',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        CeLayoutModule,
+        MatIconModule,
+        FieldsDialogComponent,
+    ],
+    templateUrl: './form-block-prop-fields.component.html',
+    styleUrls: ['./form-block-prop-fields.component.scss']
 })
 export class FormBlockPropFieldsComponent {
 

@@ -17,21 +17,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'ce-project-params-editor',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatIconModule,
-    MatButtonModule,
-    CeLayoutModule,
-    RootSelectionDialogComponent,
-  ],
-  templateUrl: './project-params-editor.component.html',
-  styleUrls: ['./project-params-editor.component.scss']
+    selector: 'ce-project-params-editor',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        MatIconModule,
+        MatButtonModule,
+        CeLayoutModule,
+        RootSelectionDialogComponent,
+    ],
+    templateUrl: './project-params-editor.component.html',
+    styleUrls: ['./project-params-editor.component.scss']
 })
 export class ProjectParamsEditorComponent implements OnChanges, OnDestroy {
 

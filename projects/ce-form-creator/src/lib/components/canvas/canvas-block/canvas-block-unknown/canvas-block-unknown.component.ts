@@ -7,16 +7,15 @@ import { CanvasBlockComponentType } from '../../../../core/models';
 import { BlockRowComponent } from "../../../layout/block-row/block-row.component";
 
 @Component({
-  selector: 'ce-canvas-block-unknown',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    CeFormCreatorPipesModule,
-    BlockRowComponent,
-  ],
-  templateUrl: './canvas-block-unknown.component.html',
-  styleUrls: ['./canvas-block-unknown.component.scss']
+    selector: 'ce-canvas-block-unknown',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        CeFormCreatorPipesModule,
+        BlockRowComponent,
+    ],
+    templateUrl: './canvas-block-unknown.component.html',
+    styleUrls: ['./canvas-block-unknown.component.scss']
 })
 export class CanvasBlockUnknownComponent implements CanvasBlockComponentType {
 

@@ -8,17 +8,18 @@ import { ProjectFormat } from './project/ProjectFormat';
 import { ProjectService } from './project';
 
 @Component({
-  selector: 'ce-form-creator',
-  templateUrl: './form-creator.component.html',
-  styleUrls: ['./form-creator.component.scss'],
-  providers: [
-    CreatorSelectionService,
-    CreatorFormsService,
-    FormDragService,
-    FormCreatorModeService,
-    FormRootUpdateService,
-    CreatorActionsHistoryService
-  ]
+    selector: 'ce-form-creator',
+    templateUrl: './form-creator.component.html',
+    styleUrls: ['./form-creator.component.scss'],
+    providers: [
+        CreatorSelectionService,
+        CreatorFormsService,
+        FormDragService,
+        FormCreatorModeService,
+        FormRootUpdateService,
+        CreatorActionsHistoryService
+    ],
+    standalone: false
 })
 export class CeFormCreatorComponent implements OnInit, AfterViewInit {
 

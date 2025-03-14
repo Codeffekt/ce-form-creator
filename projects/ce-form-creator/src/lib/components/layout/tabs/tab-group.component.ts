@@ -4,9 +4,10 @@ import { TabComponent } from './tab.component';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-tab-group',
-  templateUrl: './tab-group.component.html',
-  styleUrls: ['./tab-group.component.scss']
+    selector: 'ce-tab-group',
+    templateUrl: './tab-group.component.html',
+    styleUrls: ['./tab-group.component.scss'],
+    standalone: false
 })
 export class TabGroupComponent implements OnInit, AfterContentInit {
 

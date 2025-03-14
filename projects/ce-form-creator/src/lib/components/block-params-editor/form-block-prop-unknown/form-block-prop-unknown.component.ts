@@ -4,14 +4,13 @@ import { FormCreatorContext } from '../../../core/models';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ce-form-block-prop-unknown',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-  ],
-  templateUrl: './form-block-prop-unknown.component.html',
-  styleUrls: ['./form-block-prop-unknown.component.scss']
+    selector: 'ce-form-block-prop-unknown',
+    imports: [
+        CommonModule,
+        MatIconModule,
+    ],
+    templateUrl: './form-block-prop-unknown.component.html',
+    styleUrls: ['./form-block-prop-unknown.component.scss']
 })
 export class FormBlockPropUnknownComponent {
 

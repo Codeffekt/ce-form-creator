@@ -4,7 +4,8 @@ import { IdsAttributeService } from "../services/ids-attribute.service";
 import { BlockLinkService } from "../services";
 
 @Pipe({
-    name: 'formIdAttribute'
+    name: 'formIdAttribute',
+    standalone: false
 })
 export class FormIdAttributePipe implements PipeTransform {
 
@@ -17,7 +18,8 @@ export class FormIdAttributePipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'formBlockLinkAttribute'
+    name: 'formBlockLinkAttribute',
+    standalone: false
 })
 export class FormBlockLinkAttribute implements PipeTransform {
 
@@ -29,7 +31,8 @@ export class FormBlockLinkAttribute implements PipeTransform {
 }
 
 @Pipe({
-    name: 'formBlockLinkStyleAttribute'
+    name: 'formBlockLinkStyleAttribute',
+    standalone: false
 })
 export class FormBlockLinkStyleAttribute implements PipeTransform {
 
@@ -41,7 +44,8 @@ export class FormBlockLinkStyleAttribute implements PipeTransform {
 }
 
 @Pipe({
-    name: 'formBlockIdAttribute'
+    name: 'formBlockIdAttribute',
+    standalone: false
 })
 export class FormBlockIdAttributePipe implements PipeTransform {
     private idsAttributeService = inject(IdsAttributeService);
@@ -54,7 +58,8 @@ export class FormBlockIdAttributePipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'leftAnchorIdAttribute'
+    name: 'leftAnchorIdAttribute',
+    standalone: false
 })
 export class LeftAnchorIdAttributePipe implements PipeTransform {
     private idsAttributeService = inject(IdsAttributeService);
@@ -66,7 +71,8 @@ export class LeftAnchorIdAttributePipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'rightAnchorIdAttribute'
+    name: 'rightAnchorIdAttribute',
+    standalone: false
 })
 export class RightAnchorIdAttributePipe implements PipeTransform {
     private idsAttributeService = inject(IdsAttributeService);

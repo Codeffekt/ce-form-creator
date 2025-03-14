@@ -6,9 +6,10 @@ import { FormTreeInputType } from '../form-tree-input/form-tree-input.types';
 type FormBlocksTreeNodeMode = 'view' | 'edit';
 
 @Component({
-  selector: 'ce-form-tree-node',
-  templateUrl: './form-tree-node.component.html',
-  styleUrls: ['./form-tree-node.component.scss'],
+    selector: 'ce-form-tree-node',
+    templateUrl: './form-tree-node.component.html',
+    styleUrls: ['./form-tree-node.component.scss'],
+    standalone: false
 })
 export class FormBlocksTreeNodeComponent {
 

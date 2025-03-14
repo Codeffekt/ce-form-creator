@@ -16,23 +16,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatFormFieldModule,
-    MatCheckboxModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    FormBlockPropFieldsComponent,
-    RootSelectionDialogComponent,
-  ],
-  selector: 'ce-form-block-prop-index',
-  templateUrl: './form-block-prop-index.component.html',
-  styleUrls: ['./form-block-prop-index.component.scss']
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatFormFieldModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        FormBlockPropFieldsComponent,
+        RootSelectionDialogComponent,
+    ],
+    selector: 'ce-form-block-prop-index',
+    templateUrl: './form-block-prop-index.component.html',
+    styleUrls: ['./form-block-prop-index.component.scss']
 })
 export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy {
 

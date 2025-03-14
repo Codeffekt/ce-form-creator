@@ -5,9 +5,10 @@ import { FormsCanvasService } from '../../../core/services';
 import { SingleRowAutoLayout, ZoomToFit } from '@codeffekt/ce-canvas-nodes';
 
 @Component({
-  selector: 'ce-render-panel',
-  templateUrl: './render-panel.component.html',
-  styleUrls: ['./render-panel.component.scss'],
+    selector: 'ce-render-panel',
+    templateUrl: './render-panel.component.html',
+    styleUrls: ['./render-panel.component.scss'],
+    standalone: false
 })
 export class RenderPanelComponent {
 

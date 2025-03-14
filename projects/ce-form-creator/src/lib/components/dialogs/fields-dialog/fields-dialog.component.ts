@@ -15,17 +15,16 @@ interface MetaFieldItem {
 }
 
 @Component({
-  selector: 'ce-fields-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatListModule,
-    CeTabsModule,
-  ],
-  templateUrl: './fields-dialog.component.html',
-  styleUrls: ['./fields-dialog.component.scss']
+    selector: 'ce-fields-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatListModule,
+        CeTabsModule,
+    ],
+    templateUrl: './fields-dialog.component.html',
+    styleUrls: ['./fields-dialog.component.scss']
 })
 export class FieldsDialogComponent {
   

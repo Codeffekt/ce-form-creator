@@ -3,9 +3,10 @@ import { CanvasBlockComponentType } from '../../../../core/models';
 import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'ce-canvas-block-asset',
-  templateUrl: './canvas-block-asset.component.html',
-  styleUrls: ['./canvas-block-asset.component.scss']
+    selector: 'ce-canvas-block-asset',
+    templateUrl: './canvas-block-asset.component.html',
+    styleUrls: ['./canvas-block-asset.component.scss'],
+    standalone: false
 })
 export class CanvasBlockAssetComponent implements CanvasBlockComponentType {
   

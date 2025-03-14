@@ -6,12 +6,13 @@ import { FormTreeInputType } from './form-tree-input.types';
 import { FormTreeValidatorBuilder } from './validators/form-tree-input-validator.builder';
 
 @Component({
-  selector: 'ce-form-tree-input',
-  templateUrl: './form-tree-input.component.html',
-  styleUrls: ['./form-tree-input.component.scss'],
-  providers: [
-    CeFormTreeInputSanitizer
-  ]
+    selector: 'ce-form-tree-input',
+    templateUrl: './form-tree-input.component.html',
+    styleUrls: ['./form-tree-input.component.scss'],
+    providers: [
+        CeFormTreeInputSanitizer
+    ],
+    standalone: false
 })
 export class FormTreeInputComponent implements OnChanges {
 

@@ -7,10 +7,11 @@ import { SingleRowAutoLayout, ZoomToFit } from '@codeffekt/ce-canvas-nodes';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-creator-conception',
-  templateUrl: './form-creator-conception.component.html',
-  styleUrls: ['./form-creator-conception.component.scss'],
-  providers: []
+    selector: 'ce-form-creator-conception',
+    templateUrl: './form-creator-conception.component.html',
+    styleUrls: ['./form-creator-conception.component.scss'],
+    providers: [],
+    standalone: false
 })
 export class FormCreatorConceptionComponent implements OnInit {
 

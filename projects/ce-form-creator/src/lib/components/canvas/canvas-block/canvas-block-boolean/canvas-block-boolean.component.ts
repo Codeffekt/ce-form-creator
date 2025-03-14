@@ -3,9 +3,10 @@ import { FormInstanceBase, FormBlock } from '@codeffekt/ce-core-data';
 import { CanvasBlockComponentType } from '../../../../core';
 
 @Component({
-  selector: 'ce-canvas-block-boolean',
-  templateUrl: './canvas-block-boolean.component.html',
-  styleUrls: ['./canvas-block-boolean.component.scss']
+    selector: 'ce-canvas-block-boolean',
+    templateUrl: './canvas-block-boolean.component.html',
+    styleUrls: ['./canvas-block-boolean.component.scss'],
+    standalone: false
 })
 export class CanvasBlockBooleanComponent implements CanvasBlockComponentType {
 

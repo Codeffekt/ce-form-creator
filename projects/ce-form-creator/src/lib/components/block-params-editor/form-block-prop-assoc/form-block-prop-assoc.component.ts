@@ -4,9 +4,10 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ce-form-block-prop-assoc',
-  templateUrl: './form-block-prop-assoc.component.html',
-  styleUrls: ['./form-block-prop-assoc.component.scss']
+    selector: 'ce-form-block-prop-assoc',
+    templateUrl: './form-block-prop-assoc.component.html',
+    styleUrls: ['./form-block-prop-assoc.component.scss'],
+    standalone: false
 })
 export class FormBlockPropAssocComponent implements OnInit, OnChanges, OnDestroy {
   @Input() context!: FormCreatorContext;

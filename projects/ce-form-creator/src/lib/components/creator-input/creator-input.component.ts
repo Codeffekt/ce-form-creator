@@ -7,25 +7,24 @@ import { Subject } from 'rxjs';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: 'ce-creator-input',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    forwardRef(() => CreatorInputComponent),
-    A11yModule,
-  ],
-  templateUrl: './creator-input.component.html',
-  styleUrls: ['./creator-input.component.scss'],
-  host: {
-    '[class.floating]': 'shouldLabelFloat',
-    '[id]': 'id',
-  },
-  providers: [{
-    provide: MatFormFieldControl,
-    useExisting: CreatorInputComponent
-  }]
+    selector: 'ce-creator-input',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        forwardRef(() => CreatorInputComponent),
+        A11yModule,
+    ],
+    templateUrl: './creator-input.component.html',
+    styleUrls: ['./creator-input.component.scss'],
+    host: {
+        '[class.floating]': 'shouldLabelFloat',
+        '[id]': 'id',
+    },
+    providers: [{
+            provide: MatFormFieldControl,
+            useExisting: CreatorInputComponent
+        }]
 })
 export class CreatorInputComponent implements
   ControlValueAccessor,

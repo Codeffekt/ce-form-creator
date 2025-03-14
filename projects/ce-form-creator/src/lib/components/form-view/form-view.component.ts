@@ -7,7 +7,6 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
 @Component({
     selector: 'form-view',
     templateUrl: './form-view.component.html',
-    standalone: true,
     styleUrls: ['./form-view.component.scss'],
     imports: [
         CeLayoutModule,

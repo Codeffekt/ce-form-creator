@@ -9,9 +9,10 @@ export type FormRootCreatorConfig = {
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-root-creator-dialog',
-  templateUrl: './root-creator-dialog.component.html',
-  styleUrls: ['./root-creator-dialog.component.scss']
+    selector: 'ce-root-creator-dialog',
+    templateUrl: './root-creator-dialog.component.html',
+    styleUrls: ['./root-creator-dialog.component.scss'],
+    standalone: false
 })
 export class RootCreatorDialogComponent {
 

@@ -14,9 +14,10 @@ import { RootSelectionDialogService } from '../../core/services/root-selection-d
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-creator-toolbar',
-  templateUrl: './form-creator-toolbar.component.html',
-  styleUrls: ['./form-creator-toolbar.component.scss']
+    selector: 'ce-form-creator-toolbar',
+    templateUrl: './form-creator-toolbar.component.html',
+    styleUrls: ['./form-creator-toolbar.component.scss'],
+    standalone: false
 })
 export class CeFormCreatorToolbarComponent implements OnInit {
 

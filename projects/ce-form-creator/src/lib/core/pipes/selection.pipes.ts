@@ -3,7 +3,8 @@ import { FormBlock, FormRoot } from '@codeffekt/ce-core-data';
 import { FormCreatorContext } from '../models';
 
 @Pipe({
-    name: 'isBlock'
+    name: 'isBlock',
+    standalone: false
 })
 export class SelectionIsBlockWithFieldPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot, block: FormBlock): boolean {
@@ -13,7 +14,8 @@ export class SelectionIsBlockWithFieldPipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'isForm'
+    name: 'isForm',
+    standalone: false
 })
 export class SelectionIsFormWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
@@ -22,7 +24,8 @@ export class SelectionIsFormWithIdPipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'hasForm'
+    name: 'hasForm',
+    standalone: false
 })
 export class SelectionHasFormWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {
@@ -31,7 +34,8 @@ export class SelectionHasFormWithIdPipe implements PipeTransform {
 }
 
 @Pipe({
-    name: 'hasBlock'
+    name: 'hasBlock',
+    standalone: false
 })
 export class SelectionHasBlockWithIdPipe implements PipeTransform {
     transform(selection: FormCreatorContext | null | undefined, form: FormRoot): boolean {

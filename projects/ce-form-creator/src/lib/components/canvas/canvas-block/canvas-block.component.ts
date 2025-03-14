@@ -7,9 +7,10 @@ import { CanvasForm } from '../../../core/models';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-canvas-block',
-  templateUrl: './canvas-block.component.html',
-  styleUrls: ['./canvas-block.component.scss']
+    selector: 'ce-canvas-block',
+    templateUrl: './canvas-block.component.html',
+    styleUrls: ['./canvas-block.component.scss'],
+    standalone: false
 })
 export class FormBlockEditComponent implements OnInit {
 

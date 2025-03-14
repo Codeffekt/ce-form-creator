@@ -5,15 +5,14 @@ import { CeFormCreatorPipesModule } from '../../../../core/pipes';
 import { FormBlock, FormInstanceBase } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'ce-canvas-block-action',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    CeFormCreatorPipesModule,
-  ],
-  templateUrl: './canvas-block-action.component.html',
-  styleUrls: ['./canvas-block-action.component.scss']
+    selector: 'ce-canvas-block-action',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        CeFormCreatorPipesModule,
+    ],
+    templateUrl: './canvas-block-action.component.html',
+    styleUrls: ['./canvas-block-action.component.scss']
 })
 export class CanvasBlockActionComponent {
 

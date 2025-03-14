@@ -1,21 +1,24 @@
 import { AfterViewInit, Component, ContentChild, ElementRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'ce-container-header',
-  template: '<ng-content></ng-content>'
+    selector: 'ce-container-header',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class CeContainerHeaderComponent { }
 
 @Component({
-  selector: 'ce-container-footer',
-  template: '<ng-content></ng-content>'
+    selector: 'ce-container-footer',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class CeContainerFooterComponent { }
 
 @Component({
-  selector: 'ce-container',
-  templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss']
+    selector: 'ce-container',
+    templateUrl: './container.component.html',
+    styleUrls: ['./container.component.scss'],
+    standalone: false
 })
 export class CeContainerComponent implements AfterViewInit {
 

@@ -3,9 +3,10 @@ import { FORM_BLOCK_TYPE_TEXT, FormBlock, FormRoot } from '@codeffekt/ce-core-da
 import { CanvasBlockComponentType, CanvasBlockStoreService } from '../../../../core';
 
 @Component({
-  selector: 'ce-canvas-block-dynamic',
-  templateUrl: './canvas-block-dynamic.component.html',
-  styleUrls: ['./canvas-block-dynamic.component.scss']
+    selector: 'ce-canvas-block-dynamic',
+    templateUrl: './canvas-block-dynamic.component.html',
+    styleUrls: ['./canvas-block-dynamic.component.scss'],
+    standalone: false
 })
 export class CanvasBlockDynamicComponent implements AfterViewInit {
 

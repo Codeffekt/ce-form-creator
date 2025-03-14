@@ -11,18 +11,17 @@ export interface SelectOptionDialogConfig {
 }
 
 @Component({
-  selector: 'ce-select-option-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,  
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  templateUrl: './select-option-dialog.component.html',
-  styleUrls: ['./select-option-dialog.component.scss']
+    selector: 'ce-select-option-dialog',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    templateUrl: './select-option-dialog.component.html',
+    styleUrls: ['./select-option-dialog.component.scss']
 })
 export class SelectOptionDialogComponent implements OnInit {  
 

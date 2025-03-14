@@ -8,17 +8,16 @@ import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ce-form-block-prop-validators',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    CeLayoutModule,
-    MatIconModule,
-    ValidatorsDialogComponent,
-  ],
-  templateUrl: './form-block-prop-validators.component.html',
-  styleUrls: ['./form-block-prop-validators.component.scss']
+    selector: 'ce-form-block-prop-validators',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        CeLayoutModule,
+        MatIconModule,
+        ValidatorsDialogComponent,
+    ],
+    templateUrl: './form-block-prop-validators.component.html',
+    styleUrls: ['./form-block-prop-validators.component.scss']
 })
 export class FormBlockPropValidatorsComponent {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-column',
-  templateUrl: './column.component.html',
-  styleUrls: ['./column.component.scss']
+    selector: 'app-column',
+    templateUrl: './column.component.html',
+    styleUrls: ['./column.component.scss'],
+    standalone: false
 })
 export class ColumnComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { Observable } from 'rxjs';
 import { FormCreatorMode, FormCreatorModeService } from '../../../core';
 
 @Component({
-  selector: 'ce-creator-mode-switcher',
-  templateUrl: './creator-mode-switcher.component.html',
-  styleUrls: ['./creator-mode-switcher.component.scss']
+    selector: 'ce-creator-mode-switcher',
+    templateUrl: './creator-mode-switcher.component.html',
+    styleUrls: ['./creator-mode-switcher.component.scss'],
+    standalone: false
 })
 export class CreatorModeSwitcherComponent implements OnInit {
 

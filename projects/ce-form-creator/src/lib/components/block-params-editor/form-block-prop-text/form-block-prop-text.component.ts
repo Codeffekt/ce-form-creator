@@ -15,20 +15,19 @@ import { MatInputModule } from '@angular/material/input';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatIconModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormBlockCorePropEditComponent,
-  ],
-  selector: 'ce-form-block-prop-text',
-  templateUrl: './form-block-prop-text.component.html',
-  styleUrls: ['./form-block-prop-text.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormBlockCorePropEditComponent,
+    ],
+    selector: 'ce-form-block-prop-text',
+    templateUrl: './form-block-prop-text.component.html',
+    styleUrls: ['./form-block-prop-text.component.scss']
 })
 export class FormBlockPropTextComponent implements FormBlockEditComponentType {
 

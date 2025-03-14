@@ -11,19 +11,18 @@ import { CreatorFormsService } from '../../../core/services/forms.service';
 import { filter, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'ce-form-block-prop-action',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatInputModule,
-    MatDialogModule,    
-    BlockSelectionDialogComponent,
-  ],
-  templateUrl: './form-block-prop-action.component.html',
-  styleUrls: ['./form-block-prop-action.component.scss']
+    selector: 'ce-form-block-prop-action',
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatInputModule,
+        MatDialogModule,
+        BlockSelectionDialogComponent,
+    ],
+    templateUrl: './form-block-prop-action.component.html',
+    styleUrls: ['./form-block-prop-action.component.scss']
 })
 export class FormBlockPropActionComponent implements OnChanges, OnDestroy {
 

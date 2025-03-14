@@ -11,18 +11,17 @@ export interface SuggestionOptionDialogConfig {
 }
 
 @Component({
-  selector: 'ce-suggestion-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  templateUrl: './suggestion-dialog.component.html',
-  styleUrls: ['./suggestion-dialog.component.scss']
+    selector: 'ce-suggestion-dialog',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    templateUrl: './suggestion-dialog.component.html',
+    styleUrls: ['./suggestion-dialog.component.scss']
 })
 export class SuggestionDialogComponent implements OnInit {
 

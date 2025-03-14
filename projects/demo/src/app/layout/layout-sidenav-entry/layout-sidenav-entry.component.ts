@@ -6,9 +6,10 @@ export interface LayoutSidenavEntry {
 }
 
 @Component({
-  selector: 'app-layout-sidenav-entry',
-  templateUrl: './layout-sidenav-entry.component.html',
-  styleUrls: ['./layout-sidenav-entry.component.scss']
+    selector: 'app-layout-sidenav-entry',
+    templateUrl: './layout-sidenav-entry.component.html',
+    styleUrls: ['./layout-sidenav-entry.component.scss'],
+    standalone: false
 })
 export class LayoutSidenavEntryComponent implements OnInit {
 

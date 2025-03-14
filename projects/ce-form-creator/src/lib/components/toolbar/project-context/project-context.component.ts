@@ -4,9 +4,10 @@ import { ProjectFormatContext } from '../../../project/ProjectFormat';
 import { ProjectService } from '../../../project';
 
 @Component({
-  selector: 'ce-project-context',
-  templateUrl: './project-context.component.html',
-  styleUrls: ['./project-context.component.scss']
+    selector: 'ce-project-context',
+    templateUrl: './project-context.component.html',
+    styleUrls: ['./project-context.component.scss'],
+    standalone: false
 })
 export class ProjectContextComponent {
 

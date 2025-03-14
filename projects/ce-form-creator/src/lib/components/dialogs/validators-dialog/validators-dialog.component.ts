@@ -9,16 +9,15 @@ export interface ValidatorsDialogConfig {
 }
 
 @Component({
-  selector: 'ce-validators-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatListModule,
-  ],
-  templateUrl: './validators-dialog.component.html',
-  styleUrls: ['./validators-dialog.component.scss']
+    selector: 'ce-validators-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatListModule,
+    ],
+    templateUrl: './validators-dialog.component.html',
+    styleUrls: ['./validators-dialog.component.scss']
 })
 export class ValidatorsDialogComponent {
 

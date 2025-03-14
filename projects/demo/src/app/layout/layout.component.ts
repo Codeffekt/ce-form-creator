@@ -4,9 +4,10 @@ import { LayoutSidenavEntry } from './layout-sidenav-entry/layout-sidenav-entry.
 
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
+    standalone: false
 })
 export class LayoutComponent implements OnInit {
 

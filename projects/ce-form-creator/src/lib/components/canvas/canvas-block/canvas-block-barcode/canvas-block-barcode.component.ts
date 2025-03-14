@@ -7,16 +7,15 @@ import { CanvasBlockComponentType } from '../../../../core/models';
 import { BlockRowComponent } from "../../../layout/block-row/block-row.component";
 
 @Component({
-  selector: 'ce-canvas-block-barcode',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    CeFormCreatorPipesModule,
-    BlockRowComponent,
-],
-  templateUrl: './canvas-block-barcode.component.html',
-  styleUrls: ['./canvas-block-barcode.component.scss']
+    selector: 'ce-canvas-block-barcode',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        CeFormCreatorPipesModule,
+        BlockRowComponent,
+    ],
+    templateUrl: './canvas-block-barcode.component.html',
+    styleUrls: ['./canvas-block-barcode.component.scss']
 })
 export class CanvasBlockBarcodeComponent implements CanvasBlockComponentType {
 

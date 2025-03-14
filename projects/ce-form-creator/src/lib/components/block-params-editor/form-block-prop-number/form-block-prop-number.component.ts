@@ -13,20 +13,19 @@ import { MatSelectModule } from '@angular/material/select';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormBlockCorePropEditComponent,
-    MatCheckboxModule,
-    CeLayoutModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  selector: 'ce-form-block-prop-number',
-  templateUrl: './form-block-prop-number.component.html',
-  styleUrls: ['./form-block-prop-number.component.scss']
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormBlockCorePropEditComponent,
+        MatCheckboxModule,
+        CeLayoutModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    selector: 'ce-form-block-prop-number',
+    templateUrl: './form-block-prop-number.component.html',
+    styleUrls: ['./form-block-prop-number.component.scss']
 })
 export class FormBlockPropNumberComponent implements FormBlockEditComponentType {
 

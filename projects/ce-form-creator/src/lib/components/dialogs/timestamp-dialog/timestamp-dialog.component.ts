@@ -12,18 +12,17 @@ export interface TimeStampDialogConfig {
 }
 
 @Component({
-  selector: 'ce-timestamp-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  templateUrl: './timestamp-dialog.component.html',
-  styleUrls: ['./timestamp-dialog.component.scss']
+    selector: 'ce-timestamp-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    templateUrl: './timestamp-dialog.component.html',
+    styleUrls: ['./timestamp-dialog.component.scss']
 })
 export class TimestampDialogComponent implements OnInit {
 

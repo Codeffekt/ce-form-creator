@@ -7,9 +7,10 @@ import { ProjectFormatContext } from '../../../project/ProjectFormat';
 import { ProjectService } from '../../../project/project.service';
 
 @Component({
-  selector: 'ce-params-panel',
-  templateUrl: './params-panel.component.html',
-  styleUrls: ['./params-panel.component.scss']
+    selector: 'ce-params-panel',
+    templateUrl: './params-panel.component.html',
+    styleUrls: ['./params-panel.component.scss'],
+    standalone: false
 })
 export class ParamsPanelComponent implements OnInit {
 

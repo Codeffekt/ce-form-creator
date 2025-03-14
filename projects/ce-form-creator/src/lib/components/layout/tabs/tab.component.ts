@@ -1,9 +1,10 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'ce-tab',
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss']
+    selector: 'ce-tab',
+    templateUrl: './tab.component.html',
+    styleUrls: ['./tab.component.scss'],
+    standalone: false
 })
 export class TabComponent {
 

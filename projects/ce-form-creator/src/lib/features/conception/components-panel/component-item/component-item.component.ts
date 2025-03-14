@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-component-item',
-  templateUrl: './component-item.component.html',
-  styleUrls: ['./component-item.component.scss']
+    selector: 'ce-component-item',
+    templateUrl: './component-item.component.html',
+    styleUrls: ['./component-item.component.scss'],
+    standalone: false
 })
 export class CeComponentItemComponent implements OnInit {
 
@@ -15,8 +16,9 @@ export class CeComponentItemComponent implements OnInit {
 }
 
 @Component({
-  selector: 'ce-component-item-label',
-  template: '<ng-content></ng-content>',
+    selector: 'ce-component-item-label',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class CeComponentItemLabelComponent implements OnInit {
 

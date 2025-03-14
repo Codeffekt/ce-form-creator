@@ -6,15 +6,14 @@ import { CeFormCreatorPipesModule } from '../../../../core/pipes';
 import { CanvasBlockComponentType } from '../../../../core/models';
 
 @Component({
-  selector: 'ce-canvas-block-factory',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    CeFormCreatorPipesModule
-  ],
-  templateUrl: './canvas-block-factory.component.html',
-  styleUrls: ['./canvas-block-factory.component.scss']
+    selector: 'ce-canvas-block-factory',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        CeFormCreatorPipesModule
+    ],
+    templateUrl: './canvas-block-factory.component.html',
+    styleUrls: ['./canvas-block-factory.component.scss']
 })
 export class CanvasBlockFactoryComponent implements CanvasBlockComponentType {
 

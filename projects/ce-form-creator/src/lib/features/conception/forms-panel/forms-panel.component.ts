@@ -3,9 +3,10 @@ import { FormRoot } from '@codeffekt/ce-core-data';
 import { CanvasForm } from '../../../core/models';
 
 @Component({
-  selector: 'ce-forms-panel',
-  templateUrl: './forms-panel.component.html',
-  styleUrls: ['./forms-panel.component.scss']
+    selector: 'ce-forms-panel',
+    templateUrl: './forms-panel.component.html',
+    styleUrls: ['./forms-panel.component.scss'],
+    standalone: false
 })
 export class FormsPanelComponent implements OnInit {
 

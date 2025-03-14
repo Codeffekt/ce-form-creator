@@ -9,7 +9,10 @@ type ClipboardSelection = {
     dst?: FormCreatorContext;
 };
 
-@Directive({ selector: '[copyPasteSelection]' })
+@Directive({
+    selector: '[copyPasteSelection]',
+    standalone: false
+})
 export class CopyPasteSelectionDirective {
 
     @HostListener('document:keydown.control.v') onCtrlV() {

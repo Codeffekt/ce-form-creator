@@ -15,20 +15,19 @@ import { MatIconModule } from '@angular/material/icon';
 
 @UntilDestroy()
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-    ReactiveFormsModule,
-    CeLayoutModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatIconModule,
-    TimestampDialogComponent,
-  ],
-  selector: 'ce-form-block-prop-timestamp',
-  templateUrl: './form-block-prop-timestamp.component.html',
-  styleUrls: ['./form-block-prop-timestamp.component.scss']
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+        ReactiveFormsModule,
+        CeLayoutModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatIconModule,
+        TimestampDialogComponent,
+    ],
+    selector: 'ce-form-block-prop-timestamp',
+    templateUrl: './form-block-prop-timestamp.component.html',
+    styleUrls: ['./form-block-prop-timestamp.component.scss']
 })
 export class FormBlockPropTimestampComponent implements FormBlockEditComponentType {
 

@@ -4,14 +4,13 @@ import { FormCreatorContext } from '../../../core/models';
 import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
 
 @Component({
-  selector: 'ce-form-block-prop-object',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockCorePropEditComponent,
-  ],
-  templateUrl: './form-block-prop-object.component.html',
-  styleUrls: ['./form-block-prop-object.component.scss']
+    selector: 'ce-form-block-prop-object',
+    imports: [
+        CommonModule,
+        FormBlockCorePropEditComponent,
+    ],
+    templateUrl: './form-block-prop-object.component.html',
+    styleUrls: ['./form-block-prop-object.component.scss']
 })
 export class FormBlockPropObjectComponent {
 

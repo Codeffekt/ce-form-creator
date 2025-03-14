@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-form-creator-history-item',
-  templateUrl: './form-creator-history-item.component.html',
-  styleUrls: ['./form-creator-history-item.component.scss']
+    selector: 'ce-form-creator-history-item',
+    templateUrl: './form-creator-history-item.component.html',
+    styleUrls: ['./form-creator-history-item.component.scss'],
+    standalone: false
 })
 export class FormCreatorHistoryItemComponent implements OnInit {
 
