@@ -4,6 +4,15 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@codeffekt/ce-core-data": [
+        "../ce-core-data/dist"
+      ],
+      "@codeffekt/ce-canvas-nodes": [
+        "../ce-canvas-nodes/dist"
+      ],
+      "@codeffekt/ce-core": [
+        "../ce-core/projects/lib/dist/lib"
+      ],
       "@codeffekt/ce-form-creator": [
         "projects/ce-form-creator/src/index.ts"
       ]

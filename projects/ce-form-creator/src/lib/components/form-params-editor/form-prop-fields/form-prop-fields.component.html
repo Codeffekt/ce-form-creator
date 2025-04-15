@@ -1,4 +1,4 @@
-<ce-column gap="12px">
+<ce-column gap="12px" [dndDropzone]="dndFormService.formFieldsAllowedTypes" (dndDrop)="onDropElement($event)">
     <ce-row gap="12px" cePadding="0px 0px 20px 0px">
         <span>Champs d'affichage</span>
         <mat-icon (click)="addField()">add</mat-icon>

@@ -6,25 +6,31 @@ import { Forms } from "../store";
 import { CanvasForm } from "../models";
 
 @Injectable({ providedIn: 'root' })
-export class FormsCanvasService {    
+export class FormsCanvasService {
 
     private canvas!: Canvas;
 
-    private updateLayoutDispatcher$ = new Subject<boolean>();   
+    private updateLayoutDispatcher$ = new Subject<boolean>();
 
-    constructor(private store: Store) {        
+    constructor(private store: Store) {
     }
 
     getCanvas() {
         return this.canvas;
-    }    
+    }
 
     setCanvasRootElement(root: ElementRef<HTMLElement>) {
         if (this.canvas) {
             this.canvas.dispose();
             console.log("Canvas already defined");
         }
-        this.canvas = new Canvas(root.nativeElement);
+        this.canvas = new Canvas({
+            container: root.nativeElement,
+            actions: {
+                dragActionMouseDownFn: (event) => (event.button === 0 && event.getModifierState("Control")) || event.button === 1,
+                translateActionMouseDownFn: (event) => event.button === 0 && !event.getModifierState("Control"),
+            }
+        });
     }
 
     onNodesMoved(nodes: CanvasNodeElt[], canvasForms: CanvasForm[]) {
@@ -34,7 +40,7 @@ export class FormsCanvasService {
 
     updateLayout() {
         this.updateLayoutDispatcher$.next(true);
-    }   
+    }
 
     private createCanvasFormUpdate(nodes: CanvasNodeElt[], canvasForms: CanvasForm[]): CanvasForm[] {
         const existingElts = nodes.map(node => ({
@@ -49,5 +55,5 @@ export class FormsCanvasService {
             }
         }));
     }
-   
+
 }

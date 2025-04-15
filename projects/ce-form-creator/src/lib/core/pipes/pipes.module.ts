@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SelectionHasBlockWithIdPipe, SelectionHasFormWithIdPipe, SelectionIsBlockWithFieldPipe, SelectionIsFormWithIdPipe } from './selection.pipes';
 import { FormBlockIdAttributePipe, FormBlockLinkAttribute, FormBlockLinkStyleAttribute, FormIdAttributePipe, LeftAnchorIdAttributePipe, RightAnchorIdAttributePipe } from './ids_generator.pipes';
-import { FormBlockHaveAnchor, FormBlockIconNamePipe } from './blocks.pipes';
+import { CanvasBlockComponentTypePipe, FormBlockHaveAnchor, FormBlockIconNamePipe } from './blocks.pipes';
 
 @NgModule({
     imports: [],
@@ -18,6 +18,7 @@ import { FormBlockHaveAnchor, FormBlockIconNamePipe } from './blocks.pipes';
         FormBlockHaveAnchor,
         FormBlockLinkAttribute,
         FormBlockLinkStyleAttribute,
+        CanvasBlockComponentTypePipe,
     ],
     declarations: [
         SelectionIsFormWithIdPipe,
@@ -32,6 +33,7 @@ import { FormBlockHaveAnchor, FormBlockIconNamePipe } from './blocks.pipes';
         FormBlockHaveAnchor,
         FormBlockLinkAttribute,
         FormBlockLinkStyleAttribute,
+        CanvasBlockComponentTypePipe,
     ],
     providers: [],
 })

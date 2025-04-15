@@ -10,7 +10,7 @@
     <ce-column gap="24px">
         <ce-components-section *ngFor="let section of sections">
             <ce-components-section-title>{{section.title}}</ce-components-section-title>
-            <ce-component-item *ngFor="let component of section.components" [dndDraggable]="component.block">
+            <ce-component-item *ngFor="let component of section.components" [dndDraggable]="component.block" [dndType]="dndFormService.compBlockType">
                 <mat-icon>{{component.icon}}</mat-icon>
                 <ce-component-item-label>{{component.label}}</ce-component-item-label>
             </ce-component-item>

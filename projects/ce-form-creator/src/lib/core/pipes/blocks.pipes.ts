@@ -1,6 +1,7 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
-import { FormBlock } from "@codeffekt/ce-core-data";
+import { FormBlock, FormRoot } from "@codeffekt/ce-core-data";
 import { BlockLinkService, FormBlockIconsService } from "../services";
+import { CanvasBlockComponentType } from "../models";
 
 @Pipe({
     name: 'formBlockIconName',
@@ -25,5 +26,18 @@ export class FormBlockHaveAnchor implements PipeTransform {
 
     transform(block: FormBlock): boolean {
         return this.blockLinkService.hasLinkAttribute(block);
+    }
+}
+
+@Pipe({
+    name: 'canvasBlockCompType',
+    standalone: false,
+})
+export class CanvasBlockComponentTypePipe implements PipeTransform {
+    transform(formInstance: FormRoot, formBlock: FormBlock): CanvasBlockComponentType {
+        return {
+            formInstance,
+            formBlock,
+        };
     }
 }

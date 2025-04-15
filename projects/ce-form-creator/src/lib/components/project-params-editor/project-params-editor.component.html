@@ -2,7 +2,7 @@
 
     <ce-column gap="12px">
 
-        <mat-form-field>
+        <mat-form-field [dndDropzone]="dndFormService.indexAllowedTypes" (dndDrop)="onDropElement($event)">
             <mat-label>Point d'entrée</mat-label>
             <input #entryInput matInput (click)="onOpenSelection()" formControlName="entryPoint" readonly="true">
             @if (entryInput.value) {

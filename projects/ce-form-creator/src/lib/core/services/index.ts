@@ -13,3 +13,5 @@ export * from './canvas-block-store.service';
 export * from './root-selection-dialog.service';
 export * from './form-block-list.service';
 export * from './block-link.service';
+export * from './dnd-form.service';
+export * from './prop-fields.service';

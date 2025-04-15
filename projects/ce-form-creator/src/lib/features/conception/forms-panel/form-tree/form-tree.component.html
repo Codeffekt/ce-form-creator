@@ -1,5 +1,5 @@
 <div *ngIf="{value : selection$ | async} as selection"
-     dndDropzone
+     [dndDropzone]="dndFormService.treeFormAllowedTypes"
      [dndHorizontal]="false"
      dndDragoverClass="dragover"
      (dndDrop)="onDropElement($event)">     

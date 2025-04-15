@@ -1,4 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormRoot } from "@codeffekt/ce-core-data";
 import { FormCreatorContext } from '../../../core/models';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { filter, Subscription } from 'rxjs';
@@ -9,34 +10,38 @@ import { MatInputModule } from '@angular/material/input';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CreatorFormsService } from '../../../core';
+import { CreatorFormsService, DndFormService } from '../../../core';
 import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialog';
 import { BlockSelectionDialogComponent } from '../../dialogs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DndDropEvent, DndModule } from 'ngx-drag-drop';
 
 @Component({
-    imports: [
-        CommonModule,
-        FormBlockCorePropEditComponent,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDialogModule,
-        MatIconModule,
-        MatButtonModule,
-        CeLayoutModule,
-        FormBlockPropFieldsComponent,
-        RootSelectionDialogComponent,
-        BlockSelectionDialogComponent,
-    ],
-    selector: 'ce-form-block-prop-array',
-    templateUrl: './form-block-prop-array.component.html',
-    styleUrls: ['./form-block-prop-array.component.scss']
+  imports: [
+    CommonModule,
+    FormBlockCorePropEditComponent,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
+    CeLayoutModule,
+    DndModule,
+    FormBlockPropFieldsComponent,
+    RootSelectionDialogComponent,
+    BlockSelectionDialogComponent,
+  ],
+  selector: 'ce-form-block-prop-array',
+  templateUrl: './form-block-prop-array.component.html',
+  styleUrls: ['./form-block-prop-array.component.scss']
 })
 export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy {
   @Input() context!: FormCreatorContext;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
+
+  dndFormService = inject(DndFormService);
 
   private dialog = inject(MatDialog);
   private formsService = inject(CreatorFormsService);
@@ -47,13 +52,13 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-  ) {    
+  ) {
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {    
+  ngOnChanges(changes: SimpleChanges): void {
     if (!this.formGroup) {
       this.createForm();
     } else {
@@ -93,14 +98,27 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
     });
   }
 
+  onDropElement(event: DndDropEvent) {
+    const root = event.data as FormRoot;
+
+    if (this.block?.root === root.id) {
+      return;
+    }
+
+    this.formGroup.patchValue({
+      root: root.id,
+      index: undefined,
+    });
+  }
+
   onOpenIndex() {
-    if(!this.block?.root) {
+    if (!this.block?.root) {
       return;
     }
 
     const root = this.formsService.getFormRoot(this.block.root);
-    
-    if(!root) {
+
+    if (!root) {
       return;
     }
 
@@ -115,9 +133,9 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
     });
   }
 
-  private createForm() {    
+  private createForm() {
     this.formGroup = this.formBuilder.group({
-      root: [this.block!.root],      
+      root: [this.block!.root],
       index: [this.block!.index],
     });
 
@@ -126,13 +144,13 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
 
   private rebuildForm() {
     this.formGroup.patchValue({
-      root: this.block!.root,    
-      index: this.block!.index,  
+      root: this.block!.root,
+      index: this.block!.index,
     }, { emitEvent: false });
   }
 
   private onFormupdate() {
-    this.block!.root = this.formGroup.value.root;    
+    this.block!.root = this.formGroup.value.root;
     this.block!.index = this.formGroup.value.index;
     this.blockChanges.emit(this.context);
   }

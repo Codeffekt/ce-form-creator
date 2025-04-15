@@ -13,3 +13,16 @@ export class OnClickStopPropagation {
         this.clickStopPropagation.next(true);
     }
 }
+
+@Directive({
+    selector: '[mousedownStopPropagation]',
+    standalone: false
+})
+export class OnMouseDownStopPropagation {    
+
+    @HostListener('mousedown', ['$event']) onMousedown(event: MouseEvent) {
+        if(event.button === 0 && !event.getModifierState('Control')) {
+            event.stopPropagation();        
+        }
+    }
+}

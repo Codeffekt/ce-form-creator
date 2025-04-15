@@ -6,25 +6,32 @@ import { FieldsDialogComponent } from '../../dialogs/fields-dialog/fields-dialog
 import { filter } from 'rxjs';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
+import { DndDropEvent, DndModule } from 'ngx-drag-drop';
+import { DndFormService, PropFieldsService } from '../../../core/services';
+import { CanvasBlockComponentType } from '../../../core';
 
 @Component({
-    selector: 'ce-form-prop-fields',
-    imports: [
-        CommonModule,
-        MatDialogModule,
-        CeLayoutModule,
-        MatIconModule,
-        FieldsDialogComponent,
-    ],
-    templateUrl: './form-prop-fields.component.html',
-    styleUrl: './form-prop-fields.component.scss'
+  selector: 'ce-form-prop-fields',
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    CeLayoutModule,
+    MatIconModule,
+    DndModule,
+    FieldsDialogComponent,
+  ],
+  templateUrl: './form-prop-fields.component.html',
+  styleUrl: './form-prop-fields.component.scss'
 })
 export class FormPropFieldsComponent {
 
   @Input() root!: FormRoot;
   @Output() rootChanges: EventEmitter<FormRoot> = new EventEmitter();
 
-  private dialog = inject(MatDialog);  
+  dndFormService = inject(DndFormService);
+  propFieldsService = inject(PropFieldsService);
+
+  private dialog = inject(MatDialog);
 
   currentFields: string[] = [];
 
@@ -34,7 +41,7 @@ export class FormPropFieldsComponent {
     }
   }
 
-  addField() {    
+  addField() {
 
     const dialogRef = FieldsDialogComponent.open(this.dialog, {
       fields: Object.keys(this.root.content),
@@ -45,21 +52,37 @@ export class FormPropFieldsComponent {
     ).subscribe(field => {
       if (!this.currentFields.includes(field)) {
         this.currentFields.push(field);
-      }
-      this.onRootUpdate();
+        this.onRootUpdate();
+      }      
     });
   }
 
-  deleteField(field: string) {    
-    if(this.currentFields.includes(field)) {
+  deleteField(field: string) {
+    if (this.currentFields.includes(field)) {
       this.currentFields = this.currentFields.filter(v => v !== field);
       this.onRootUpdate();
     }
   }
 
+  onDropElement(event: DndDropEvent) {
+    const canvasBlockComp = event.data as CanvasBlockComponentType;    
+
+    const field = this.propFieldsService.generatePropField(
+      this.root,
+      canvasBlockComp
+    );
+
+    if(!field || this.currentFields.includes(field)) {
+      return;
+    }    
+
+    this.currentFields.push(field);
+    this.onRootUpdate();
+  }
+
   private onRootUpdate() {
-    if(!this.root.params) {
-      this.root.params = {        
+    if (!this.root.params) {
+      this.root.params = {
         fields: []
       };
     }
@@ -70,5 +93,5 @@ export class FormPropFieldsComponent {
   private updateCurrentFields() {
     this.currentFields = this.root?.params?.fields ?? [];
   }
-  
+
 }

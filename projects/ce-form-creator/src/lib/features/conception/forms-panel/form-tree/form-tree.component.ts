@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, ViewChild } from '@angular/core';
 import { FormBlock, FormUtils } from '@codeffekt/ce-core-data';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { Observable } from 'rxjs';
@@ -7,6 +7,7 @@ import { FormRootUpdateService } from '../../../../core/services/form-root-updat
 import { CreatorSelectionService } from '../../../../core/services/selection.service';
 import { FormBlocksTreeNodeComponent } from './form-tree-node/form-tree-node.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DndFormService } from '../../../../core/services';
 
 @UntilDestroy()
 @Component({
@@ -23,6 +24,8 @@ export class FormBlocksTreeComponent implements AfterViewInit {
   selection$: Observable<FormCreatorContext | undefined> = this.selectionService.selectionChanges();
 
   @ViewChild(FormBlocksTreeNodeComponent) formNode!: FormBlocksTreeNodeComponent;
+
+  dndFormService = inject(DndFormService);
 
   constructor(
     private formUpdateService: FormRootUpdateService,

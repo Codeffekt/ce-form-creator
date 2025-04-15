@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CeFormCreatorComponentItem } from '../../../core/models/FormCreatorComponentItem';
 import { FormBlockListService } from '../../../core/services/form-block-list.service';
+import { DndFormService } from '../../../core/services';
 
 interface CeFormCreatorComponentSection {
   title: string;
@@ -14,6 +15,8 @@ interface CeFormCreatorComponentSection {
     standalone: false
 })
 export class CeComponentsPanel {
+
+  dndFormService = inject(DndFormService);
 
   private blockListService = inject(FormBlockListService);
 

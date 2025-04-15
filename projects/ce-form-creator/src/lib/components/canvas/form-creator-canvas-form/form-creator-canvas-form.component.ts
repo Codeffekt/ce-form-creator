@@ -1,10 +1,11 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBlock } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DndDropEvent } from 'ngx-drag-drop';
 import { filter, Observable } from 'rxjs';
 import {
     CreatorSelectionService,
+    DndFormService,
     FormRootUpdateService
 } from '../../../core/services';
 import { CanvasForm, FormCreatorContext } from '../../../core/models';
@@ -24,6 +25,8 @@ export class CeFormCreatorCanvasFormComponent implements OnInit {
     @Output() formChangedEvent: EventEmitter<CanvasForm> = new EventEmitter();
     selection$: Observable<FormCreatorContext | undefined> = this.selectionService.selectionChanges();
     isActive: boolean = false;
+
+    dndFormService = inject(DndFormService);
 
     @HostListener('click', ['$event'])
     onSelect(event: MouseEvent) {        

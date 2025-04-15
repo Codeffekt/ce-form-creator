@@ -1,10 +1,11 @@
 import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { FormRoot } from "@codeffekt/ce-core-data";
 import { FormCreatorContext } from '../../../core/models';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { filter, Subscription } from 'rxjs';
 import { RootSelectionDialogComponent } from '../../dialogs';
 import { MatDialog } from '@angular/material/dialog';
-import { CreatorFormsService } from '../../../core';
+import { CreatorFormsService, DndFormService } from '../../../core';
 import { CommonModule } from '@angular/common';
 import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
 import { CeLayoutModule } from '@codeffekt/ce-core';
@@ -14,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DndDropEvent, DndModule } from 'ngx-drag-drop';
 
 @Component({
     imports: [
@@ -26,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
         MatInputModule,
         MatIconModule,
         MatButtonModule,
+        DndModule,
         FormBlockPropFieldsComponent,
         RootSelectionDialogComponent,
     ],
@@ -37,6 +40,8 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
 
   @Input() context!: FormCreatorContext;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
+
+  dndFormService = inject(DndFormService);
 
   private dialog = inject(MatDialog);
   private formsService = inject(CreatorFormsService);
@@ -88,6 +93,18 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
   onClearSelection() {
     this.formGroup.patchValue({
       root: undefined
+    });
+  }
+
+  onDropElement(event: DndDropEvent) {
+    const root = event.data as FormRoot;
+
+    if(this.block?.root === root.id) {
+      return;
+    }
+
+    this.formGroup.patchValue({
+      root: root.id
     });
   }
 

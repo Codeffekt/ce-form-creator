@@ -3,6 +3,7 @@ import {
   inject, Input, OnChanges,
   OnDestroy, Output, SimpleChanges
 } from '@angular/core';
+import { FormRoot } from "@codeffekt/ce-core-data";
 import { CommonModule } from '@angular/common';
 import { ProjectFormatContext } from '../../project';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -15,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DndDropEvent, DndModule } from 'ngx-drag-drop';
+import { DndFormService } from '../../core';
 
 @Component({
     selector: 'ce-project-params-editor',
@@ -27,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
         MatIconModule,
         MatButtonModule,
         CeLayoutModule,
+        DndModule,
         RootSelectionDialogComponent,
     ],
     templateUrl: './project-params-editor.component.html',
@@ -36,6 +40,8 @@ export class ProjectParamsEditorComponent implements OnChanges, OnDestroy {
 
   @Input() projectContext!: ProjectFormatContext;
   @Output() projectContextChanges: EventEmitter<ProjectFormatContext> = new EventEmitter();
+
+  dndFormService = inject(DndFormService);
 
   formGroup!: UntypedFormGroup;
 
@@ -81,6 +87,18 @@ export class ProjectParamsEditorComponent implements OnChanges, OnDestroy {
       entryPoint: undefined,
     });
   }
+
+  onDropElement(event: DndDropEvent) {
+      const root = event.data as FormRoot;
+  
+      if(this.context!.entryPoint === root.id) {
+        return;
+      }
+  
+      this.formGroup.patchValue({
+        entryPoint: root.id
+      });
+    }
 
   private createForm() {    
     this.formGroup = this.formBuilder.group({

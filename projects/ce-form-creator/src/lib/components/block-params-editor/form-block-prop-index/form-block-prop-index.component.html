@@ -7,7 +7,7 @@
 
     <ce-column gap="12px">
 
-        <mat-form-field>
+        <mat-form-field [dndDropzone]="dndFormService.indexAllowedTypes" (dndDrop)="onDropElement($event)">
             <mat-label>Root</mat-label>
             <input #rootInput matInput (click)="onOpenSelection()" formControlName="root" readonly="true">
             @if (rootInput.value) {
