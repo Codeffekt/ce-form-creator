@@ -1,11 +1,11 @@
 import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormRoot } from "@codeffekt/ce-core-data";
+import { FormBlockIndex, FormRoot } from "@codeffekt/ce-core-data";
 import { FormCreatorContext } from '../../../core/models';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { filter, Subscription } from 'rxjs';
 import { RootSelectionDialogComponent } from '../../dialogs';
 import { MatDialog } from '@angular/material/dialog';
-import { CreatorFormsService, DndFormService } from '../../../core';
+import { CoreUtils, CreatorFormsService, DndFormService } from '../../../core';
 import { CommonModule } from '@angular/common';
 import { FormBlockCorePropEditComponent } from '../form-block-core-prop-edit/form-block-core-prop-edit.component';
 import { CeLayoutModule } from '@codeffekt/ce-core';
@@ -38,7 +38,7 @@ import { DndDropEvent, DndModule } from 'ngx-drag-drop';
 })
 export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() context!: FormCreatorContext;
+  @Input() context!: FormCreatorContext<FormBlockIndex>;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
 
   dndFormService = inject(DndFormService);
@@ -88,13 +88,13 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
         root: root.id
       });
     });
-  }
+  } 
 
   onClearSelection() {
     this.formGroup.patchValue({
       root: undefined
     });
-  }
+  }  
 
   onDropElement(event: DndDropEvent) {
     const root = event.data as FormRoot;
@@ -111,6 +111,7 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
   private createForm() {    
 
     this.formGroup = this.formBuilder.group({
+      useCategory: [CoreUtils.getBlockParamsBooleanValue(this.block, "useCategory", false)],
       root: [this.block!.root],
       required: [this.block!.required],
     });
@@ -121,12 +122,17 @@ export class FormBlockPropIndexComponent implements OnInit, OnChanges, OnDestroy
   private rebuildForm() {
     this.formGroup.patchValue({
       root: this.block!.root,
+      useCategory: CoreUtils.getBlockParamsBooleanValue(this.block, "useCategory", false),
       required: this.block!.required,
     }, { emitEvent: false });
   }
 
   private onFormupdate() {
     this.block!.root = this.formGroup.value.root;
+    this.block!.params = {
+      ...this.block?.params,
+      useCategory: this.formGroup.value.useCategory,
+    };
     this.block!.required = this.formGroup.value.required;
     this.blockChanges.emit(this.context);
   }

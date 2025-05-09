@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormRoot } from "@codeffekt/ce-core-data";
+import { FormBlockArray, FormRoot } from "@codeffekt/ce-core-data";
 import { FormCreatorContext } from '../../../core/models';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { filter, Subscription } from 'rxjs';
@@ -10,12 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { FormBlockPropFieldsComponent } from '../form-block-prop-fields';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CreatorFormsService, DndFormService } from '../../../core';
+import { CoreUtils, CreatorFormsService, DndFormService } from '../../../core';
 import { RootSelectionDialogComponent } from '../../dialogs/root-selection-dialog';
 import { BlockSelectionDialogComponent } from '../../dialogs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DndDropEvent, DndModule } from 'ngx-drag-drop';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   imports: [
@@ -27,6 +28,7 @@ import { DndDropEvent, DndModule } from 'ngx-drag-drop';
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
     CeLayoutModule,
     DndModule,
     FormBlockPropFieldsComponent,
@@ -38,7 +40,7 @@ import { DndDropEvent, DndModule } from 'ngx-drag-drop';
   styleUrls: ['./form-block-prop-array.component.scss']
 })
 export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() context!: FormCreatorContext;
+  @Input() context!: FormCreatorContext<FormBlockArray>;
   @Output() blockChanges: EventEmitter<FormCreatorContext> = new EventEmitter();
 
   dndFormService = inject(DndFormService);
@@ -91,7 +93,7 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
     });
   }
 
-  onClearSelection() {
+  onClear() {
     this.formGroup.patchValue({
       root: undefined,
       index: undefined,
@@ -137,6 +139,7 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
     this.formGroup = this.formBuilder.group({
       root: [this.block!.root],
       index: [this.block!.index],
+      useCategory: [CoreUtils.getBlockParamsBooleanValue(this.block, "useCategory", false)],
     });
 
     this.subscription = this.formGroup.valueChanges.subscribe(_ => this.onFormupdate());
@@ -146,12 +149,17 @@ export class FormBlockPropArrayComponent implements OnInit, OnChanges, OnDestroy
     this.formGroup.patchValue({
       root: this.block!.root,
       index: this.block!.index,
+      useCategory: CoreUtils.getBlockParamsBooleanValue(this.block, "useCategory", false),
     }, { emitEvent: false });
   }
 
   private onFormupdate() {
     this.block!.root = this.formGroup.value.root;
     this.block!.index = this.formGroup.value.index;
+    this.block!.params = {
+      ...this.block?.params,
+      useCategory: this.formGroup.value.useCategory,
+    };
     this.blockChanges.emit(this.context);
   }
 
