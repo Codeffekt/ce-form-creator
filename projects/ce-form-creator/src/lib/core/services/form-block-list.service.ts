@@ -44,7 +44,16 @@ export class FormBlockListService {
         type: 'action',
         label: 'Action',
       }
-    }
+    },
+    "object": {
+      label: 'JSON',
+      icon: this.blockIconsService.getIconFromType("object"),
+      block: {
+        field: 'object',
+        type: 'object',
+        label: 'JSON',
+      }
+    },
   };
 
   getBlockComponent(id: string): CeFormCreatorComponentItem {

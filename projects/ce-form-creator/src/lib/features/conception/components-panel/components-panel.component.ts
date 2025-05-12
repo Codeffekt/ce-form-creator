@@ -85,6 +85,7 @@ export class CeComponentsPanel {
           }
         },
         this.blockListService.getBlockComponent("model"),
+        this.blockListService.getBlockComponent("object"),
         this.blockListService.getBlockComponent("factory"),
       ],
     }, {
