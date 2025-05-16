@@ -1,2 +1,16 @@
 <ce-form-block-core-prop-edit [context]="context"
     (blockChanges)="onCoreBlockChange($event)"></ce-form-block-core-prop-edit>
+
+    <form [formGroup]="formGroup">
+        <ce-column gap="12px">
+            <mat-form-field [dndDropzone]="dndFormService.indexAllowedTypes" (dndDrop)="onDropElement($event)">
+                <mat-label>Catégorie</mat-label>
+                <input #catInput matInput (click)="onOpenSelection()" formControlName="cat" readonly="true">
+                @if (catInput.value) {
+                <button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                }
+            </mat-form-field>
+        </ce-column>
+    </form>
