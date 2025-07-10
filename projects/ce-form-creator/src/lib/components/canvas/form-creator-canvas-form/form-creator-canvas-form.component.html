@@ -1,11 +1,11 @@
 <ce-column *ngIf="canvasForm" class="form" [class.active]="isActive" [dndDropzone]="dndFormService.canvasFormAllowedTypes"
   [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
 
-  <div class="canvas-block-elt canvas-block-header" id="{{canvasForm.form | formBlockIdAttribute}}"
-  mousedownStopPropagation
+  <div class="canvas-block-elt canvas-block-header" id="{{canvasForm.form | formBlockIdAttribute}}"  
   [dndDraggable]="canvasForm.form" [dndType]="dndFormService.formType">
     <div class="left-connector" id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>
-    <h3>{{canvasForm.form.title}}</h3>
+    <mat-icon class="dnd-handle" mousedownStopPropagation dndHandle>drag_indicator</mat-icon>
+    <h3>{{canvasForm.form.title}}</h3>    
     <div class="canvas-anchor right-connector" id="{{canvasForm.form | rightAnchorIdAttribute}}"></div>
   </div>
 

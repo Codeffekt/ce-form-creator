@@ -5,7 +5,6 @@ import { FormCreatorComponent } from './form-creator.component';
 import { FormCreatorRoutingModule } from './layout-routing.module';
 import { FormsLibraryService } from '@codeffekt/ce-form-creator';
 import { LOCAL_FORMS } from '../library/forms';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [

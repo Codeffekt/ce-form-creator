@@ -2,7 +2,7 @@ import { FormRoot } from "@codeffekt/ce-core-data";
 
 export const FORM_TECH: FormRoot = {
   "id": "forms-tech",
-  "type": "forms-tech",
+  "cat": "forms-tech",
   "ctime": 1638275198813,
   "mtime": 1665653618512,
   "table": "techs",
@@ -44,7 +44,7 @@ export const FORM_TECH: FormRoot = {
 
 export const FORM_PHOTO: FormRoot = {
   "id": "forms-photo",
-  "type": "forms-photo",
+  "cat": "forms-photo",
   "ctime": 1638275198813,
   "mtime": 1665653596521,
   "title": "Photo",
@@ -69,7 +69,7 @@ export const FORM_PHOTO: FormRoot = {
 
 export const FORM_HARDWARE: FormRoot = {
   id: "form-hardware",
-  type: "form-hardware",
+  cat: "form-hardware",
   ctime: 0,
   title: "Matériel",
   content: {

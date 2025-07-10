@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { CeCodeEditorModule } from '@codeffekt/ce-code-editor';
+import { CeCodeEditorComponent } from '@codeffekt/ce-code-editor';
 import { CeLayoutModule } from '@codeffekt/ce-core';
 import { CeContainerModule, CeSidenavModule } from 'projects/ce-form-creator/src/lib/components/layout';
 import { ColumnComponent } from './column/column.component';
@@ -28,7 +28,7 @@ import { LayoutComponent } from './layout.component';
         LayoutRoutingModule,
         CeLayoutModule,
         MatButtonModule,
-        CeCodeEditorModule,
+        CeCodeEditorComponent,
         MatIconModule,
         MatTabsModule,
         CeSidenavModule,

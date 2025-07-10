@@ -2,5 +2,5 @@
     <ce-form-creator-canvas-form 
         id="{{canvasForm.form | formIdAttribute}}" *ngFor="let canvasForm of canvasForms" 
         [canvasForm]="canvasForm" [attr.x]="canvasForm.layout.coords.x" [attr.y]="canvasForm.layout.coords.y"
-        class="canvas-node-elt"></ce-form-creator-canvas-form>
+        class="canvas-node-elt" [class.active]="canvasForm === activeForm"></ce-form-creator-canvas-form>
 </div>

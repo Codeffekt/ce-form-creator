@@ -23,6 +23,10 @@
     bottom: 0;
     width: 1024px;
     height: 1024px;
+
+    ce-form-creator-canvas-form.active {
+        border: solid 2px #2eb6e7e0;
+    }
 }
 
 .canvas-node-elt {

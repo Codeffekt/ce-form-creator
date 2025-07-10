@@ -27,8 +27,8 @@ export class FormsCanvasService {
         this.canvas = new Canvas({
             container: root.nativeElement,
             actions: {
-                dragActionMouseDownFn: (event) => (event.button === 0 && event.getModifierState("Control")) || event.button === 1,
-                translateActionMouseDownFn: (event) => event.button === 0 && !event.getModifierState("Control"),
+                dragActionMouseDownFn: (event) =>  event.button === 0, //(event.button === 0 && event.getModifierState("Control")) || event.button === 1,
+                translateActionMouseDownFn: (event) => event.button === 0, // && !event.getModifierState("Control"),
             }
         });
     }

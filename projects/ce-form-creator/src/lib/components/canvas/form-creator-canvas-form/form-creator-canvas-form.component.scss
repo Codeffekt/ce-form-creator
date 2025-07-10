@@ -2,17 +2,21 @@
   background: white;
   border: solid;
   border-width: 1px;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border-color: rgb(231, 221, 221);
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px, 0 4px 6px -4px;
-  padding-bottom: 1em;  
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 10px 15px -3px,
+    0 4px 6px -4px;
+  padding-bottom: 1em;
 
   .canvas-block-header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; 
-    border-bottom: 1px solid rgb(231, 221, 221);   
+    justify-content: left;
+    border-bottom: 1px solid rgb(231, 221, 221);
   }  
 
   .left-connector {
@@ -26,14 +30,18 @@
 
   .right-connector {
     position: absolute;
-    display: block;        
+    display: block;
     background: none;
     right: -5px;
     width: 10px;
     height: 10px;
   }
 
-  ce-form-block-factory {    
+  ce-form-block-factory {
     width: 100%;
+  }
+
+  .dnd-handle {
+    cursor: pointer;
   }
 }
