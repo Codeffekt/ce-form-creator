@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-form-creator",
-  "version": "19.1.0",
+  "version": "19.1.1",
   "description": "Angular library components to create/edit CeForms",
   "author": {
     "name": "Codeffekt",
@@ -16,11 +16,11 @@
     "@angular/common": "^19.2.2",
     "@angular/core": "^19.2.2",
     "@angular/material": "^19.2.3",
-    "@codeffekt/ce-core": "^19.1.0",
+    "@codeffekt/ce-core": "^19.1.1",
     "@codeffekt/ce-core-data": "^1.2.6",
     "@codeffekt/ce-barcode": "^19.1.0",
     "@codeffekt/ce-code-editor": "^19.1.0",
-    "@codeffekt/ce-canvas-nodes": "^0.0.9",
+    "@codeffekt/ce-canvas-nodes": "^0.0.10",
     "@ngneat/until-destroy": "^8.0.0",
     "@ngxs/devtools-plugin": "^19.0.0",
     "@ngxs/logger-plugin": "^19.0.0",
