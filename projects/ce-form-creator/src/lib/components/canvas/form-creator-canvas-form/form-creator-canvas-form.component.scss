@@ -44,4 +44,13 @@
   .dnd-handle {
     cursor: pointer;
   }
+
+  .dnd-block-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    margin: 8px;
+  }
 }

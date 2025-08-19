@@ -1,27 +1,27 @@
-<ce-column *ngIf="canvasForm" class="form" [class.active]="isActive" [dndDropzone]="dndFormService.canvasFormAllowedTypes"
-  [dndHorizontal]="false" dndDragoverClass="dragover" (dndDrop)="onDropElement($event)">
+<ce-column *ngIf="canvasForm" class="form" [class.active]="isActive"
+  [dndDropzone]="dndFormService.canvasFormAllowedTypes" [dndHorizontal]="false" dndDragoverClass="dragover"
+  (dndDrop)="onDropElement($event)">
 
-  <div class="canvas-block-elt canvas-block-header" id="{{canvasForm.form | formBlockIdAttribute}}"  
-  [dndDraggable]="canvasForm.form" [dndType]="dndFormService.formType">
+  <div class="canvas-block-elt canvas-block-header" id="{{canvasForm.form | formBlockIdAttribute}}"
+    [dndDraggable]="canvasForm.form" [dndType]="dndFormService.formType">
     <div class="left-connector" id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>
-    <mat-icon class="dnd-handle" mousedownStopPropagation dndHandle>drag_indicator</mat-icon>
-    <h3>{{canvasForm.form.title}}</h3>    
+    <div dndDragImageRef class="dnd-block-header">
+      <mat-icon class="dnd-handle" mousedownStopPropagation dndHandle>drag_indicator</mat-icon>
+      <h3>{{canvasForm.form.title}}</h3>
+    </div>
     <div class="canvas-anchor right-connector" id="{{canvasForm.form | rightAnchorIdAttribute}}"></div>
   </div>
 
   <ng-container *ngFor="let formBlock of (canvasForm.form | formInstanceBlocks)">
-    <ce-canvas-block id="{{canvasForm.form | formBlockIdAttribute: formBlock}}" [form]="canvasForm" [formBlock]="formBlock"
-      (clickStopPropagation)="selectBlock(canvasForm, formBlock)" 
-      mousedownStopPropagation
-      class="canvas-block-elt"
-      [attr.link]="canvasForm.form | formBlockLinkAttribute: formBlock" 
-      [attr.link-style]="canvasForm.form | formBlockLinkStyleAttribute: formBlock"
-      [attr.link-direction]="'backward'"
+    <ce-canvas-block id="{{canvasForm.form | formBlockIdAttribute: formBlock}}" [form]="canvasForm"
+      [formBlock]="formBlock" (clickStopPropagation)="selectBlock(canvasForm, formBlock)" mousedownStopPropagation
+      class="canvas-block-elt" [attr.link]="canvasForm.form | formBlockLinkAttribute: formBlock"
+      [attr.link-style]="canvasForm.form | formBlockLinkStyleAttribute: formBlock" [attr.link-direction]="'backward'"
       [dndDraggable]="canvasForm.form | canvasBlockCompType:formBlock" [dndType]="dndFormService.formBlockType">
       <div *ngIf="formBlock | formBlockHaveAnchor" class="canvas-anchor left-connector"
-        id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>      
+        id="{{canvasForm.form | leftAnchorIdAttribute}}"></div>
       <ce-canvas-block-dynamic [formBlock]="formBlock" [formInstance]="$any(canvasForm.form)">
-      </ce-canvas-block-dynamic>      
+      </ce-canvas-block-dynamic>
     </ce-canvas-block>
   </ng-container>
 </ce-column>
