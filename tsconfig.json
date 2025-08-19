@@ -5,13 +5,13 @@
     "baseUrl": "./",
     "paths": {
       "@codeffekt/ce-core-data": [
-        "../ce-core-data/dist"
+        "../../packages/ce-core-data/dist"
       ],
       "@codeffekt/ce-canvas-nodes": [
-        "../ce-canvas-nodes/dist"
+        "../../packages/ce-canvas-nodes/dist"
       ],
       "@codeffekt/ce-core": [
-        "../ce-core/projects/lib/dist/lib"
+        "../../packages/ce-core/projects/lib/src/lib/index.ts"
       ],
       "@codeffekt/ce-form-creator": [
         "projects/ce-form-creator/src/index.ts"

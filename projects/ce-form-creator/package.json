@@ -24,11 +24,11 @@
     "@ngneat/until-destroy": "^8.0.0",
     "@ngxs/devtools-plugin": "^19.0.0",
     "@ngxs/logger-plugin": "^19.0.0",
-    "@ngxs/store": "^19.0.0",
-    "ngx-drag-drop": "^19.0.0",
+    "@ngxs/store": "^19.0.0",   
     "file-saver": "^2.0.5"
   },
-  "dependencies": {    
+  "dependencies": {  
+    "ngx-drag-drop": "^19.0.0",  
     "tslib": "^2.3.0"    
   },
   "main": "./dist/lib/codeffekt-ce-form-creator.d.ts"
