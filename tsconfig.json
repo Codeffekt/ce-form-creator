@@ -11,7 +11,7 @@
         "../../packages/ce-canvas-nodes/dist"
       ],
       "@codeffekt/ce-core": [
-        "../../packages/ce-core/projects/lib/src/lib/index.ts"
+        "../../packages/ce-core/projects/lib/dist/lib"
       ],
       "@codeffekt/ce-form-creator": [
         "projects/ce-form-creator/src/index.ts"

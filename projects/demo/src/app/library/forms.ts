@@ -33,11 +33,11 @@ export const FORM_TECH: FormRoot = {
       "field": "options",
       "label": "Options"
     },
-    hardware: {
-      type: "index",
-      field: "hardware",
-      label: "Matériel",
-      root: "form-hardware"
+    "hardwares": {
+      "type": "formArray",
+      "field": "hardwares",
+      "label": "Matériel",
+      "root": "form-hardware"
     }
   }
 };

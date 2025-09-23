@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Select a field</h1>
+<div mat-dialog-content>
+    <ce-searchbox (valueChange)="onFilterChange($event)" [useSearchButton]="false" [initialValue]="initialFilter"></ce-searchbox>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onSubmit()" [disabled]="!filterModified">Appliquer</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

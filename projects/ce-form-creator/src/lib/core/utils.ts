@@ -2,11 +2,15 @@ import { FormBlock, IndexType } from "@codeffekt/ce-core-data";
 
 export class CoreUtils {
 
-    static getBlockParamsBooleanValue(block: FormBlock|undefined, paramsField: IndexType, defaultValue: boolean) {        
+    static getBlockParamsBooleanValue(block: FormBlock | undefined, paramsField: IndexType, defaultValue: boolean) {
         return !block?.params || block?.params[paramsField] === undefined ? defaultValue : !!block.params[paramsField];
     }
 
-    static getBlockParamsStringValue(block: FormBlock|undefined, paramsField: IndexType, defaultValue = undefined) {
+    static getBlockParamsStringValue(block: FormBlock | undefined, paramsField: IndexType, defaultValue = undefined) {
         return !block?.params || block?.params[paramsField] === undefined ? defaultValue : block.params[paramsField];
-    }   
+    }
+
+    static getBlockParamsObjectValue<T>(block: FormBlock | undefined, paramsField: IndexType, defaultValue?: T): T | undefined {
+        return !block?.params || block?.params[paramsField] === undefined ? defaultValue : block.params[paramsField];
+    }
 }
